@@ -4,13 +4,13 @@
     <item
         android:id="@+id/action_connect"
         android:icon="@drawable/baseline_how_to_reg_24"
-        android:title="Se connecter" />
+        android:title="@string/nav_drawer_action_signin" />
     <item
         android:id="@+id/action_signup"
         android:icon="@drawable/baseline_supervisor_account_24"
-        android:title="S'inscrire" />
+        android:title="@string/nav_drawer_action_signup" />
     <item
         android:id="@+id/action_disconnect"
         android:icon="@drawable/baseline_do_not_disturb_off_24"
-        android:title="Se déconnecter" />
+        android:title="@string/nav_drawer_action_disconnect" />
 </menu>
