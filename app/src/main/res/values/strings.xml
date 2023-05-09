@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AIRNEIS</string>
+    <string name="nav_drawer_opened">Side menu Opened</string>
+    <string name="nav_drawer_closed">Side menu Closed</string>
 </resources>
