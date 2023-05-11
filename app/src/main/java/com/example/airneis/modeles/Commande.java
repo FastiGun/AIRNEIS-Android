@@ -8,12 +8,12 @@ public class Commande {
     float prixHT;
     float prixTTC;
     String statut;
-    List<Produit> produits;
+    Produit[] produits;
     Adresse adresseFacturation;
     Adresse adresseLivraison;
     Client client;
 
-    public Commande(int id, String date, float prixHT, float prixTTC, String statut, List<Produit> produits, Adresse adresseFacturation, Adresse adresseLivraison, Client client) {
+    public Commande(int id, String date, float prixHT, float prixTTC, String statut, Produit[] produits, Adresse adresseFacturation, Adresse adresseLivraison, Client client) {
         this.id = id;
         this.date = date;
         this.prixHT = prixHT;
@@ -65,11 +65,11 @@ public class Commande {
         this.statut = statut;
     }
 
-    public List<Produit> getProduits() {
+    public Produit[] getProduits() {
         return produits;
     }
 
-    public void setProduits(List<Produit> produits) {
+    public void setProduits(Produit[] produits) {
         this.produits = produits;
     }
 
