@@ -5,5 +5,19 @@
     <string name="nav_drawer_action_signin">Sign in</string>
     <string name="nav_drawer_action_signup">Sign up</string>
     <string name="nav_drawer_action_disconnect">Disconnect</string>
+    <string name="title_registration">Registration</string>
+    <string name="content_description_title_registration">Registration</string>
+    <string name="registration_name_title">Full Name *</string>
+    <string name="content_description_registration_name_title">Full Name </string>
+    <string name="registration_name">John DOE</string>
+    <string name="registration_email_title">Email *</string>
+    <string name="content_description_registration_email_title">Email</string>
+    <string name="registration_password_title">Password *</string>
+    <string name="content_description_registration_password_title">Password</string>
+    <string name="registration_redirection">Have a account ?</string>
+    <string name="registration_redirection2">Log in</string>
+    <string name="content_description_registration_redirection2">Link to redirect on the connection page</string>
+    <string name="registration_registerButton">Register</string>
+    <string name="content_description_registration_registerButton">Button to validate the register</string>
     <string name="home_page_catch_phrase">Venue des hautes terres d`Ecosse, nos meubles sont immortels !</string>
 </resources>
