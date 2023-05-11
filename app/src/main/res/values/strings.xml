@@ -15,4 +15,8 @@
     <string name="registration_password_title">Password *</string>
     <string name="content_description_registration_password_title">Password</string>
     <string name="registration_redirection">Have a account ?</string>
+    <string name="registration_redirection2">Log in</string>
+    <string name="content_description_registration_redirection2">Link to redirect on the connection page</string>
+    <string name="registration_registerButton">Register</string>
+    <string name="content_description_registration_registerButton">Button to validate the register</string>
 </resources>
