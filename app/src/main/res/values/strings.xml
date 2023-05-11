@@ -11,6 +11,7 @@
     <string name="content_description_registration_name_title">Full Name </string>
     <string name="registration_name">John DOE</string>
     <string name="registration_email_title">Email *</string>
+    <string name="registration_email_name">john@smith.com</string>
     <string name="content_description_registration_email_title">Email</string>
     <string name="registration_password_title">Password *</string>
     <string name="content_description_registration_password_title">Password</string>
@@ -20,4 +21,9 @@
     <string name="registration_registerButton">Register</string>
     <string name="content_description_registration_registerButton">Button to validate the register</string>
     <string name="home_page_catch_phrase">Venue des hautes terres d`Ecosse, nos meubles sont immortels !</string>
+    <string name="title_login">Login</string>
+    <string name="login_redirection">No account ?</string>
+    <string name="login_redirection2">Register</string>
+    <string name="content_description_login_redirection2">Link to redirect on the connection page</string>
+    <string name="login_loginButton">Log in</string>
 </resources>

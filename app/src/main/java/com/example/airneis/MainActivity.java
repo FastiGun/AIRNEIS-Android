@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment = null;
         if(item.getItemId() == R.id.action_connect){
             this.drawerLayout.closeDrawer(GravityCompat.START);
+            fragment = new LoginFragment();
+            loadFragment(fragment);
             return true;
         } else if(item.getItemId() == R.id.action_signup){
             this.drawerLayout.closeDrawer(GravityCompat.START);

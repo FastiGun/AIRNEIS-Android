@@ -32,7 +32,7 @@
 
     <EditText
         android:id="@+id/editText_registrationName"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:ems="10"
@@ -55,11 +55,11 @@
 
     <EditText
         android:id="@+id/editText_registrationEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="john@smith.com"
+        android:hint="@string/registration_email_name"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/text_registrationEmail"
         app:layout_constraintTop_toBottomOf="@+id/text_registrationEmail" />
@@ -77,12 +77,12 @@
 
     <EditText
         android:id="@+id/editText_registrationPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Password"
-        android:inputType="text"
+        android:hint="@string/content_description_registration_password_title"
+        android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@+id/text_registrationPassword"
         app:layout_constraintTop_toBottomOf="@+id/text_registrationPassword" />
 
@@ -94,7 +94,7 @@
         android:text="@string/registration_redirection"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/editText_registrationPassword"
-        app:layout_constraintStart_toStartOf="@+id/editText_registrationPassword"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_registrationPassword" />
 
     <TextView
@@ -105,7 +105,7 @@
         android:contentDescription="@string/content_description_registration_redirection2"
         android:text="@string/registration_redirection2"
         android:textAlignment="center"
-        android:textColor="#384aee"
+        android:textColor="@color/blue_app"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/text_registrationRedirection"
         app:layout_constraintTop_toBottomOf="@+id/editText_registrationPassword" />
