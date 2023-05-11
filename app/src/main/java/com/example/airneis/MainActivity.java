@@ -10,15 +10,18 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface{
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationDrawer;
 
+    Fragment inscriptionFragment;
+    Fragment loginFragment;
     Fragment homePageFragment;
 
     @Override
@@ -53,12 +56,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment fragment = null;
         if(item.getItemId() == R.id.action_connect){
             this.drawerLayout.closeDrawer(GravityCompat.START);
-            fragment = new LoginFragment();
+            fragment = new LoginFragment((RedirectionInterface) this);
             loadFragment(fragment);
             return true;
         } else if(item.getItemId() == R.id.action_signup){
             this.drawerLayout.closeDrawer(GravityCompat.START);
-            fragment = new InscriptionFragment();
+            fragment = new InscriptionFragment((RedirectionInterface) this);
             loadFragment(fragment);
             return true;
         } else if(item.getItemId() == R.id.action_disconnect){
@@ -74,5 +77,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         return false;
+    }
+
+    public void redirectToInscription() {
+        inscriptionFragment = new InscriptionFragment((RedirectionInterface) this);
+        loadFragment(inscriptionFragment);
+    }
+
+    public void redirectToLogin() {
+        loginFragment = new LoginFragment( (RedirectionInterface) this);
+        loadFragment(loginFragment);
     }
 }
