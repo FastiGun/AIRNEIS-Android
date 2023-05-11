@@ -119,6 +119,7 @@
         android:backgroundTint="@color/blue_app"
         android:contentDescription="@string/content_description_registration_registerButton"
         android:text="@string/registration_registerButton"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/text_registrationRedirection2"
         app:layout_constraintHorizontal_bias="0.524"
