@@ -19,5 +19,6 @@
     <string name="content_description_registration_redirection2">Link to redirect on the connection page</string>
     <string name="registration_registerButton">Register</string>
     <string name="content_description_registration_registerButton">Button to validate the register</string>
-    <string name="home_page_catch_phrase">Venue des hautes terres d`Ecosse, nos meubles sont immortels !</string>
+    <string name="home_page_catch_phrase">From the highlands of Scotland, our furniture is immortal!</string>
+    <string name="home_page_highlander">Highlanders of the moment</string>
 </resources>
