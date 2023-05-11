@@ -10,16 +10,9 @@ public class Produit {
     Categorie categorie;
     int quantite;
 
-    public Produit(int id, String nom, float prix, int stock, String description, Categorie categorie) {
-        this.id = id;
-        this.nom = nom;
-        this.prix = prix;
-        this.stock = stock;
-        this.description = description;
-        this.categorie = categorie;
-    }
+    String photo;
 
-    public Produit(int id, String nom, float prix, int stock, String description, Categorie categorie, int quantite) {
+    public Produit(int id, String nom, float prix, int stock, String description, Categorie categorie, int quantite, String photo) {
         this.id = id;
         this.nom = nom;
         this.prix = prix;
@@ -27,6 +20,7 @@ public class Produit {
         this.description = description;
         this.categorie = categorie;
         this.quantite = quantite;
+        this.photo = photo;
     }
 
     public int getId() {
@@ -83,5 +77,13 @@ public class Produit {
 
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

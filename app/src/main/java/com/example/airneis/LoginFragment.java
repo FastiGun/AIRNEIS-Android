@@ -10,32 +10,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import org.w3c.dom.Text;
+public class LoginFragment extends Fragment {
 
-public class InscriptionFragment extends Fragment {
+    TextView text_loginRedirection2;
 
-    TextView text_registrationRedirection2;
     RedirectionInterface redirectionInterface;
 
-    public InscriptionFragment(RedirectionInterface listener){
+    public LoginFragment(RedirectionInterface listener){
         this.redirectionInterface = listener;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_inscription, null);
+        return inflater.inflate(R.layout.fragment_login, null);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        text_registrationRedirection2 = view.findViewById(R.id.text_registrationRedirection2);
-
-        text_registrationRedirection2.setOnClickListener(new View.OnClickListener() {
+        text_loginRedirection2 = view.findViewById(R.id.text_loginRedirection2);
+        text_loginRedirection2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionInterface.redirectToLogin();
+                redirectionInterface.redirectToInscription();
             }
         });
     }
