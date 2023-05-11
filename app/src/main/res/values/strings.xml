@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">AIRNEIS</string>
+    <string name="nav_drawer_opened">Side menu Opened</string>
+    <string name="nav_drawer_closed">Side menu Closed</string>
+    <string name="nav_drawer_action_signin">Sign in</string>
+    <string name="nav_drawer_action_signup">Sign up</string>
+    <string name="nav_drawer_action_disconnect">Disconnect</string>
     <string name="title_registration">Registration</string>
     <string name="content_description_title_registration">Registration</string>
     <string name="registration_name_title">Full Name *</string>

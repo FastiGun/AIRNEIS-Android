@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_connect"
+        android:icon="@drawable/baseline_how_to_reg_24"
+        android:title="@string/nav_drawer_action_signin" />
+    <item
+        android:id="@+id/action_signup"
+        android:icon="@drawable/baseline_supervisor_account_24"
+        android:title="@string/nav_drawer_action_signup" />
+    <item
+        android:id="@+id/action_disconnect"
+        android:icon="@drawable/baseline_do_not_disturb_off_24"
+        android:title="@string/nav_drawer_action_disconnect" />
+</menu>
