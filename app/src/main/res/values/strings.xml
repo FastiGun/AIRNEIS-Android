@@ -5,4 +5,5 @@
     <string name="nav_drawer_action_signin">Sign in</string>
     <string name="nav_drawer_action_signup">Sign up</string>
     <string name="nav_drawer_action_disconnect">Disconnect</string>
+    <string name="home_page_catch_phrase">Venue des hautes terres d`Ecosse, nos meubles sont immortels !</string>
 </resources>
