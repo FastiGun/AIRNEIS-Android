@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeViews();
+        homePageFragment = new HomePageFragment();
+        loadFragment(homePageFragment);
     }
 
     private void initializeViews(){
@@ -64,19 +66,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean loadFragment(Fragment fragment){
         if (fragment != null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
-            return true;
-        }
-        return false;
-        homePageFragment = new HomePageFragment();
-        loadFragment(homePageFragment);
-    }
-
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentContainer, fragment)
-                    .commit();
             return true;
         }
         return false;
