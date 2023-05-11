@@ -8,12 +8,12 @@ public class Client {
     String prenom;
     String mail;
     String mdp;
-    List<Adresse> adresses;
-    List<Paiement> paiements;
+    Adresse[] adresses;
+    Paiement[] paiements;
     Panier panier;
     String telephone;
 
-    public Client(int id, String nom, String prenom, String mail, String mdp, List<Adresse> adresses, List<Paiement> paiements, Panier panier, String telephone) {
+    public Client(int id, String nom, String prenom, String mail, String mdp, Adresse[] adresses, Paiement[] paiements, Panier panier, String telephone) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -65,28 +65,20 @@ public class Client {
         this.mdp = mdp;
     }
 
-    public List<Adresse> getAdresses() {
+    public Adresse[] getAdresses() {
         return adresses;
     }
 
-    public void setAdresses(List<Adresse> adresses) {
+    public void setAdresses(Adresse[] adresses) {
         this.adresses = adresses;
     }
 
-    public List<Paiement> getPaiements() {
+    public Paiement[] getPaiements() {
         return paiements;
     }
 
-    public void setPaiements(List<Paiement> paiements) {
+    public void setPaiements(Paiement[] paiements) {
         this.paiements = paiements;
-    }
-
-    public String getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
     }
 
     public Panier getPanier() {
@@ -95,5 +87,13 @@ public class Client {
 
     public void setPanier(Panier panier) {
         this.panier = panier;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 }

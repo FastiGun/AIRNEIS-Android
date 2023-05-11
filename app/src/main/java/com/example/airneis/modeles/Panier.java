@@ -5,11 +5,11 @@ import java.util.List;
 public class Panier {
 
     int id;
-    List<Produit> produits;
+    Produit[] produits;
     float prixHT;
     float prixTTC;
 
-    public Panier(int id, List<Produit> produits, float prixHT, float prixTTC) {
+    public Panier(int id, Produit[] produits, float prixHT, float prixTTC) {
         this.id = id;
         this.produits = produits;
         this.prixHT = prixHT;
@@ -24,11 +24,11 @@ public class Panier {
         this.id = id;
     }
 
-    public List<Produit> getProduits() {
+    public Produit[] getProduits() {
         return produits;
     }
 
-    public void setProduits(List<Produit> produits) {
+    public void setProduits(Produit[] produits) {
         this.produits = produits;
     }
 
