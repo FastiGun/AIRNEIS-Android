@@ -67,6 +67,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if(item.getItemId() == R.id.action_disconnect){
             this.drawerLayout.closeDrawer(GravityCompat.START);
             return true;
+        } else if(item.getItemId() == R.id.action_cgu){
+        this.drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+        } else if(item.getItemId() == R.id.action_legalNotices){
+        this.drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+        } else if(item.getItemId() == R.id.action_contact){
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        } else if(item.getItemId() == R.id.action_socialNetwork){
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         }
         return false;
     }

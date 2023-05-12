@@ -7,6 +7,10 @@
     <string name="nav_drawer_action_signin">Sign in</string>
     <string name="nav_drawer_action_signup">Sign up</string>
     <string name="nav_drawer_action_disconnect">Disconnect</string>
+    <string name="nav_drawer_action_cgu">T&amp;Cs</string>
+    <string name="nav_drawer_action_mentionsLegales">Legal notices</string>
+    <string name="nav_drawer_action_contact">Contact</string>
+    <string name="nav_drawer_action_socialNetworks">Social networks</string>
 
     <!-- Inscription Page -->
     <string name="title_registration">Registration</string>
