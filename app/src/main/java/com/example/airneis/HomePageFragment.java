@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,10 @@ public class HomePageFragment extends Fragment {
     ViewPager carousselViewPager;
     Handler handler;
     Runnable runnable;
+
+    RedirectionInterface redirectionInterface;
+
+    ImageView categoryTop;
     int currentImage = 0;
 
     String[] imageUrls = new String[]{
@@ -45,6 +50,13 @@ public class HomePageFragment extends Fragment {
             }
         };
         handler.postDelayed(runnable, 3000);
+        categoryTop = view.findViewById(R.id.topCategoryImageView);
+        categoryTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //redirectionInterface.redirectToCategory(categoryId);
+            }
+        });
     }
 
     private void changeImage() {
