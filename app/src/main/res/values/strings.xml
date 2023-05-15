@@ -39,4 +39,16 @@
     <string name="login_redirection2">Register</string>
     <string name="content_description_login_redirection2">Link to redirect on the connection page</string>
     <string name="login_loginButton">Log in</string>
+
+    <!-- Product Page -->
+    <string name="productPage_productName">Product name</string>
+    <string name="productPage_productPrice">399£</string>
+    <string name="productPage_productStock">In stock</string>
+    <string name="productPage_productDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna, vel pharetra purus ante vel turpis. Aenean in justo dictum, hendrerit eros eget, dictum metus. Nunc ac velit lacinia, feugiat odio at, feugiat tortor. Donec et massa non felis iaculis elementum quis a sem. Maecenas et viverra quam, lacinia lobortis ligula. Proin in pulvinar neque, sit amet sodales odio. Nulla nibh mi, mollis quis ex non, ultricies cursus nunc. Nulla facilisi. Maecenas sit amet commodo elit. Suspendisse eu tempus tortor. Duis vestibulum auctor risus vitae laoreet. Integer hendrerit nulla turpis. Nunc laoreet aliquet sodales.</string>
+    <string name="productPage_addButton">Add to cart</string>
+    <string name="contentDescription_productPage_addButton">Button to add to cart</string>
+    <string name="productPage_productSimilar">Similar product</string>
+    <string name="contentDescription_productPage_photoView1">Picture of first similar product</string>
+    <string name="contentDescription_productPage_photoView2">Picture of second similar product</string>
+    <string name="contentDescription_productPage_photoView3">Picture of third similar product</string>
 </resources>
