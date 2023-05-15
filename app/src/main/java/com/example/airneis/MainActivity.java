@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment loginFragment;
     Fragment homePageFragment;
 
+    Fragment categoryFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,5 +101,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void redirectToLogin() {
         loginFragment = new LoginFragment( (RedirectionInterface) this);
         loadFragment(loginFragment);
+    }
+
+    @Override
+    public void redirectToCategory(int id) {
+        //categoryFragment = new CategoryFragment(dataSource, listener);
+        loadFragment(categoryFragment);
     }
 }
