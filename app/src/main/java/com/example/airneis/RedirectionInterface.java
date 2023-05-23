@@ -6,4 +6,5 @@ public interface RedirectionInterface {
     void redirectToCategory();
     void redirectToCategory2();
     void redirectToCategory3();
+    void redirectToCategoryList();
 }

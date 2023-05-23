@@ -7,9 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Produit;
-import com.squareup.picasso.Picasso;
 
 public class CategoryListAdapteur extends RecyclerView.Adapter<CategoryListCellHolder> {
 

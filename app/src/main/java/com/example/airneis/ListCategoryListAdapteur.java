@@ -15,11 +15,11 @@ public class ListCategoryListAdapteur extends RecyclerView.Adapter<ListCategoryL
 
     Categorie[] dataSource;
 
-    CategoryListListener categoryListListener;
+    RedirectionInterface redirectionListListener;
 
-    public ListCategoryListAdapteur(Categorie[] dataSource, CategoryListListener listener){
+    public ListCategoryListAdapteur(Categorie[] dataSource, RedirectionInterface listener){
         this.dataSource = dataSource;
-        this.categoryListListener = listener;
+        this.redirectionListListener = listener;
     }
 
     @NonNull

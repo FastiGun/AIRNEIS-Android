@@ -13,7 +13,7 @@ public class ListCategoryListCellHolder extends RecyclerView.ViewHolder {
     public ListCategoryListCellHolder(@NonNull View itemView) {
         super(itemView);
 
-        textView_categoryName = itemView.findViewById(R.id.productNameTextView);
+        textView_categoryName = itemView.findViewById(R.id.textView_categoryName);
 
     }
 }

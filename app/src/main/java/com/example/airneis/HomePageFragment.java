@@ -57,7 +57,7 @@ public class HomePageFragment extends Fragment {
             }
         };
         handler.postDelayed(runnable, 3000);
-        
+
         categoryTop = view.findViewById(R.id.topCategoryImageView);
         categoryTop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +79,14 @@ public class HomePageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 redirectionListListener.redirectToCategory3();
+            }
+        });
+
+        categoryButton = view.findViewById(R.id.categoryButton);
+        categoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectionListListener.redirectToCategoryList();
             }
         });
     }

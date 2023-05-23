@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment loginFragment;
     Fragment homePageFragment;
     Fragment categoryFragment;
+    Fragment listCategoryFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,5 +131,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         produitList[1] = new Produit(2, "Table Benj", 2, 2, "super", cat , 4, "nfjgbfjf");
         categoryFragment = new CategoryFragment(produitList, (RedirectionInterface) this);
         loadFragment(categoryFragment);
+    }
+
+    public void redirectToCategoryList(){
+        Categorie[] cat = new Categorie[3];
+        cat[0] = new Categorie(1,"Chaises");
+        cat[1] = new Categorie(2,"Tabourets");
+        cat[2] = new Categorie(3,"Tables");
+        listCategoryFragment = new ListCategoryFragment(cat, (RedirectionInterface) this);
+        loadFragment(listCategoryFragment);
     }
 }
