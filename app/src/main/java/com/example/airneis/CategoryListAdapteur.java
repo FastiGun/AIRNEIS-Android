@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Produit;
 import com.squareup.picasso.Picasso;
 
@@ -14,11 +15,11 @@ public class CategoryListAdapteur extends RecyclerView.Adapter<CategoryListCellH
 
     Produit[] dataSource;
 
-    CategoryListListener categoryListListener;
+    RedirectionInterface redirectionListListener;
 
-    public CategoryListAdapteur(Produit[] dataSource, CategoryListListener listener){
+    public CategoryListAdapteur(Produit[] dataSource, RedirectionInterface listener){
         this.dataSource = dataSource;
-        this.categoryListListener = listener;
+        this.redirectionListListener = listener;
     }
 
     @NonNull
@@ -30,7 +31,7 @@ public class CategoryListAdapteur extends RecyclerView.Adapter<CategoryListCellH
 
     @Override
     public void onBindViewHolder(@NonNull CategoryListCellHolder holder, int position) {
-        Picasso.get().load(dataSource[position].getPhoto()).into(holder.productPhotoImageView);
+        //Picasso.get().load(dataSource[position].getPhoto()).into(holder.productPhotoImageView);
         holder.productNameTextView.setText(dataSource[position].getNom());
         holder.priceTagTextView.setText(String.valueOf(dataSource[position].getPrix()));
     }

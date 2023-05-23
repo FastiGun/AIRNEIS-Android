@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -19,16 +20,22 @@ public class HomePageFragment extends Fragment {
     Handler handler;
     Runnable runnable;
 
-    RedirectionInterface redirectionInterface;
-
     ImageView categoryTop;
+    ImageView categoryCenter;
+    ImageView categoryBottom;
     int currentImage = 0;
+    Button categoryButton;
+    RedirectionInterface redirectionListListener;
 
     String[] imageUrls = new String[]{
         "https://www.for-interieur.fr/wp-content/uploads/2017/12/enfilade-scandinave-2.jpg",
     "https://www.for-interieur.fr/wp-content/uploads/2017/12/enfilade-scandinave-2.jpg",
     "https://www.for-interieur.fr/wp-content/uploads/2017/12/enfilade-scandinave-2.jpg"
     };
+
+    public HomePageFragment(RedirectionInterface listener) {
+        this.redirectionListListener = listener;
+    }
 
     @Nullable
     @Override
@@ -50,11 +57,28 @@ public class HomePageFragment extends Fragment {
             }
         };
         handler.postDelayed(runnable, 3000);
+        
         categoryTop = view.findViewById(R.id.topCategoryImageView);
         categoryTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //redirectionInterface.redirectToCategory(categoryId);
+                redirectionListListener.redirectToCategory();
+            }
+        });
+
+        categoryCenter = view.findViewById(R.id.centerCategoryImageView);
+        categoryCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectionListListener.redirectToCategory2();
+            }
+        });
+
+        categoryBottom = view.findViewById(R.id.bottomCategoryImageView);
+        categoryBottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectionListListener.redirectToCategory3();
             }
         });
     }
@@ -73,4 +97,8 @@ public class HomePageFragment extends Fragment {
         super.onDestroy();
         handler.removeCallbacks(runnable);
     }
+
+
+
+
 }

@@ -32,6 +32,7 @@
     <!-- Home Page -->
     <string name="home_page_catch_phrase">From the highlands of Scotland, our furniture is immortal!</string>
     <string name="home_page_highlander">Highlanders of the moment</string>
+    <string name="home_page_categoryButton">All category</string>
 
     <!-- Login Page -->
     <string name="title_login">Login</string>
@@ -51,4 +52,7 @@
     <string name="contentDescription_productPage_photoView1">Picture of first similar product</string>
     <string name="contentDescription_productPage_photoView2">Picture of second similar product</string>
     <string name="contentDescription_productPage_photoView3">Picture of third similar product</string>
+
+    <!-- Category_List Page -->
+    <string name="listCategory_title">Categories</string>
 </resources>

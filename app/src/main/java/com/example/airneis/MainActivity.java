@@ -8,10 +8,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.airneis.modeles.Categorie;
+import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface{
@@ -23,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment inscriptionFragment;
     Fragment loginFragment;
     Fragment homePageFragment;
-
     Fragment categoryFragment;
 
     @Override
@@ -31,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeViews();
-        homePageFragment = new HomePageFragment();
+        homePageFragment = new HomePageFragment((RedirectionInterface) this);
         loadFragment(homePageFragment);
     }
 
@@ -52,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         return super.onOptionsItemSelected(item);
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
         Fragment fragment = null;
@@ -103,9 +106,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         loadFragment(loginFragment);
     }
 
-    @Override
-    public void redirectToCategory(int id) {
-        //categoryFragment = new CategoryFragment(dataSource, listener);
+    public void redirectToCategory() {
+        Categorie cat = new Categorie(1, "Chaises");
+        Produit[] produitList = new Produit[2];
+        produitList[0] = new Produit(1, "Chaise Antoine", 12, 4, "Je veux", cat, 4, "nfjgbfjf");
+        produitList[1] = new Produit(2, "Chaise Benj", 2, 2, "Sent mauvais et gros", cat , 4, "nfjgbfjf");
+        categoryFragment = new CategoryFragment(produitList, (RedirectionInterface) this);
+        loadFragment(categoryFragment);
+    }
+    public void redirectToCategory2() {
+        Categorie cat = new Categorie(2, "Tabouret");
+        Produit[] produitList = new Produit[2];
+        produitList[0] = new Produit(1, "Tabouret Antoine", 12, 4, "Je veux encore", cat, 4, "nfjgbfjf");
+        produitList[1] = new Produit(2, "Tabouret Benj", 2, 2, "Sent mauvais et gros, toujours pas", cat , 4, "nfjgbfjf");
+        categoryFragment = new CategoryFragment(produitList, (RedirectionInterface) this);
+        loadFragment(categoryFragment);
+    }
+
+    public void redirectToCategory3() {
+        Categorie cat = new Categorie(3, "Table");
+        Produit[] produitList = new Produit[2];
+        produitList[0] = new Produit(1, "Table Antoine", 12, 4, "ok", cat, 4, "nfjgbfjf");
+        produitList[1] = new Produit(2, "Table Benj", 2, 2, "super", cat , 4, "nfjgbfjf");
+        categoryFragment = new CategoryFragment(produitList, (RedirectionInterface) this);
         loadFragment(categoryFragment);
     }
 }
