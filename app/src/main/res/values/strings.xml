@@ -67,4 +67,20 @@
     <string name="basketCell_productDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna</string>
     <string name="basketCell_productPrice">123€</string>
     <string name="basketCell_productQuantity">1</string>
+
+    <!-- Delivery Page -->
+    <string name="deliveryPage_title">Delivery</string>
+    <string name="deliveryPage_addressName"> Address Name</string>
+    <string name="deliveryPage_lastName"> Last name*</string>
+    <string name="deliveryPage_name"> Name*</string>
+    <string name="deliveryPage_address1"> Address 1*</string>
+    <string name="deliveryPage_address1_example"> 13 rue de la lune</string>
+    <string name="deliveryPage_address2"> Address 2</string>
+    <string name="deliveryPage_address2_example">Optional Address</string>
+    <string name="deliveryPage_city">City*</string>
+    <string name="deliveryPage_city_example">Lille</string>
+    <string name="deliveryPage_zipCode">Zip code*</string>
+    <string name="deliveryPage_zipCode_example">59000</string>
+    <string name="deliveryPage_button">Go to payment</string>
+
 </resources>

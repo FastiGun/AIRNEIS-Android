@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="393dp"
+        android:layout_height="570dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="807dp">
+
+                <TextView
+                    android:id="@+id/deliveryTitle_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/deliveryPage_title"
+                    android:textSize="34sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/addressName_editTextText"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/deliveryPage_addressName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/deliveryTitle_textView" />
+
+                <TextView
+                    android:id="@+id/lastNameDeliveryPage_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/deliveryPage_lastName"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/addressName_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/addressName_editTextText" />
+
+                <EditText
+                    android:id="@+id/lastNameDeliveryPage_editTextText"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="John"
+                    app:layout_constraintStart_toStartOf="@+id/lastNameDeliveryPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/lastNameDeliveryPage_textView" />
+
+                <TextView
+                    android:id="@+id/nameDeliveryPage_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/deliveryPage_name"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/lastNameDeliveryPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/lastNameDeliveryPage_editTextText" />
+
+                <EditText
+                    android:id="@+id/nameDeliveryPage_editTextText"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="DOE"
+                    app:layout_constraintStart_toStartOf="@+id/nameDeliveryPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/nameDeliveryPage_textView" />
+
+                <TextView
+                    android:id="@+id/address1DeliveryPage_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/deliveryPage_address1"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/nameDeliveryPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/nameDeliveryPage_editTextText" />
+
+                <EditText
+                    android:id="@+id/address1DeliveryPage_editTextText"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/deliveryPage_address1_example"
+                    app:layout_constraintStart_toStartOf="@+id/address1DeliveryPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/address1DeliveryPage_textView" />
+
+                <TextView
+                    android:id="@+id/address2DeliveryPage_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/deliveryPage_address2"
+                    app:layout_constraintStart_toStartOf="@+id/address1DeliveryPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/address1DeliveryPage_editTextText" />
+
+                <EditText
+                    android:id="@+id/address2DeliveryPage_editTextText"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/deliveryPage_address2_example"
+                    app:layout_constraintStart_toStartOf="@+id/address2DeliveryPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/address2DeliveryPage_textView" />
+
+                <TextView
+                    android:id="@+id/cityDeliveryPage_textView"
+                    android:layout_width="33dp"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/deliveryPage_city"
+                    app:layout_constraintStart_toStartOf="@+id/address2DeliveryPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/address2DeliveryPage_editTextText" />
+
+                <EditText
+                    android:id="@+id/cityDeliveryPage_editTextText"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/deliveryPage_city_example"
+                    app:layout_constraintStart_toStartOf="@+id/cityDeliveryPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/cityDeliveryPage_textView" />
+
+                <TextView
+                    android:id="@+id/zipCodeDeliveryPage_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/deliveryPage_zipCode"
+                    app:layout_constraintStart_toStartOf="@+id/cityDeliveryPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/cityDeliveryPage_editTextText" />
+
+                <EditText
+                    android:id="@+id/zipCodeDeliveryPage_editTextText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/deliveryPage_zipCode_example"
+                    app:layout_constraintStart_toStartOf="@+id/zipCodeDeliveryPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/zipCodeDeliveryPage_textView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/deliveryPage_button"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
