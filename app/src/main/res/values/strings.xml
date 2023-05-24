@@ -55,4 +55,16 @@
 
     <!-- Category_List Page -->
     <string name="listCategory_title">Categories</string>
+
+    <!-- Basket Page -->
+    <string name="basketPage_title">Basket</string>
+    <string name="basketPage_total">TOTAL</string>
+    <string name="basketPage_tva">TVA</string>
+    <string name="basketPage_priceTotal">4 800€</string>
+    <string name="basketPage_priceTva">800€</string>
+    <string name="basketPage_button">Place the order</string>
+    <string name="basketCell_productName">Product name</string>
+    <string name="basketCell_productDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna</string>
+    <string name="basketCell_productPrice">123€</string>
+    <string name="basketCell_productQuantity">1</string>
 </resources>

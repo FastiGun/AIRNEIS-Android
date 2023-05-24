@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +22,7 @@ public class ListCategoryFragment extends Fragment {
     RecyclerView recyclerView;
     RecyclerView.Adapter listCategoryListAdapteur;
     RecyclerView.LayoutManager layoutManager;
+    ImageView imageView_category;
 
     public ListCategoryFragment(Categorie[] dataSource, RedirectionInterface listener){
         this.dataSource = dataSource;
@@ -40,6 +43,14 @@ public class ListCategoryFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         listCategoryListAdapteur = new ListCategoryListAdapteur(dataSource, redirectionListListener);
         recyclerView.setAdapter(listCategoryListAdapteur);
+
+        imageView_category = view.findViewById(R.id.imageView_category);
+        //imageView_category.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        redirectionListListener.redirectToCategory();
+        //    }
+        //});
     }
 
 }
