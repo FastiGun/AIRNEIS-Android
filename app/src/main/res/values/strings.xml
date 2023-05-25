@@ -83,4 +83,22 @@
     <string name="deliveryPage_zipCode_example">59000</string>
     <string name="deliveryPage_button">Go to payment</string>
 
+    <!-- Payment Page -->
+    <string name="paymentPage_title">Payment</string>
+    <string name="paymentPage_paymentMethod">Select a payment method</string>
+    <string name="paymentPage_cardNumber">Card number*</string>
+    <string name="paymentPage_cardNumber_example">4292 9540 8493 921</string>
+    <string name="paymentPage_nameCardPayment">Full Name*</string>
+    <string name="paymentPage_nameCardPayment_example">John Smith</string>
+    <string name="paymentPage_expirationDate">Expiration date*</string>
+    <string name="paymentPage_expirationDate_example">09/25</string>
+    <string name="paymentPage_CVV">CVV*</string>
+    <string name="paymentPage_CVV_example">123</string>
+    <string name="paymentPage_button">Pay</string>
+
+    <!-- Order Confirmed Page -->
+    <string name="orderConfirmedPage_title">Order Confirmed</string>
+    <string name="orderConfirmedPage_button">Continue shopping</string>
+    <string name="orderConfirmedPage_thankYou">Thank you for your purchase !</string>
+    <string name="orderConfirmedPage_detail">Your order has been registered under the number XXXXXXX. You can follow the status of your order from your customer area. </string>
 </resources>

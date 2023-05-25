@@ -8,8 +8,8 @@
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="393dp"
-        android:layout_height="570dp"
+        android:layout_width="414dp"
+        android:layout_height="520dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

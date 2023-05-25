@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titlePaymentPage_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/paymentPage_title"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/paymentMethod_textView"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:drawableRight="@android:drawable/arrow_down_float"
+        android:drawablePadding="16dp"
+        android:padding="12dp"
+        android:text="@string/paymentPage_paymentMethod"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titlePaymentPage_textView" />
+
+    <TextView
+        android:id="@+id/cardNumber_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/paymentPage_cardNumber"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/paymentMethod_textView"
+        app:layout_constraintTop_toBottomOf="@+id/paymentMethod_textView" />
+
+    <EditText
+        android:id="@+id/cardNumber_editTextText"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/paymentPage_cardNumber_example"
+        app:layout_constraintStart_toStartOf="@+id/cardNumber_textView"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumber_textView" />
+
+    <TextView
+        android:id="@+id/nameCardPayment_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/paymentPage_nameCardPayment"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/cardNumber_editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumber_editTextText" />
+
+    <EditText
+        android:id="@+id/nameCardPayement_editTextText"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/paymentPage_nameCardPayment_example"
+        app:layout_constraintStart_toStartOf="@+id/nameCardPayment_textView"
+        app:layout_constraintTop_toBottomOf="@+id/nameCardPayment_textView" />
+
+    <TextView
+        android:id="@+id/expirationDate_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/paymentPage_expirationDate"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/nameCardPayement_editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/nameCardPayement_editTextText" />
+
+    <EditText
+        android:id="@+id/expirationDate_editTextDate"
+        android:layout_width="125dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/paymentPage_expirationDate_example"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="@+id/expirationDate_textView"
+        app:layout_constraintTop_toBottomOf="@+id/expirationDate_textView" />
+
+    <TextView
+        android:id="@+id/CVV_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/paymentPage_CVV"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/CVV_editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/nameCardPayement_editTextText" />
+
+    <EditText
+        android:id="@+id/CVV_editTextText"
+        android:layout_width="125dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/paymentPage_CVV_example"
+        app:layout_constraintEnd_toEndOf="@+id/nameCardPayement_editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/CVV_textView" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/paymentPage_button"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
