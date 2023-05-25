@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titleContactPage_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/contactPage_title"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/emailContactPage_editTextText"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/contactPage_email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleContactPage_textView" />
+
+    <EditText
+        android:id="@+id/objectContactPage_editTextText"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/contactPage_object"
+        android:inputType="text"
+        android:text="@string/contactPage_object"
+        app:layout_constraintEnd_toEndOf="@+id/emailContactPage_editTextText"
+        app:layout_constraintStart_toStartOf="@+id/emailContactPage_editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/emailContactPage_editTextText" />
+
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="text"
+        android:scrollbars="vertical"
+        android:text="@string/contactPage_mail"
+        app:layout_constraintEnd_toEndOf="@+id/objectContactPage_editTextText"
+        app:layout_constraintStart_toStartOf="@+id/objectContactPage_editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/objectContactPage_editTextText" />
+
+    <Button
+        android:id="@+id/sendContactPage_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/blue_app"
+        android:text="@string/contactPage_send"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -101,4 +101,11 @@
     <string name="orderConfirmedPage_button">Continue shopping</string>
     <string name="orderConfirmedPage_thankYou">Thank you for your purchase !</string>
     <string name="orderConfirmedPage_detail">Your order has been registered under the number XXXXXXX. You can follow the status of your order from your customer area. </string>
+
+    <!-- Contact Page -->
+    <string name="contactPage_title">Contact</string>
+    <string name="contactPage_email">Enter your email address</string>
+    <string name="contactPage_object">Object of contact</string>
+    <string name="contactPage_mail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna, vel pharetra purus ante vel turpis. Aenean in justo dictum, hendrerit eros eget, dictum metus. Nunc ac velit lacinia, feugiat odio at, feugiat tortor. Donec et massa non felis iaculis elementum quis a sem. Maecenas et viverra quam, lacinia lobortis ligula. Proin in pulvinar neque, sit amet sodales odio. Nulla nibh mi, mollis quis ex non, ultricies cursus nunc.</string>
+    <string name="contactPage_send">Send mail</string>
 </resources>

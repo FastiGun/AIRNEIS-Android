@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
         } else if(item.getItemId() == R.id.action_contact){
             this.drawerLayout.closeDrawer(GravityCompat.START);
+            fragment = new ContactFragment();
+            loadFragment(fragment);
             return true;
         } else if(item.getItemId() == R.id.action_socialNetwork){
             this.drawerLayout.closeDrawer(GravityCompat.START);
