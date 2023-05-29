@@ -19,24 +19,40 @@ import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface{
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationDrawer;
-
-    Fragment inscriptionFragment;
-    Fragment loginFragment;
     Fragment homePageFragment;
-    Fragment categoryFragment;
-    Fragment listCategoryFragment;
+
+
+    private HashMap<String, Fragment> fragmentsList = new HashMap<>();
+    private Categorie[] cat;
+    private Produit[] produitList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeViews();
+        initializeFragments();
+    }
+
+    private void initializeFragments(){
+        createData();
+        Fragment login = new LoginFragment( (RedirectionInterface) this);
+        fragmentsList.put("login", login);
+        Fragment inscription = new InscriptionFragment((RedirectionInterface) this);
+        fragmentsList.put("inscription", inscription);
+        Fragment category = new CategoryFragment(produitList, (RedirectionInterface) this);
+        fragmentsList.put("category", category);
+        Fragment category_list = new ListCategoryFragment(cat, (RedirectionInterface) this);
+        fragmentsList.put("category_list", category_list);
         homePageFragment = new HomePageFragment((RedirectionInterface) this);
+        fragmentsList.put("home", homePageFragment);
         loadFragment(homePageFragment);
     }
 
@@ -91,6 +107,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    public void createData(){
+        cat = new Categorie[3];
+        cat[0] = new Categorie(1,"Chaises");
+        cat[1] = new Categorie(2,"Tabourets");
+        cat[2] = new Categorie(3,"Tables");
+        produitList = new Produit[6];
+        produitList[0] = new Produit(1, "Chaise Ant", 12, 4, "ok", cat[0], 4, "ex");
+        produitList[1] = new Produit(2, "Chaise Benj", 2, 2, "ok", cat[0] , 4, "ex");
+        produitList[2] = new Produit(1, "Tabouret Ant", 12, 4, "ok", cat[1], 4, "ex");
+        produitList[3] = new Produit(2, "Tabouret Benj", 2, 2, "ok", cat[1] , 4, "ex");
+        produitList[4] = new Produit(1, "Table Ant", 12, 4, "ok", cat[2], 4, "ex");
+        produitList[5] = new Produit(2, "Table Benj", 2, 2, "super", cat[2] , 4, "ex");
+    }
+
     private boolean loadFragment(Fragment fragment){
         if (fragment != null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
@@ -99,48 +129,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
-    public void redirectToInscription() {
-        inscriptionFragment = new InscriptionFragment((RedirectionInterface) this);
-        loadFragment(inscriptionFragment);
-    }
+    public void redirectToFragment(String fragmentName) throws RuntimeException{
+        if (fragmentsList.containsKey(fragmentName)){
+            loadFragment(fragmentsList.get(fragmentName));
+            return;
+        }
 
-    public void redirectToLogin() {
-        loginFragment = new LoginFragment( (RedirectionInterface) this);
-        loadFragment(loginFragment);
-    }
+        if(fragmentsList.containsKey("home")) {
+            loadFragment(fragmentsList.get("home"));
+            return;
+        }
 
-    public void redirectToCategory() {
-        Categorie cat = new Categorie(1, "Chaises");
-        Produit[] produitList = new Produit[2];
-        produitList[0] = new Produit(1, "Chaise Antoine", 12, 4, "Je veux", cat, 4, "nfjgbfjf");
-        produitList[1] = new Produit(2, "Chaise Benj", 2, 2, "Sent mauvais et gros", cat , 4, "nfjgbfjf");
-        categoryFragment = new CategoryFragment(produitList, (RedirectionInterface) this);
-        loadFragment(categoryFragment);
-    }
-    public void redirectToCategory2() {
-        Categorie cat = new Categorie(2, "Tabouret");
-        Produit[] produitList = new Produit[2];
-        produitList[0] = new Produit(1, "Tabouret Antoine", 12, 4, "Je veux encore", cat, 4, "nfjgbfjf");
-        produitList[1] = new Produit(2, "Tabouret Benj", 2, 2, "Sent mauvais et gros, toujours pas", cat , 4, "nfjgbfjf");
-        categoryFragment = new CategoryFragment(produitList, (RedirectionInterface) this);
-        loadFragment(categoryFragment);
-    }
-
-    public void redirectToCategory3() {
-        Categorie cat = new Categorie(3, "Table");
-        Produit[] produitList = new Produit[2];
-        produitList[0] = new Produit(1, "Table Antoine", 12, 4, "ok", cat, 4, "nfjgbfjf");
-        produitList[1] = new Produit(2, "Table Benj", 2, 2, "super", cat , 4, "nfjgbfjf");
-        categoryFragment = new CategoryFragment(produitList, (RedirectionInterface) this);
-        loadFragment(categoryFragment);
-    }
-
-    public void redirectToCategoryList(){
-        Categorie[] cat = new Categorie[3];
-        cat[0] = new Categorie(1,"Chaises");
-        cat[1] = new Categorie(2,"Tabourets");
-        cat[2] = new Categorie(3,"Tables");
-        listCategoryFragment = new ListCategoryFragment(cat, (RedirectionInterface) this);
-        loadFragment(listCategoryFragment);
+        throw new RuntimeException("No fragment home or " + fragmentName + " in the list.");
     }
 }

@@ -3,6 +3,7 @@ package com.example.airneis;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ public class ListCategoryListAdapteur extends RecyclerView.Adapter<ListCategoryL
     Categorie[] dataSource;
 
     RedirectionInterface redirectionListListener;
+    TextView textView_categoryName;
 
     public ListCategoryListAdapteur(Categorie[] dataSource, RedirectionInterface listener){
         this.dataSource = dataSource;
@@ -29,6 +31,8 @@ public class ListCategoryListAdapteur extends RecyclerView.Adapter<ListCategoryL
         return new ListCategoryListCellHolder(v);
     }
 
+
+    @Override
     public void onBindViewHolder(@NonNull ListCategoryListCellHolder holder, int position) {
         holder.textView_categoryName.setText(dataSource[position].getTitle());
     }

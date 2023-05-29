@@ -62,7 +62,7 @@ public class HomePageFragment extends Fragment {
         categoryTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionListListener.redirectToCategory();
+                redirectionListListener.redirectToFragment("category");
             }
         });
 
@@ -70,7 +70,7 @@ public class HomePageFragment extends Fragment {
         categoryCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionListListener.redirectToCategory2();
+                redirectionListListener.redirectToFragment("category");
             }
         });
 
@@ -78,7 +78,7 @@ public class HomePageFragment extends Fragment {
         categoryBottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionListListener.redirectToCategory3();
+                redirectionListListener.redirectToFragment("category");
             }
         });
 
@@ -86,7 +86,7 @@ public class HomePageFragment extends Fragment {
         categoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionListListener.redirectToCategoryList();
+                redirectionListListener.redirectToFragment("category_list");
             }
         });
     }

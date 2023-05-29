@@ -35,7 +35,7 @@ public class InscriptionFragment extends Fragment {
         text_registrationRedirection2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionInterface.redirectToLogin();
+                redirectionInterface.redirectToFragment("login");
             }
         });
     }

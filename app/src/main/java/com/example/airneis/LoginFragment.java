@@ -33,7 +33,7 @@ public class LoginFragment extends Fragment {
         text_loginRedirection2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionInterface.redirectToInscription();
+                redirectionInterface.redirectToFragment("inscription");
             }
         });
     }
