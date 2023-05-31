@@ -1,15 +1,26 @@
 package com.example.airneis.modeles;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Favoris {
 
+    @SerializedName("categorie1")
     Categorie categorie1;
+    @SerializedName("categorie2")
     Categorie categorie2;
+    @SerializedName("categorie3")
     Categorie categorie3;
+    @SerializedName("produit1")
     Produit produit1;
+    @SerializedName("produit2")
     Produit produit2;
+    @SerializedName("produit3")
     Produit produit3;
+    @SerializedName("caroussel1")
     String caroussel1;
+    @SerializedName("caroussel2")
     String caroussel2;
+    @SerializedName("caroussel3")
     String caroussel3;
 
     public Favoris(Categorie categorie1, Categorie categorie2, Categorie categorie3, Produit produit1, Produit produit2, Produit produit3, String caroussel1, String caroussel2, String caroussel3) {

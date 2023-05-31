@@ -1,20 +1,31 @@
 package com.example.airneis.modeles;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Client {
-    int id;
+    @SerializedName("_id")
+    int _id;
+    @SerializedName("nom")
     String nom;
+    @SerializedName("prenom")
     String prenom;
+    @SerializedName("mail")
     String mail;
+    @SerializedName("mdp")
     String mdp;
+    @SerializedName("adresses")
     Adresse[] adresses;
+    @SerializedName("paiements")
     Paiement[] paiements;
+    @SerializedName("panier")
     Panier panier;
+    @SerializedName("telephone")
     String telephone;
 
     public Client(int id, String nom, String prenom, String mail, String mdp, Adresse[] adresses, Paiement[] paiements, Panier panier, String telephone) {
-        this.id = id;
+        this._id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
@@ -26,11 +37,11 @@ public class Client {
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this._id = id;
     }
 
     public String getNom() {

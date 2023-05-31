@@ -1,28 +1,40 @@
 package com.example.airneis.modeles;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Categorie {
 
-    int id;
-    String title;
+    @SerializedName("_id")
+    String _id;
+    @SerializedName("nom")
+    String nom;
+    @SerializedName("image")
+    String image;
 
-    public Categorie(int id, String title) {
-        this.id = id;
-        this.title = title;
+    public Categorie(String id, String nom, String image) {
+        this._id = id;
+        this.nom = nom;
+        this.image = image;
     }
 
-    public int getId() {
-        return id;
+    public String getId() {
+        return _id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(String id) {
+        this._id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNom() {return nom;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getImage() {return image;
+    }
+
+    public void setImage(String image) { this.image =image;
     }
 }

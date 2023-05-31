@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,21 +11,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Produit;
 
-public class CategoryFragment extends Fragment {
+public class ListProductFragment extends Fragment {
 
     RecyclerView recyclerView;
     RecyclerView.Adapter categoryListAdapteur;
     RecyclerView.LayoutManager layoutManager;
 
-    RedirectionInterface redirectionListListener;
+    ListProductListListener listProductListListener;
     Produit[] dataSource;
 
-    public CategoryFragment(Produit[] dataSource, RedirectionInterface listener){
+    public ListProductFragment(Produit[] dataSource, ListProductListListener listener){
         this.dataSource = dataSource;
-        this.redirectionListListener = listener;
+        this.listProductListListener = listener;
     }
     @Nullable
     @Override
@@ -41,7 +39,7 @@ public class CategoryFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        categoryListAdapteur = new CategoryListAdapteur(dataSource, redirectionListListener);
+        categoryListAdapteur = new ListProductListAdapteur(dataSource, listProductListListener);
         recyclerView.setAdapter(categoryListAdapteur);
     }
 }

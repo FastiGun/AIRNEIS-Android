@@ -7,13 +7,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CategoryListCellHolder extends RecyclerView.ViewHolder {
+public class ListProductListCellHolder extends RecyclerView.ViewHolder {
 
     ImageView productPhotoImageView;
     TextView productNameTextView;
     TextView priceTagTextView;
 
-    public CategoryListCellHolder(@NonNull View itemView) {
+    public ListProductListCellHolder(@NonNull View itemView) {
         super(itemView);
         productPhotoImageView = itemView.findViewById(R.id.productPhotoImageView);
         productNameTextView = itemView.findViewById(R.id.productNameTextView);

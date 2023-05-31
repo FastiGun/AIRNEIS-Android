@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,19 +14,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.airneis.modeles.Categorie;
 
-public class ListCategoryFragment extends Fragment {
+public class ListCategoryFragment extends Fragment{
 
     Categorie[] dataSource;
-    RedirectionInterface redirectionListListener;
     RecyclerView recyclerView;
     RecyclerView.Adapter listCategoryListAdapteur;
     RecyclerView.LayoutManager layoutManager;
+    ListCategoryListListener listCategoryListListener;
 
-    public ListCategoryFragment(Categorie[] dataSource, RedirectionInterface listener){
+
+    public ListCategoryFragment(Categorie[] dataSource, ListCategoryListListener listener){
         this.dataSource = dataSource;
-        this.redirectionListListener = listener;
+        this.listCategoryListListener= listener;
     }
     @Nullable
     @Override
@@ -40,8 +43,7 @@ public class ListCategoryFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        listCategoryListAdapteur = new ListCategoryListAdapteur(dataSource, redirectionListListener);
+        listCategoryListAdapteur = new ListCategoryListAdapteur(dataSource, listCategoryListListener);
         recyclerView.setAdapter(listCategoryListAdapteur);
     }
-
 }

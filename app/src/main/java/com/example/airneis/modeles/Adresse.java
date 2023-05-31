@@ -1,17 +1,26 @@
 package com.example.airneis.modeles;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Adresse {
 
-    int id;
+    @SerializedName("_id")
+    int _id;
+    @SerializedName("nom")
     String nom;
+    @SerializedName("rue")
     String rue;
+    @SerializedName("ville")
     String ville;
+    @SerializedName("cp")
     String cp;
+    @SerializedName("num")
     int num;
+    @SerializedName("complement")
     String complement;
 
     public Adresse(int id, String nom, String rue, String ville, String cp, int num, String complement) {
-        this.id = id;
+        this._id = id;
         this.nom = nom;
         this.rue = rue;
         this.ville = ville;
@@ -21,11 +30,11 @@ public class Adresse {
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this._id = id;
     }
 
     public String getNom() {

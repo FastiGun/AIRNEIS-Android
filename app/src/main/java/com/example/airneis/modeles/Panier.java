@@ -1,27 +1,33 @@
 package com.example.airneis.modeles;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Panier {
 
-    int id;
+    @SerializedName("_id")
+    int _id;
+    @SerializedName("produits")
     Produit[] produits;
+    @SerializedName("prixHT")
     float prixHT;
+    @SerializedName("prixTTC")
     float prixTTC;
 
     public Panier(int id, Produit[] produits, float prixHT, float prixTTC) {
-        this.id = id;
+        this._id = id;
         this.produits = produits;
         this.prixHT = prixHT;
         this.prixTTC = prixTTC;
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this._id = id;
     }
 
     public Produit[] getProduits() {

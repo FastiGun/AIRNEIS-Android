@@ -1,25 +1,33 @@
 package com.example.airneis.modeles;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Produit {
 
+    @SerializedName("id")
     int id;
+    @SerializedName("nom")
     String nom;
+    @SerializedName("prix")
     float prix;
+    @SerializedName("stock")
     int stock;
+    @SerializedName("description")
     String description;
+    @SerializedName("categorie")
     Categorie categorie;
+    @SerializedName("quantite")
     int quantite;
 
     String photo;
 
-    public Produit(int id, String nom, float prix, int stock, String description, Categorie categorie, int quantite, String photo) {
+    public Produit(int _id, String nom, float prix, int stock, String description, Categorie categorie, String photo) {
         this.id = id;
         this.nom = nom;
         this.prix = prix;
         this.stock = stock;
         this.description = description;
         this.categorie = categorie;
-        this.quantite = quantite;
         this.photo = photo;
     }
 
@@ -27,8 +35,8 @@ public class Produit {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int _id) {
+        this.id = _id;
     }
 
     public String getNom() {
@@ -71,13 +79,6 @@ public class Produit {
         this.categorie = categorie;
     }
 
-    public int getQuantite() {
-        return quantite;
-    }
-
-    public void setQuantite(int quantite) {
-        this.quantite = quantite;
-    }
 
     public String getPhoto() {
         return photo;

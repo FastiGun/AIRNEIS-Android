@@ -9,26 +9,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.airneis.modeles.Produit;
 
-public class CategoryListAdapteur extends RecyclerView.Adapter<CategoryListCellHolder> {
+public class ListProductListAdapteur extends RecyclerView.Adapter<ListProductListCellHolder> {
 
     Produit[] dataSource;
 
-    RedirectionInterface redirectionListListener;
+    ListProductListListener listProductListListener;
 
-    public CategoryListAdapteur(Produit[] dataSource, RedirectionInterface listener){
+    public ListProductListAdapteur(Produit[] dataSource, ListProductListListener listener){
         this.dataSource = dataSource;
-        this.redirectionListListener = listener;
+        this.listProductListListener = listener;
     }
 
     @NonNull
     @Override
-    public CategoryListCellHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListProductListCellHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_list_cell, parent, false);
-        return new CategoryListCellHolder(v);
+        return new ListProductListCellHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryListCellHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ListProductListCellHolder holder, int position) {
         //Picasso.get().load(dataSource[position].getPhoto()).into(holder.productPhotoImageView);
         holder.productNameTextView.setText(dataSource[position].getNom());
         holder.priceTagTextView.setText(String.valueOf(dataSource[position].getPrix()));
