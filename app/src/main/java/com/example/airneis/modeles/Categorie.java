@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName;
 public class Categorie {
 
     @SerializedName("_id")
-    String _id;
+    private String _id;
     @SerializedName("nom")
-    String nom;
+    private String nom;
     @SerializedName("image")
-    String image;
+    private String image;
 
-    public Categorie(String id, String nom, String image) {
-        this._id = id;
+    public Categorie(String _id, String nom, String image) {
+        this._id = _id;
         this.nom = nom;
         this.image = image;
     }
@@ -22,7 +22,7 @@ public class Categorie {
     }
 
     public void setId(String id) {
-        this._id = id;
+        this._id = _id;
     }
 
     public String getNom() {return nom;

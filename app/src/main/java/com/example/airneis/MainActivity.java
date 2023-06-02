@@ -15,6 +15,7 @@ import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -129,31 +130,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onCategoryClick(String id) {
+    public void onCategoryClick(String categorie) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://airneis-junia.vercel.app/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
-        Call<Produit[]> callListProduct = webServicesInterface.getListProduct(id);
+        Call<Produit[]> callListProduct = webServicesInterface.getListProduct(categorie);
 
         callListProduct.enqueue(new Callback<Produit[]>() {
             @Override
             public void onResponse(Call<Produit[]> call, Response<Produit[]> response) {
-                listProductFragment = new ListProductFragment(response.body(),(ListProductListListener) MainActivity.this);
-                loadFragment(listProductFragment);
-
+                    listProductFragment = new ListProductFragment(response.body(),(ListProductListListener) MainActivity.this);
+                    loadFragment(listProductFragment);
             }
-
 
             @Override
             public void onFailure(Call<Produit[]> call, Throwable t) {
-                Log.e("404", "Error when retrieving products");
+                Log.e("404", "Error when retrieving product list");
                 Log.e("404", t.getMessage());
             }
         });
     }
+    @Override
     public void onCategoryClickButton() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://airneis-junia.vercel.app/api/")

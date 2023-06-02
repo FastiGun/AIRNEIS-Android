@@ -1,6 +1,8 @@
 package com.example.airneis;
 
+import java.io.IOException;
+
 public interface ListProductListListener {
 
-    void onCategoryClick(String id);
+    void onCategoryClick(String id) throws IOException;
 }

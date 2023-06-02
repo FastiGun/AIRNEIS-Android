@@ -4,25 +4,25 @@ import com.google.gson.annotations.SerializedName;
 
 public class Produit {
 
-    @SerializedName("id")
-    int id;
+    @SerializedName("_id")
+    private String _id;
     @SerializedName("nom")
-    String nom;
+    private String nom;
     @SerializedName("prix")
-    float prix;
+    private float prix;
     @SerializedName("stock")
-    int stock;
+    private int stock;
     @SerializedName("description")
-    String description;
-    @SerializedName("categorie")
+    private String description;
+    private @SerializedName("categorie")
     Categorie categorie;
     @SerializedName("quantite")
-    int quantite;
+    private int quantite;
 
     String photo;
 
-    public Produit(int _id, String nom, float prix, int stock, String description, Categorie categorie, String photo) {
-        this.id = id;
+    public Produit(String _id, String nom, float prix, int stock, String description, Categorie categorie, String photo) {
+        this._id = _id;
         this.nom = nom;
         this.prix = prix;
         this.stock = stock;
@@ -31,12 +31,12 @@ public class Produit {
         this.photo = photo;
     }
 
-    public int getId() {
-        return id;
+    public String getId() {
+        return _id;
     }
 
-    public void setId(int _id) {
-        this.id = _id;
+    public void setId(String _id) {
+        this._id = _id;
     }
 
     public String getNom() {
