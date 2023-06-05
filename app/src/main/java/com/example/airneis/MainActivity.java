@@ -15,7 +15,6 @@ import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -33,10 +32,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
 
+    ProductFragment productFragment;
+
 
     private HashMap<String, Fragment> fragmentsList = new HashMap<>();
-    private Categorie[] cat;
-    private Produit[] produitList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +172,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Categorie[]> call, Throwable t) {
                 Log.e("404", "Error when retrieving category list");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onProductClick(String id) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Produit> callProduct = webServicesInterface.getProduct(id);
+
+        callProduct.enqueue(new Callback<Produit>() {
+            @Override
+            public void onResponse(Call<Produit> call, Response<Produit> response) {
+                productFragment = new ProductFragment(response.body());
+                loadFragment(productFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Produit> call, Throwable t) {
+                Log.e("404", "Error when retrieving product");
                 Log.e("404", t.getMessage());
             }
         });

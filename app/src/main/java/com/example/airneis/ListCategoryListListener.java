@@ -4,5 +4,5 @@ import java.io.IOException;
 
 public interface ListCategoryListListener {
 
-    void onCategoryClick(String id);
+    void onCategoryClick(String categorie);
 }

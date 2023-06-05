@@ -41,8 +41,7 @@ public class ListCategoryListAdapteur extends RecyclerView.Adapter<ListCategoryL
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    listCategoryListListener.onCategoryClick(dataSource[position].getId());
-                //listCategoryListListener.onCategoryClick(dataSource[holder.getAdapterPosition()].getId());
+                    listCategoryListListener.onCategoryClick(dataSource[position].get_id());
 
             }
         });

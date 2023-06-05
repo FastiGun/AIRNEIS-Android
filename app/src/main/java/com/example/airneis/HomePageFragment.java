@@ -15,7 +15,6 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 public class HomePageFragment extends Fragment {
-
     ViewPager carousselViewPager;
     Handler handler;
     Runnable runnable;
@@ -23,13 +22,18 @@ public class HomePageFragment extends Fragment {
     ImageView categoryTop;
     ImageView categoryCenter;
     ImageView categoryBottom;
+
+    ImageView productTop;
+    ImageView productCenter;
+    ImageView productBottom;
+
     int currentImage = 0;
     Button categoryButton;
     RedirectionInterface redirectionListListener;
 
     String[] imageUrls = new String[]{
         "https://www.for-interieur.fr/wp-content/uploads/2017/12/enfilade-scandinave-2.jpg",
-    "https://www.for-interieur.fr/wp-content/uploads/2017/12/enfilade-scandinave-2.jpg",
+    "https://www.for-interieur.fr/wp-content/uploads/2017/12/enfilade-scandinave.jpg",
     "https://www.for-interieur.fr/wp-content/uploads/2017/12/enfilade-scandinave-2.jpg"
     };
 
@@ -90,7 +94,6 @@ public class HomePageFragment extends Fragment {
             }
         });
     }
-
     private void changeImage() {
         currentImage++;
         if (currentImage == imageUrls.length) {

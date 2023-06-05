@@ -1,5 +1,7 @@
 package com.example.airneis;
 
+import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.airneis.modeles.Produit;
+import com.squareup.picasso.Picasso;
 
 public class ListProductListAdapteur extends RecyclerView.Adapter<ListProductListCellHolder> {
 
@@ -28,10 +31,21 @@ public class ListProductListAdapteur extends RecyclerView.Adapter<ListProductLis
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListProductListCellHolder holder, int position) {
-        //Picasso.get().load(dataSource[position].getPhoto()).into(holder.productPhotoImageView);
+    public void onBindViewHolder(@NonNull ListProductListCellHolder holder, @SuppressLint("RecyclerView") int position) {
+        Uri url = Uri.parse(dataSource[position].getImage1());
+        holder.productPhotoImageView.setImageURI(url);
         holder.productNameTextView.setText(dataSource[position].getNom());
         holder.priceTagTextView.setText(String.valueOf(dataSource[position].getPrix()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listProductListListener.onProductClick(dataSource[position].getId());
+
+            }
+        });
+    }
+
+    private void runOnUiThread(Runnable runnable) {
     }
 
     @Override

@@ -11,12 +11,11 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface WebServicesInterface {
 
     @GET("categories/{categorie}/produits")
-    Call<Produit[]> getListProduct(@Path("categorie") String _id);
+    Call<Produit[]> getListProduct(@Path("categorie") String categorie);
 
     @GET("categories")
     Call<Categorie[]> getListCategory();
@@ -30,8 +29,8 @@ public interface WebServicesInterface {
     @GET("produits")
     Call<Produit[]>getProductList();
 
-    @GET("produits/:produitId")
-    Call<Produit>getProduct();
+    @GET("produits/{id}")
+    Call<Produit>getProduct(@Path("id") String _id);
 
     @GET("client")
     Call<Client[]>getClientList();
@@ -47,5 +46,5 @@ public interface WebServicesInterface {
 
     @GET("clients/:clientId/paniers")
     Call<Panier>getPanierClient();
-    
+
 }
