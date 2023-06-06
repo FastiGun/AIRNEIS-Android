@@ -13,7 +13,7 @@ public class Client {
     String prenom;
     @SerializedName("mail")
     String mail;
-    @SerializedName("mdp")
+    @SerializedName("motDePasse")
     String mdp;
     @SerializedName("adresses")
     Adresse[] adresses;
@@ -23,8 +23,11 @@ public class Client {
     Panier panier;
     @SerializedName("telephone")
     String telephone;
+    @SerializedName("token")
+    String token;
 
-    public Client(int id, String nom, String prenom, String mail, String mdp, Adresse[] adresses, Paiement[] paiements, Panier panier, String telephone) {
+    public Client(int id, String nom, String prenom, String mail, String mdp, Adresse[] adresses,
+                  Paiement[] paiements, Panier panier, String telephone, String token) {
         this._id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -34,6 +37,7 @@ public class Client {
         this.paiements = paiements;
         this.panier = panier;
         this.telephone = telephone;
+        this.token = token;
     }
 
     public int getId() {
@@ -106,5 +110,13 @@ public class Client {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

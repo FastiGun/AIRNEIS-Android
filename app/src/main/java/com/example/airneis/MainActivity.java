@@ -7,11 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.airneis.modeles.Categorie;
+import com.example.airneis.modeles.Client;
 import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
 
@@ -33,14 +36,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ListCategoryFragment listCategoryFragment;
 
     ProductFragment productFragment;
-
-
+    LoginFragment loginFragment;
+    AuthentificationClass authentification;
     private HashMap<String, Fragment> fragmentsList = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Context context = getApplicationContext();
+        authentification = new AuthentificationClass(context);
         initializeViews();
         initializeFragments();
     }
@@ -197,6 +202,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Produit> call, Throwable t) {
                 Log.e("404", "Error when retrieving product");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void connexion(String mail, String mdp) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Client> callConnexion = webServicesInterface.postConnexion(mail, mdp);
+
+        callConnexion.enqueue(new Callback<Client>() {
+            @Override
+            public void onResponse(Call<Client> call, Response<Client> response) {
+                if(response.body() == null) {
+                    redirectToFragment("login");
+                } else {
+                    authentification.saveAuthToken(response.body().getToken());
+                    redirectToFragment("home");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Client> call, Throwable t) {
+                Log.e("404", "Error when connexion");
                 Log.e("404", t.getMessage());
             }
         });

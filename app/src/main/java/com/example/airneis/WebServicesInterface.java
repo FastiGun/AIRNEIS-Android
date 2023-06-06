@@ -8,6 +8,8 @@ import com.example.airneis.modeles.Panier;
 import com.example.airneis.modeles.Produit;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -20,11 +22,12 @@ public interface WebServicesInterface {
     @GET("categories")
     Call<Categorie[]> getListCategory();
 
-    @GET("connexion")
-    Call<Client> getConnexion();
+    @POST("connexion")
+    @FormUrlEncoded
+    Call<Client> postConnexion(@Field("mail") String mail, @Field("motDePasse") String motDePasse);
 
     @POST("inscription")
-    Call<Client>getInscription();
+    Call<Client>postInscription();
 
     @GET("produits")
     Call<Produit[]>getProductList();
@@ -35,16 +38,16 @@ public interface WebServicesInterface {
     @GET("client")
     Call<Client[]>getClientList();
 
-    @GET("client/:clientId")
+    @GET("client/{clientId}")
     Call<Client>getClient();
 
-    @GET("client/:clientId/adresses")
+    @GET("client/{clientId}/adresses")
     Call<Adresse>getAddressClient();
 
-    @GET("client/:clientId/paiements")
+    @GET("client/{clientId}/paiements")
     Call<Paiement>getPaiementClient();
 
-    @GET("clients/:clientId/paniers")
+    @GET("clients/{clientId}/paniers")
     Call<Panier>getPanierClient();
 
 }
