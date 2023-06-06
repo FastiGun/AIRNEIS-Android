@@ -15,9 +15,12 @@
     <!-- Inscription Page -->
     <string name="title_registration">Registration</string>
     <string name="content_description_title_registration">Registration</string>
-    <string name="registration_name_title">Full Name *</string>
-    <string name="content_description_registration_name_title">Full Name </string>
-    <string name="registration_name">John DOE</string>
+    <string name="registration_lastName_title">Last Name *</string>
+    <string name="registration_name_title">Name *</string>
+    <string name="content_description_registration_lastName_title">Last Name</string>
+    <string name="content_description_registration_name_title">Name </string>
+    <string name="registration_lastName">John</string>
+    <string name="registration_name">DOE</string>
     <string name="registration_email_title">Email *</string>
     <string name="registration_email_name">john@smith.com</string>
     <string name="content_description_registration_email_title">Email</string>
@@ -28,6 +31,10 @@
     <string name="content_description_registration_redirection2">Link to redirect on the connection page</string>
     <string name="registration_registerButton">Register</string>
     <string name="content_description_registration_registerButton">Button to validate the register</string>
+    <string name="registration_errorLength">The password must contain at least 8 characters</string>
+    <string name="registration_errorSpecialCharacter">The password must contain at least one special character</string>
+    <string name="registration_errorSpecialUpperCase">The password must contain at least one capital letter</string>
+    <string name="registration_errorSpecialNumber">The password must contain at least one number</string>
 
     <!-- Home Page -->
     <string name="home_page_catch_phrase">From the highlands of Scotland, our furniture is immortal!</string>

@@ -230,7 +230,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onFailure(Call<Client> call, Throwable t) {
-                Log.e("404", "Error when connexion");
+                Log.e("404", "Error when login");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void registration(String lastName, String name, String mail, String motDePasse) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Client> callInscription = webServicesInterface.postInscription(lastName, name, mail, motDePasse);
+
+        callInscription.enqueue(new Callback<Client>() {
+            @Override
+            public void onResponse(Call<Client> call, Response<Client> response) {
+                if(response.body() == null) {
+                    redirectToFragment("inscription");
+                } else {
+                    redirectToFragment("login");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Client> call, Throwable t) {
+                Log.e("404", "Error when registration");
                 Log.e("404", t.getMessage());
             }
         });

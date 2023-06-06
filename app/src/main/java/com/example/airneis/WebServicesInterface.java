@@ -27,7 +27,8 @@ public interface WebServicesInterface {
     Call<Client> postConnexion(@Field("mail") String mail, @Field("motDePasse") String motDePasse);
 
     @POST("inscription")
-    Call<Client>postInscription();
+    @FormUrlEncoded
+    Call<Client>postInscription(@Field("prenom") String lastName, @Field("nom") String name, @Field("mail") String mail, @Field("motDePasse") String motDePasse);
 
     @GET("produits")
     Call<Produit[]>getProductList();

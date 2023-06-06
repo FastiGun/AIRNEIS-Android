@@ -18,46 +18,44 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_registrationName"
+        android:id="@+id/text_registrationLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:contentDescription="@string/content_description_registration_name_title"
-        android:text="@string/registration_name_title"
+        android:text="@string/registration_lastName_title"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_registration" />
 
     <EditText
-        android:id="@+id/editText_registrationName"
+        android:id="@+id/editText_registrationLastName"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="@string/registration_name"
+        android:hint="@string/registration_lastName"
         android:inputType="text"
         android:textAlignment="textStart"
-        app:layout_constraintStart_toStartOf="@+id/text_registrationName"
-        app:layout_constraintTop_toBottomOf="@+id/text_registrationName" />
+        app:layout_constraintStart_toStartOf="@+id/text_registrationLastName"
+        app:layout_constraintTop_toBottomOf="@+id/text_registrationLastName" />
 
     <TextView
         android:id="@+id/text_registrationEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="@string/content_description_registration_email_title"
         android:text="@string/registration_email_title"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/editText_registrationName"
+        app:layout_constraintStart_toStartOf="@+id/editText_registrationLastName"
         app:layout_constraintTop_toBottomOf="@+id/editText_registrationName" />
 
     <EditText
         android:id="@+id/editText_registrationEmail"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/registration_email_name"
         android:inputType="textEmailAddress"
@@ -68,7 +66,7 @@
         android:id="@+id/text_registrationPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="@string/content_description_registration_password_title"
         android:text="@string/registration_password_title"
         android:textSize="20sp"
@@ -79,7 +77,6 @@
         android:id="@+id/editText_registrationPassword"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/content_description_registration_password_title"
         android:inputType="textPassword"
@@ -90,7 +87,7 @@
         android:id="@+id/text_registrationRedirection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/registration_redirection"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/editText_registrationPassword"
@@ -101,7 +98,7 @@
         android:id="@+id/text_registrationRedirection2"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:contentDescription="@string/content_description_registration_redirection2"
         android:text="@string/registration_redirection2"
         android:textAlignment="center"
@@ -115,7 +112,7 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="0dp"
         android:layout_height="69dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/blue_app"
         android:contentDescription="@string/content_description_registration_registerButton"
         android:text="@string/registration_registerButton"
@@ -124,4 +121,24 @@
         app:layout_constraintEnd_toEndOf="@+id/text_registrationRedirection2"
         app:layout_constraintHorizontal_bias="0.524"
         app:layout_constraintStart_toStartOf="@+id/text_registrationRedirection" />
+
+    <EditText
+        android:id="@+id/editText_registrationName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/registration_name"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="@+id/editText_registrationLastName"
+        app:layout_constraintTop_toBottomOf="@+id/text_registrationName" />
+
+    <TextView
+        android:id="@+id/text_registrationName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/registration_name_title"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/editText_registrationLastName"
+        app:layout_constraintTop_toBottomOf="@+id/editText_registrationLastName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
