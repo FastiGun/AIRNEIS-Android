@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.airneis.modeles.Categorie;
@@ -38,14 +39,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ProductFragment productFragment;
     LoginFragment loginFragment;
     AuthentificationClass authentification;
+    Menu nav_menu;
     private HashMap<String, Fragment> fragmentsList = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         Context context = getApplicationContext();
         authentification = new AuthentificationClass(context);
+        setContentView(R.layout.activity_main);
         initializeViews();
         initializeFragments();
     }
@@ -59,17 +61,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentsList.put("home", homePageFragment);
         loadFragment(homePageFragment);
     }
-
     private void initializeViews(){
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationDrawer = findViewById(R.id.navigationDrawer);
+        nav_menu = navigationDrawer.getMenu();
+        nav_menu.findItem(R.id.action_disconnect).setVisible(false);
         navigationDrawer.setNavigationItemSelectedListener(this);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_drawer_opened, R.string.nav_drawer_closed);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)){
@@ -96,7 +98,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             authentification.clearAuthId();
             redirectToFragment("home");
             return true;
-        } else if(item.getItemId() == R.id.action_cgu){
+        } else if(item.getItemId() == R.id.action_account) {
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            fragment = new AccountFragment();
+            loadFragment(fragment);
+            return true;
+        }  else if(item.getItemId() == R.id.action_cgu){
         this.drawerLayout.closeDrawer(GravityCompat.START);
         return true;
         } else if(item.getItemId() == R.id.action_legalNotices){

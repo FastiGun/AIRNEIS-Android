@@ -115,4 +115,16 @@
     <string name="contactPage_object">Object of contact</string>
     <string name="contactPage_mail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna, vel pharetra purus ante vel turpis. Aenean in justo dictum, hendrerit eros eget, dictum metus. Nunc ac velit lacinia, feugiat odio at, feugiat tortor. Donec et massa non felis iaculis elementum quis a sem. Maecenas et viverra quam, lacinia lobortis ligula. Proin in pulvinar neque, sit amet sodales odio. Nulla nibh mi, mollis quis ex non, ultricies cursus nunc.</string>
     <string name="contactPage_send">Send mail</string>
+
+    <!-- account Page -->
+    <string name="accountPage">My account</string>
+    <string name="accountPage_title">My account</string>
+    <string name="accountPage_lastName">Last Name</string>
+    <string name="accountPage_name">Name</string>
+    <string name="accountPage_mail">Mail</string>
+    <string name="accountPage_password">Password</string>
+    <string name="accountPage_address">Address</string>
+    <string name="accountPage_city">City</string>
+    <string name="accountPage_zipCode">ZipCode</string>
+    <string name="accountPage_button">Save</string>
 </resources>

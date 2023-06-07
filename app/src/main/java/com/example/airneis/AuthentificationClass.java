@@ -15,7 +15,6 @@ public class AuthentificationClass {
         editor = sharedPreferences.edit();
     }
 
-
     public void saveAuthToken(String token) {
         editor.putString("AuthToken", token);
         editor.apply();

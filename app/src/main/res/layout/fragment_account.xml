@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/textView_password"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/accountPageScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="1000dp">
+
+                <TextView
+                    android:id="@+id/textView_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_title"
+                    android:textSize="34sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_lastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_lastName"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_account" />
+
+                <EditText
+                    android:id="@+id/editText_lastName"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/accountPage_lastName"
+                    app:layout_constraintStart_toStartOf="@+id/textView_lastName"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_lastName" />
+
+                <TextView
+                    android:id="@+id/textView_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_name"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_lastName"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_lastName" />
+
+                <EditText
+                    android:id="@+id/editTextText3"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/accountPage_name"
+                    app:layout_constraintStart_toStartOf="@+id/textView_name"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+
+                <TextView
+                    android:id="@+id/textView_mail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_mail"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editTextText3"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+
+                <EditText
+                    android:id="@+id/editText_mail"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:text="@string/accountPage_mail"
+                    app:layout_constraintStart_toStartOf="@+id/textView_mail"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_mail" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_password"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_mail"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_mail" />
+
+                <EditText
+                    android:id="@+id/editText_password"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="@string/accountPage_password"
+                    android:inputType="textPassword"
+                    app:layout_constraintStart_toStartOf="@+id/textView7"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <TextView
+                    android:id="@+id/textView_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_address"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_password"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_password" />
+
+                <EditText
+                    android:id="@+id/editText_address"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/accountPage_address"
+                    app:layout_constraintStart_toStartOf="@+id/textView_address"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_address" />
+
+                <TextView
+                    android:id="@+id/textView_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_city"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_address"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_address" />
+
+                <EditText
+                    android:id="@+id/editTextCity"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/accountPage_city"
+                    app:layout_constraintStart_toStartOf="@+id/textView_city"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_city" />
+
+                <TextView
+                    android:id="@+id/textView_zipCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_zipCode"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editTextCity"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
+
+                <EditText
+                    android:id="@+id/editText_zipCode"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="@string/accountPage_zipCode"
+                    app:layout_constraintStart_toStartOf="@+id/textView_zipCode"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_zipCode" />
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:backgroundTint="@color/blue_app"
+                    android:text="@string/accountPage_button"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
