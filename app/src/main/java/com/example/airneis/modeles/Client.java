@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Client {
     @SerializedName("_id")
-    int _id;
+    String _id;
     @SerializedName("nom")
     String nom;
     @SerializedName("prenom")
@@ -26,9 +26,9 @@ public class Client {
     @SerializedName("token")
     String token;
 
-    public Client(int id, String nom, String prenom, String mail, String mdp, Adresse[] adresses,
+    public Client(String _id, String nom, String prenom, String mail, String mdp, Adresse[] adresses,
                   Paiement[] paiements, Panier panier, String telephone, String token) {
-        this._id = id;
+        this._id = _id;
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
@@ -40,12 +40,12 @@ public class Client {
         this.token = token;
     }
 
-    public int getId() {
+    public String getId() {
         return _id;
     }
 
-    public void setId(int id) {
-        this._id = id;
+    public void setId(String _id) {
+        this._id = _id;
     }
 
     public String getNom() {

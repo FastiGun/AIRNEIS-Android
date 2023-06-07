@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Commande {
     @SerializedName("_id")
-    int _id;
+    String _id;
     @SerializedName("date")
     String date;
     @SerializedName("prixHT")
@@ -24,7 +24,7 @@ public class Commande {
     @SerializedName("client")
     Client client;
 
-    public Commande(int id, String date, float prixHT, float prixTTC, String statut, Produit[] produits, Adresse adresseFacturation, Adresse adresseLivraison, Client client) {
+    public Commande(String id, String date, float prixHT, float prixTTC, String statut, Produit[] produits, Adresse adresseFacturation, Adresse adresseLivraison, Client client) {
         this._id = id;
         this.date = date;
         this.prixHT = prixHT;
@@ -36,11 +36,11 @@ public class Commande {
         this.client = client;
     }
 
-    public int getId() {
+    public String getId() {
         return _id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this._id = id;
     }
 

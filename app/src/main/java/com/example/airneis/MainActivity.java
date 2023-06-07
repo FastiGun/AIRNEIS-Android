@@ -92,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         } else if(item.getItemId() == R.id.action_disconnect){
             this.drawerLayout.closeDrawer(GravityCompat.START);
+            authentification.clearAuthToken();
+            authentification.clearAuthId();
+            redirectToFragment("home");
             return true;
         } else if(item.getItemId() == R.id.action_cgu){
         this.drawerLayout.closeDrawer(GravityCompat.START);
@@ -224,6 +227,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     redirectToFragment("login");
                 } else {
                     authentification.saveAuthToken(response.body().getToken());
+                    authentification.saveAuthId(response.body().getId());
                     redirectToFragment("home");
                 }
             }

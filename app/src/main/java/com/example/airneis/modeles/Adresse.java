@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Adresse {
 
     @SerializedName("_id")
-    int _id;
+    String _id;
     @SerializedName("nom")
     String nom;
     @SerializedName("rue")
@@ -19,7 +19,7 @@ public class Adresse {
     @SerializedName("complement")
     String complement;
 
-    public Adresse(int id, String nom, String rue, String ville, String cp, int num, String complement) {
+    public Adresse(String id, String nom, String rue, String ville, String cp, int num, String complement) {
         this._id = id;
         this.nom = nom;
         this.rue = rue;
@@ -29,11 +29,11 @@ public class Adresse {
         this.complement = complement;
     }
 
-    public int getId() {
+    public String getId() {
         return _id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this._id = id;
     }
 

@@ -7,7 +7,7 @@ import java.util.List;
 public class Panier {
 
     @SerializedName("_id")
-    int _id;
+    String _id;
     @SerializedName("produits")
     Produit[] produits;
     @SerializedName("prixHT")
@@ -15,18 +15,18 @@ public class Panier {
     @SerializedName("prixTTC")
     float prixTTC;
 
-    public Panier(int id, Produit[] produits, float prixHT, float prixTTC) {
+    public Panier(String id, Produit[] produits, float prixHT, float prixTTC) {
         this._id = id;
         this.produits = produits;
         this.prixHT = prixHT;
         this.prixTTC = prixTTC;
     }
 
-    public int getId() {
+    public String getId() {
         return _id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this._id = id;
     }
 

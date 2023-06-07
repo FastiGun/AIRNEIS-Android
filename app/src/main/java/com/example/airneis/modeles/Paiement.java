@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Paiement {
 
     @SerializedName("_id")
-    int _id;
+    String _id;
     @SerializedName("libelle")
     String libelle;
     @SerializedName("nom")
@@ -17,7 +17,7 @@ public class Paiement {
     @SerializedName("cvv")
     String cvv;
 
-    public Paiement(int id, String libelle, String nom, String num, String date, String cvv) {
+    public Paiement(String id, String libelle, String nom, String num, String date, String cvv) {
         this._id = id;
         this.libelle = libelle;
         this.nom = nom;
@@ -26,11 +26,11 @@ public class Paiement {
         this.cvv = cvv;
     }
 
-    public int getId() {
+    public String getId() {
         return _id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this._id = id;
     }
 
