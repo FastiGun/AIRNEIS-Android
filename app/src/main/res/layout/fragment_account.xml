@@ -21,7 +21,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1000dp">
+                android:layout_height="750dp">
 
                 <TextView
                     android:id="@+id/textView_account"
@@ -67,7 +67,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/editText_lastName" />
 
                 <EditText
-                    android:id="@+id/editTextText3"
+                    android:id="@+id/editText_name"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="10dp"
@@ -84,29 +84,18 @@
                     android:layout_marginTop="20dp"
                     android:text="@string/accountPage_mail"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/editTextText3"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
-
-                <EditText
-                    android:id="@+id/editText_mail"
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="textEmailAddress"
-                    android:text="@string/accountPage_mail"
-                    app:layout_constraintStart_toStartOf="@+id/textView_mail"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_mail" />
+                    app:layout_constraintStart_toStartOf="@+id/editText_name"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_name" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/textViewView_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/accountPage_password"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/editText_mail"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_mail" />
+                    app:layout_constraintStart_toStartOf="@+id/textView_mail2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_mail2" />
 
                 <EditText
                     android:id="@+id/editText_password"
@@ -116,71 +105,8 @@
                     android:ems="10"
                     android:hint="@string/accountPage_password"
                     android:inputType="textPassword"
-                    app:layout_constraintStart_toStartOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-                <TextView
-                    android:id="@+id/textView_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/accountPage_address"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/editText_password"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_password" />
-
-                <EditText
-                    android:id="@+id/editText_address"
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text="@string/accountPage_address"
-                    app:layout_constraintStart_toStartOf="@+id/textView_address"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_address" />
-
-                <TextView
-                    android:id="@+id/textView_city"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/accountPage_city"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/editText_address"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_address" />
-
-                <EditText
-                    android:id="@+id/editTextCity"
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text="@string/accountPage_city"
-                    app:layout_constraintStart_toStartOf="@+id/textView_city"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_city" />
-
-                <TextView
-                    android:id="@+id/textView_zipCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/accountPage_zipCode"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/editTextCity"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextCity" />
-
-                <EditText
-                    android:id="@+id/editText_zipCode"
-                    android:layout_width="300dp"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="10dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text="@string/accountPage_zipCode"
-                    app:layout_constraintStart_toStartOf="@+id/textView_zipCode"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_zipCode" />
+                    app:layout_constraintStart_toStartOf="@+id/textViewView_password"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewView_password" />
 
                 <Button
                     android:id="@+id/button_save"
@@ -194,6 +120,38 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_numberPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_numberPhone"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_password"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_password" />
+
+                <EditText
+                    android:id="@+id/editText_numberPhone"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:inputType="phone"
+                    android:text="@string/accountPage_numberPhone"
+                    app:layout_constraintStart_toStartOf="@+id/textView_numberPhone"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_numberPhone" />
+
+                <TextView
+                    android:id="@+id/textView_mail2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textSize="26sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView_mail"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_mail" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

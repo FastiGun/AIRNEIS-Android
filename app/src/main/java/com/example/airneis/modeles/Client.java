@@ -1,29 +1,40 @@
 package com.example.airneis.modeles;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.StringTokenizer;
 
 public class Client {
     @SerializedName("_id")
+    @Expose
     String _id;
     @SerializedName("nom")
+    @Expose
     String nom;
     @SerializedName("prenom")
+    @Expose
     String prenom;
     @SerializedName("mail")
+    @Expose
     String mail;
     @SerializedName("motDePasse")
+    @Expose
     String mdp;
     @SerializedName("adresses")
+    @Expose
     Adresse[] adresses;
     @SerializedName("paiements")
+    @Expose
     Paiement[] paiements;
     @SerializedName("panier")
+    @Expose
     Panier panier;
     @SerializedName("telephone")
+    @Expose
     String telephone;
     @SerializedName("token")
+    @Expose
     String token;
 
     public Client(String _id, String nom, String prenom, String mail, String mdp, Adresse[] adresses,

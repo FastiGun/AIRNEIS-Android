@@ -3,6 +3,8 @@ package com.example.airneis;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.StringTokenizer;
+
 public class AuthentificationClass {
 
     private SharedPreferences sharedPreferences;
@@ -16,11 +18,12 @@ public class AuthentificationClass {
     }
 
     public void saveAuthToken(String token) {
-        editor.putString("AuthToken", token);
+        editor.putString("AuthToken"," Bearer " +token);
+        //editor.putString("AuthToken","Authorization: Bearer " + token);
         editor.apply();
     }
-    public void saveAuthId(String _id) {
-        editor.putString("AuthId", _id);
+    public void saveAuthId(String id) {
+        editor.putString("AuthId", id);
         editor.apply();
     }
 

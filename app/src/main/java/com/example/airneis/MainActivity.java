@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationDrawer;
     Fragment homePageFragment;
+    Fragment accountFragment;
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     LoginFragment loginFragment;
     AuthentificationClass authentification;
     Menu nav_menu;
+
     private HashMap<String, Fragment> fragmentsList = new HashMap<>();
 
     @Override
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentsList.put("inscription", inscription);
         homePageFragment = new HomePageFragment((RedirectionInterface) this);
         fragmentsList.put("home", homePageFragment);
+        accountFragment = new AccountFragment((RedirectionInterface) this);
+        fragmentsList.put("account", accountFragment);
         loadFragment(homePageFragment);
     }
     private void initializeViews(){
@@ -66,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationDrawer = findViewById(R.id.navigationDrawer);
         nav_menu = navigationDrawer.getMenu();
         nav_menu.findItem(R.id.action_disconnect).setVisible(false);
+        nav_menu.findItem(R.id.action_account).setVisible(false);
         navigationDrawer.setNavigationItemSelectedListener(this);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_drawer_opened, R.string.nav_drawer_closed);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -100,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         } else if(item.getItemId() == R.id.action_account) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
-            fragment = new AccountFragment();
+            fragment = new AccountPageFragment((RedirectionInterface) this);
             loadFragment(fragment);
             return true;
         }  else if(item.getItemId() == R.id.action_cgu){
@@ -235,6 +240,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 } else {
                     authentification.saveAuthToken(response.body().getToken());
                     authentification.saveAuthId(response.body().getId());
+                    nav_menu.findItem(R.id.action_disconnect).setVisible(true);
+                    nav_menu.findItem(R.id.action_account).setVisible(true);
+                    nav_menu.findItem(R.id.action_signup).setVisible(false);
+                    nav_menu.findItem(R.id.action_connect).setVisible(false);
                     redirectToFragment("home");
                 }
             }
@@ -265,6 +274,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 } else {
                     redirectToFragment("login");
                 }
+            }
+
+            @Override
+            public void onFailure(Call<Client> call, Throwable t) {
+                Log.e("404", "Error when registration");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void saveAccount(String token, String _id, String name, String lastName, String numberPhone) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Client> callAccount = webServicesInterface.postClient(token, _id, name, lastName, numberPhone);
+
+        callAccount.enqueue(new Callback<Client>() {
+            @Override
+            public void onResponse(Call<Client> call, Response<Client> response) {
+                accountFragment = new AccountFragment(MainActivity.this);
             }
 
             @Override

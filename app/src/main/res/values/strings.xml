@@ -127,4 +127,9 @@
     <string name="accountPage_city">City</string>
     <string name="accountPage_zipCode">ZipCode</string>
     <string name="accountPage_button">Save</string>
+    <string name="accountPage_numberPhone">Phone number</string>
+    <string name="accountPage_personalInformation">Personal information</string>
+    <string name="accountPage_accessButton">Access</string>
+    <string name="accountPage_payment">Payment</string>
+    <string name="accountPage_orderHistory">Order history</string>
 </resources>

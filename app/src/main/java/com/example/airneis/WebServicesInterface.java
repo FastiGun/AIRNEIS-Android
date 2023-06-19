@@ -7,10 +7,14 @@ import com.example.airneis.modeles.Paiement;
 import com.example.airneis.modeles.Panier;
 import com.example.airneis.modeles.Produit;
 
+import java.util.StringTokenizer;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -39,8 +43,12 @@ public interface WebServicesInterface {
     @GET("client")
     Call<Client[]>getClientList();
 
-    @GET("client/{clientId}")
-    Call<Client>getClient();
+    @GET("client/{id}")
+    Call<Client>getClient(@Path("id") String _id, @Header("Authorization") String token );
+
+     @POST("client/{id}")
+     @FormUrlEncoded
+     Call<Client>postClient(@Path("id") String _id, @Header("Authorization") String token, @Field("prenom") String lastName, @Field("nom") String name, @Field("telephone") String numberPhone);
 
     @GET("client/{clientId}/adresses")
     Call<Adresse>getAddressClient();

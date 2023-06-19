@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="600dp">
+
+                <TextView
+                    android:id="@+id/textView_accountPageTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_title"
+                    android:textSize="34sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_personnalInformation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/accountPage_personalInformation"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView_accountPageTitle"
+                    app:layout_constraintStart_toStartOf="@+id/textView_accountPageTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_accountPageTitle" />
+
+                <Button
+                    android:id="@+id/button_access1"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/blue_app"
+                    android:text="@string/accountPage_accessButton"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/textView_personnalInformation"
+                    app:layout_constraintStart_toStartOf="@+id/textView_personnalInformation"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_personnalInformation" />
+
+                <TextView
+                    android:id="@+id/textView_adressTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_address"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/button_access1"
+                    app:layout_constraintStart_toStartOf="@+id/button_access1"
+                    app:layout_constraintTop_toBottomOf="@+id/button_access1" />
+
+                <Button
+                    android:id="@+id/button_access2"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/blue_app"
+                    android:text="@string/accountPage_accessButton"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/textView_adressTitle"
+                    app:layout_constraintStart_toStartOf="@+id/textView_adressTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_adressTitle" />
+
+                <TextView
+                    android:id="@+id/textView_paymentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_payment"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/button_access2"
+                    app:layout_constraintStart_toStartOf="@+id/button_access2"
+                    app:layout_constraintTop_toBottomOf="@+id/button_access2" />
+
+                <Button
+                    android:id="@+id/button_acess3"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/blue_app"
+                    android:text="@string/accountPage_accessButton"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/textView_paymentTitle"
+                    app:layout_constraintStart_toStartOf="@+id/textView_paymentTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_paymentTitle" />
+
+                <TextView
+                    android:id="@+id/textView_orderHistoryTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/accountPage_orderHistory"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/button_acess3"
+                    app:layout_constraintStart_toStartOf="@+id/button_acess3"
+                    app:layout_constraintTop_toBottomOf="@+id/button_acess3" />
+
+                <Button
+                    android:id="@+id/button_access4"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/blue_app"
+                    android:text="@string/accountPage_accessButton"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="@+id/textView_orderHistoryTitle"
+                    app:layout_constraintStart_toStartOf="@+id/textView_orderHistoryTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_orderHistoryTitle" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
