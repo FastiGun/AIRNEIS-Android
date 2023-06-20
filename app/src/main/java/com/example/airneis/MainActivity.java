@@ -8,12 +8,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
 import com.example.airneis.modeles.Produit;
@@ -27,13 +27,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationDrawer;
     Fragment homePageFragment;
     Fragment accountFragment;
+    Fragment addressFragment;
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
 
@@ -54,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initializeFragments();
     }
 
-    private void initializeFragments(){
-        Fragment login = new LoginFragment( (RedirectionInterface) this);
+    private void initializeFragments() {
+        Fragment login = new LoginFragment((RedirectionInterface) this);
         fragmentsList.put("login", login);
         Fragment inscription = new InscriptionFragment((RedirectionInterface) this);
         fragmentsList.put("inscription", inscription);
@@ -63,9 +64,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentsList.put("home", homePageFragment);
         accountFragment = new AccountFragment((RedirectionInterface) this);
         fragmentsList.put("account", accountFragment);
+        addressFragment = new AddressFragment((RedirectionInterface) this);
+        fragmentsList.put("address", addressFragment);
         loadFragment(homePageFragment);
     }
-    private void initializeViews(){
+
+    private void initializeViews() {
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationDrawer = findViewById(R.id.navigationDrawer);
         nav_menu = navigationDrawer.getMenu();
@@ -77,70 +81,72 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)){
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
-        if(item.getItemId() == R.id.action_connect){
+        if (item.getItemId() == R.id.action_connect) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             fragment = new LoginFragment((RedirectionInterface) this);
             loadFragment(fragment);
             return true;
-        } else if(item.getItemId() == R.id.action_signup){
+        } else if (item.getItemId() == R.id.action_signup) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             fragment = new InscriptionFragment((RedirectionInterface) this);
             loadFragment(fragment);
             return true;
-        } else if(item.getItemId() == R.id.action_disconnect){
+        } else if (item.getItemId() == R.id.action_disconnect) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             authentification.clearAuthToken();
             authentification.clearAuthId();
             redirectToFragment("home");
             return true;
-        } else if(item.getItemId() == R.id.action_account) {
+        } else if (item.getItemId() == R.id.action_account) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             fragment = new AccountPageFragment((RedirectionInterface) this);
             loadFragment(fragment);
             return true;
-        }  else if(item.getItemId() == R.id.action_cgu){
-        this.drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-        } else if(item.getItemId() == R.id.action_legalNotices){
-        this.drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-        } else if(item.getItemId() == R.id.action_contact){
+        } else if (item.getItemId() == R.id.action_cgu) {
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        } else if (item.getItemId() == R.id.action_legalNotices) {
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
+        } else if (item.getItemId() == R.id.action_contact) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             fragment = new ContactFragment();
             loadFragment(fragment);
             return true;
-        } else if(item.getItemId() == R.id.action_socialNetwork){
+        } else if (item.getItemId() == R.id.action_socialNetwork) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         }
         return false;
     }
 
-    private boolean loadFragment(Fragment fragment){
-        if (fragment != null){
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
             return true;
         }
         return false;
     }
 
-    public void redirectToFragment(String fragmentName) throws RuntimeException{
-        if (fragmentsList.containsKey(fragmentName)){
+    public void redirectToFragment(String fragmentName) throws RuntimeException {
+        if (fragmentsList.containsKey(fragmentName)) {
             loadFragment(fragmentsList.get(fragmentName));
             return;
         }
 
-        if(fragmentsList.containsKey("home")) {
+        if (fragmentsList.containsKey("home")) {
             loadFragment(fragmentsList.get("home"));
             return;
         }
@@ -161,8 +167,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         callListProduct.enqueue(new Callback<Produit[]>() {
             @Override
             public void onResponse(Call<Produit[]> call, Response<Produit[]> response) {
-                    listProductFragment = new ListProductFragment(response.body(),(ListProductListListener) MainActivity.this);
-                    loadFragment(listProductFragment);
+                listProductFragment = new ListProductFragment(response.body(), (ListProductListListener) MainActivity.this);
+                loadFragment(listProductFragment);
             }
 
             @Override
@@ -172,6 +178,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
     @Override
     public void onCategoryClickButton() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -185,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         callListCategory.enqueue(new Callback<Categorie[]>() {
             @Override
             public void onResponse(Call<Categorie[]> call, Response<Categorie[]> response) {
-                listCategoryFragment = new ListCategoryFragment(response.body(),(ListCategoryListListener) MainActivity.this);
+                listCategoryFragment = new ListCategoryFragment(response.body(), (ListCategoryListListener) MainActivity.this);
                 loadFragment(listCategoryFragment);
             }
 
@@ -235,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         callConnexion.enqueue(new Callback<Client>() {
             @Override
             public void onResponse(Call<Client> call, Response<Client> response) {
-                if(response.body() == null) {
+                if (response.body() == null) {
                     redirectToFragment("login");
                 } else {
                     authentification.saveAuthToken(response.body().getToken());
@@ -269,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         callInscription.enqueue(new Callback<Client>() {
             @Override
             public void onResponse(Call<Client> call, Response<Client> response) {
-                if(response.body() == null) {
+                if (response.body() == null) {
                     redirectToFragment("inscription");
                 } else {
                     redirectToFragment("login");
@@ -297,11 +304,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         callAccount.enqueue(new Callback<Client>() {
             @Override
             public void onResponse(Call<Client> call, Response<Client> response) {
-                accountFragment = new AccountFragment(MainActivity.this);
+                redirectToFragment("home");
             }
 
             @Override
             public void onFailure(Call<Client> call, Throwable t) {
+                Log.e("404", "Error when registration");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void saveAddress(String token, String _id, String nameAddress, String street, String city, String zipCode, String country, String region, String complement) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Adresse> callAccount = webServicesInterface.postAddressClient(token, _id, nameAddress, street, city, zipCode, country, region, complement);
+
+        callAccount.enqueue(new Callback<Adresse>() {
+            @Override
+            public void onResponse(Call<Adresse> call, Response<Adresse> response) {
+                redirectToFragment("home");
+            }
+
+            @Override
+            public void onFailure(Call<Adresse> call, Throwable t) {
                 Log.e("404", "Error when registration");
                 Log.e("404", t.getMessage());
             }

@@ -51,12 +51,16 @@ public interface WebServicesInterface {
      Call<Client>postClient(@Path("id") String _id, @Header("Authorization") String token, @Field("prenom") String lastName, @Field("nom") String name, @Field("telephone") String numberPhone);
 
     @GET("client/{clientId}/adresses")
-    Call<Adresse>getAddressClient();
+    Call<Adresse>getAddressClient(@Path("clientId") String _id, @Header("Authorization") String token);
+
+    @POST("client/{clientId}/adresses")
+    Call<Adresse>postAddressClient(@Path("clientId") String _id, @Header("Authorization") String token, @Field("nom") String name, @Field("rue")String street, @Field("ville")String city,
+                                   @Field("cp") String zipCode,@Field("pays")String country, @Field("region")String region, @Field("complement") String complement);
 
     @GET("client/{clientId}/paiements")
-    Call<Paiement>getPaiementClient();
+    Call<Paiement>getPaiementClient(@Path("clientId") String _id, @Header("Authorization") String token);
 
     @GET("clients/{clientId}/paniers")
-    Call<Panier>getPanierClient();
+    Call<Panier>getPanierClient(@Path("clientId") String _id, @Header("Authorization") String token);
 
 }

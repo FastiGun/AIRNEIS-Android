@@ -10,14 +10,14 @@ public class Paiement {
     String libelle;
     @SerializedName("nom")
     String nom;
-    @SerializedName("num")
-    String num;
     @SerializedName("date")
     String date;
+    @SerializedName("num")
+    int num;
     @SerializedName("cvv")
     String cvv;
 
-    public Paiement(String id, String libelle, String nom, String num, String date, String cvv) {
+    public Paiement(String id, String libelle, String nom, int num, String date, String cvv) {
         this._id = id;
         this.libelle = libelle;
         this.nom = nom;
@@ -50,11 +50,11 @@ public class Paiement {
         this.nom = nom;
     }
 
-    public String getNum() {
+    public int getNum() {
         return num;
     }
 
-    public void setNum(String num) {
+    public void setNum(int num) {
         this.num = num;
     }
 

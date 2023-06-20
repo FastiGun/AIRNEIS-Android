@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 public class AccountPageFragment extends Fragment {
     RedirectionInterface redirectionInterface;
     Button account;
+    Button address;
 
     public AccountPageFragment(RedirectionInterface listener){
         this.redirectionInterface = listener;
@@ -28,12 +29,21 @@ public class AccountPageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         account = view.findViewById(R.id.button_access1);
+        address = view.findViewById(R.id.button_access2);
 
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 redirectionInterface.redirectToFragment("account");
+            }
+        });
+
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                redirectionInterface.redirectToFragment("address");
             }
         });
     }

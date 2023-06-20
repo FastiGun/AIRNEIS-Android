@@ -14,18 +14,15 @@ public class Adresse {
     String ville;
     @SerializedName("cp")
     String cp;
-    @SerializedName("num")
-    int num;
     @SerializedName("complement")
     String complement;
 
-    public Adresse(String id, String nom, String rue, String ville, String cp, int num, String complement) {
+    public Adresse(String id, String nom, String rue, String ville, String cp, String complement) {
         this._id = id;
         this.nom = nom;
         this.rue = rue;
         this.ville = ville;
         this.cp = cp;
-        this.num = num;
         this.complement = complement;
     }
 
@@ -67,14 +64,6 @@ public class Adresse {
 
     public void setCp(String cp) {
         this.cp = cp;
-    }
-
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
     }
 
     public String getComplement() {

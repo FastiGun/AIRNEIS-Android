@@ -58,12 +58,14 @@ public class AccountFragment extends Fragment {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionInterface.saveAccount(token, _id, editText_lastName.getText().toString(), editText_name.getText().toString(), editText_numberPhone.getText().toString());
+                redirectionInterface.saveAccount(_id, token, editText_lastName.getText().toString(), editText_name.getText().toString(), editText_numberPhone.getText().toString());
             }
         });
     }
+
     public void getAccount(String _id, String token) {
         Retrofit retrofit = new Retrofit.Builder()
+
                 .baseUrl("https://airneis-junia.vercel.app/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -87,5 +89,6 @@ public class AccountFragment extends Fragment {
                 Log.e("404", t.getMessage());
             }
         });
+
     }
 }

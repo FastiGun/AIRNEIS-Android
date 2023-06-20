@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView_addressTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/addressAccount_title"
+                    android:textSize="34sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_addressName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/addressAccount_name"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_addressTitle" />
+
+                <EditText
+                    android:id="@+id/editText_nameAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="@string/addressAccount_nameEx"
+                    android:inputType="text"
+                    app:layout_constraintStart_toStartOf="@+id/textView_addressName"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_addressName" />
+
+                <TextView
+                    android:id="@+id/textView_streetAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/addressAccount_street"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_nameAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_nameAddress" />
+
+                <EditText
+                    android:id="@+id/editText_streetAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="@string/addressAccount_streetEx"
+                    android:inputType="text"
+                    app:layout_constraintStart_toStartOf="@+id/textView_streetAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_streetAddress" />
+
+                <TextView
+                    android:id="@+id/textView_cityAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/addressAccount_city"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_streetAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_streetAddress" />
+
+                <EditText
+                    android:id="@+id/editText_cityAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="@string/addressAccount_cityEx"
+                    android:inputType="text"
+                    app:layout_constraintStart_toStartOf="@+id/textView_cityAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_cityAddress" />
+
+                <TextView
+                    android:id="@+id/textView_zipCodeAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/addressAccount_zipCode"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_cityAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_cityAddress" />
+
+                <EditText
+                    android:id="@+id/editText_zipCodeAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="@string/addressAccount_zipCodeEx"
+                    android:inputType="text"
+                    app:layout_constraintStart_toStartOf="@+id/textView_zipCodeAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_zipCodeAddress" />
+
+                <TextView
+                    android:id="@+id/textView_complementAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/addressAccount_complement"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_zipCodeAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_regionAddress" />
+
+                <EditText
+                    android:id="@+id/editText_complementAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="@string/addressAccount_complementEx"
+                    android:inputType="text"
+                    app:layout_constraintStart_toStartOf="@+id/textView_complementAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_complementAddress" />
+
+                <Button
+                    android:id="@+id/button_saveAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:backgroundTint="@color/blue_app"
+                    android:text="@string/accountPage_button"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_complementAddress" />
+
+                <TextView
+                    android:id="@+id/textView_countryAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/addressAccount_country"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_zipCodeAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_zipCodeAddress" />
+
+                <EditText
+                    android:id="@+id/editText_countryAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="@string/addressAccount_countryEx"
+                    android:inputType="text"
+                    app:layout_constraintStart_toStartOf="@+id/textView_countryAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_countryAddress" />
+
+                <TextView
+                    android:id="@+id/textView_regionAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/addressAccount_region"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/editText_countryAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_countryAddress" />
+
+                <EditText
+                    android:id="@+id/editText_regionAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="@string/addressAccount_regionEx"
+                    android:inputType="text"
+                    app:layout_constraintStart_toStartOf="@+id/textView_regionAddress"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_regionAddress" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
