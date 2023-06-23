@@ -30,6 +30,9 @@ public class AccountPageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         account = view.findViewById(R.id.button_access1);
         address = view.findViewById(R.id.button_access2);
+        AuthentificationClass authentification = new AuthentificationClass(this.getContext());
+        String token = authentification.getAuthToken();
+        String _id = authentification.getAuthId();
 
         account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +46,7 @@ public class AccountPageFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                redirectionInterface.redirectToFragment("address");
+                redirectionInterface.onAddressClickButton(_id, token);
             }
         });
     }

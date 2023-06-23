@@ -27,7 +27,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, ListAddressListListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -37,8 +37,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment addressFragment;
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
+    ListAddressListFragment listAddressListFragment;
 
     ProductFragment productFragment;
+    AddressFragment addressPageFragment;
+
     LoginFragment loginFragment;
     AuthentificationClass authentification;
     Menu nav_menu;
@@ -64,8 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentsList.put("home", homePageFragment);
         accountFragment = new AccountFragment((RedirectionInterface) this);
         fragmentsList.put("account", accountFragment);
-        addressFragment = new AddressFragment((RedirectionInterface) this);
-        fragmentsList.put("address", addressFragment);
+        //addressFragment = new AddressFragment((RedirectionInterface) this);
+        //fragmentsList.put("address", addressFragment);
         loadFragment(homePageFragment);
     }
 
@@ -205,6 +208,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public void onAddressClickButton(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Adresse[]> callListAddress = webServicesInterface.getAddressClient(_id,token);
+
+        callListAddress.enqueue(new Callback<Adresse[]>() {
+            @Override
+            public void onResponse(Call<Adresse[]> call, Response<Adresse[]> response) {
+                listAddressListFragment = new ListAddressListFragment(response.body(), (ListAddressListListener) MainActivity.this);
+                loadFragment(listAddressListFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Adresse[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving Address list");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
     public void onProductClick(String id) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://airneis-junia.vercel.app/api/")
@@ -224,6 +252,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Produit> call, Throwable t) {
                 Log.e("404", "Error when retrieving product");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onAddressClick(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Adresse> callAddress = webServicesInterface.getAddress(_id, token);
+
+        callAddress.enqueue(new Callback<Adresse>() {
+            @Override
+            public void onResponse(Call<Adresse> call, Response<Adresse> response) {
+                addressPageFragment = new AddressFragment(response.body());
+                loadFragment(addressPageFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Adresse> call, Throwable t) {
+                Log.e("404", "Error when retrieving client address");
                 Log.e("404", t.getMessage());
             }
         });

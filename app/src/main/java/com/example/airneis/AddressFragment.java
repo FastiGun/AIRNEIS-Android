@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Client;
 
+import okhttp3.Address;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,16 +32,18 @@ public class AddressFragment extends Fragment {
     TextView countryAddress;
     TextView regionAddress;
     Button buttonSave;
-
-    public AddressFragment(RedirectionInterface listener){
-        this.redirectionInterface = listener;
-    }
+    Adresse dataSource;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_address_account, null);
     }
+
+    public AddressFragment(Adresse dataSource) {
+        this.dataSource = dataSource;
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -53,11 +56,18 @@ public class AddressFragment extends Fragment {
         countryAddress = view.findViewById(R.id.editText_countryAddress);
         regionAddress = view.findViewById(R.id.editText_regionAddress);
         buttonSave = view.findViewById(R.id.button_saveAddress);
+        nameAddress.setText(dataSource.getNom());
+        streetAddress.setText(dataSource.getRue());
+        cityAddress.setText(dataSource.getVille());
+        zipCodeAddress.setText(dataSource.getCp());
+        complementAddress.setText(dataSource.getComplement());
+        countryAddress.setText(dataSource.getVille());
+        regionAddress.setText(dataSource.getRegion());
         AuthentificationClass authentification = new AuthentificationClass(this.getContext());
         String token = authentification.getAuthToken();
         String _id = authentification.getAuthId();
 
-        getAddress(_id, token);
+        //getAddress(_id, token);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +77,7 @@ public class AddressFragment extends Fragment {
         });
     }
 
-
+    /*
     public void getAddress(String _id, String token) {
         Retrofit retrofit = new Retrofit.Builder()
 
@@ -76,25 +86,20 @@ public class AddressFragment extends Fragment {
                 .build();
 
         WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
-        Call<Adresse> callAddress = webServicesInterface.getAddressClient(_id, token);
+        Call<Adresse[]> callAddress = webServicesInterface.getAddressClient(_id, token);
 
-        callAddress.enqueue(new Callback<Adresse>() {
+        callAddress.enqueue(new Callback<Adresse[]>() {
             @Override
-            public void onResponse(Call<Adresse> call, Response<Adresse> response) {
-                nameAddress.setText(response.body().getNom());
-                streetAddress.setText(response.body().getRue());
-                cityAddress.setText(response.body().getVille());
-                zipCodeAddress.setText(response.body().getCp());
-                complementAddress.setText(response.body().getComplement());
+            public void onResponse(Call<Adresse[]> call, Response<Adresse[]> response) {
 
             }
 
 
             @Override
-            public void onFailure(Call<Adresse> call, Throwable t) {
+            public void onFailure(Call<Adresse[]> call, Throwable t) {
                 Log.e("404", "Error when get information");
                 Log.e("404", t.getMessage());
             }
         });
-    }
+    }*/
 }
