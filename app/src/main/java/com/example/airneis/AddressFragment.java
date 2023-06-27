@@ -1,7 +1,6 @@
 package com.example.airneis;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.airneis.modeles.Adresse;
-import com.example.airneis.modeles.Client;
-
-import okhttp3.Address;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddressFragment extends Fragment {
     RedirectionInterface redirectionInterface;
@@ -34,16 +25,17 @@ public class AddressFragment extends Fragment {
     Button buttonSave;
     Adresse dataSource;
 
+
+    public AddressFragment(Adresse dataSource, RedirectionInterface listener) {
+        this.dataSource = dataSource;
+        this.redirectionInterface = listener;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_address_account, null);
     }
-
-    public AddressFragment(Adresse dataSource) {
-        this.dataSource = dataSource;
-    }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -65,9 +57,8 @@ public class AddressFragment extends Fragment {
         regionAddress.setText(dataSource.getRegion());
         AuthentificationClass authentification = new AuthentificationClass(this.getContext());
         String token = authentification.getAuthToken();
-        String _id = authentification.getAuthId();
+        String _id = dataSource.getId();
 
-        //getAddress(_id, token);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,30 +67,4 @@ public class AddressFragment extends Fragment {
             }
         });
     }
-
-    /*
-    public void getAddress(String _id, String token) {
-        Retrofit retrofit = new Retrofit.Builder()
-
-                .baseUrl("https://airneis-junia.vercel.app/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
-        Call<Adresse[]> callAddress = webServicesInterface.getAddressClient(_id, token);
-
-        callAddress.enqueue(new Callback<Adresse[]>() {
-            @Override
-            public void onResponse(Call<Adresse[]> call, Response<Adresse[]> response) {
-
-            }
-
-
-            @Override
-            public void onFailure(Call<Adresse[]> call, Throwable t) {
-                Log.e("404", "Error when get information");
-                Log.e("404", t.getMessage());
-            }
-        });
-    }*/
 }

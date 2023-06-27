@@ -14,8 +14,8 @@ public class ListAddressListCellHolder extends  RecyclerView.ViewHolder{
 
     public ListAddressListCellHolder(@NonNull View itemView) {
         super(itemView);
-        nameAddress = itemView.findViewById(R.id.textView_addressNameList);
-        streetAddress = itemView.findViewById(R.id.textView_addressStreet);
+        nameAddress = itemView.findViewById(R.id.textView_paymentName);
+        streetAddress = itemView.findViewById(R.id.textView_paymentUserName);
         cityAddress = itemView.findViewById(R.id.textView_addressCity);
     }
 }

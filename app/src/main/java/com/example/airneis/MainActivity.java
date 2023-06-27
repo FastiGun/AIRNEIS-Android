@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
+import com.example.airneis.modeles.Paiement;
 import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
 
@@ -27,7 +28,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, ListAddressListListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, ListAddressListListener, ListPaymentListListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -38,9 +39,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
     ListAddressListFragment listAddressListFragment;
-
+    ListPaymentListFragment listPaymentListFragment;
     ProductFragment productFragment;
     AddressFragment addressPageFragment;
+
 
     LoginFragment loginFragment;
     AuthentificationClass authentification;
@@ -233,6 +235,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public void onPaymentClickButton(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Paiement[]> callListPayment = webServicesInterface.getPaymentClient(_id,token);
+
+        callListPayment.enqueue(new Callback<Paiement[]>() {
+            @Override
+            public void onResponse(Call<Paiement[]> call, Response<Paiement[]> response) {
+                listPaymentListFragment = new ListPaymentListFragment(response.body(),(ListPaymentListListener) MainActivity.this);
+                loadFragment(listPaymentListFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Paiement[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving Payment list");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onHistoryOrderClickButton(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Paiement[]> callListPayment = webServicesInterface.getPaymentClient(_id,token);
+
+        callListPayment.enqueue(new Callback<Paiement[]>() {
+            @Override
+            public void onResponse(Call<Paiement[]> call, Response<Paiement[]> response) {
+                listPaymentListFragment = new ListPaymentListFragment(response.body(),(ListPaymentListListener) MainActivity.this);
+                loadFragment(listPaymentListFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Paiement[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving Payment list");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
     public void onProductClick(String id) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://airneis-junia.vercel.app/api/")
@@ -270,13 +322,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         callAddress.enqueue(new Callback<Adresse>() {
             @Override
             public void onResponse(Call<Adresse> call, Response<Adresse> response) {
-                addressPageFragment = new AddressFragment(response.body());
+                addressPageFragment = new AddressFragment(response.body(), MainActivity.this);
                 loadFragment(addressPageFragment);
-            }
 
+            }
             @Override
             public void onFailure(Call<Adresse> call, Throwable t) {
                 Log.e("404", "Error when retrieving client address");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onPaymentClick(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Paiement> callPayment = webServicesInterface.deletePaiement(_id, token);
+
+        callPayment.enqueue(new Callback<Paiement>() {
+            @Override
+            public void onResponse(Call<Paiement> call, Response<Paiement> response) {
+                redirectToFragment("home");
+            }
+            @Override
+            public void onFailure(Call<Paiement> call, Throwable t) {
+                Log.e("404", "Error when delete payment");
                 Log.e("404", t.getMessage());
             }
         });
@@ -368,6 +443,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+
     @Override
     public void saveAddress(String token, String _id, String nameAddress, String street, String city, String zipCode, String country, String region, String complement) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -391,4 +467,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
 }

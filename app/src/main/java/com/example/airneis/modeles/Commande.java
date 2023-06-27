@@ -7,6 +7,12 @@ import java.util.List;
 public class Commande {
     @SerializedName("_id")
     String _id;
+    @SerializedName("nom")
+    String nom;
+    @SerializedName("prenom")
+    String prenom;
+    @SerializedName("telephone")
+    String telephone;
     @SerializedName("date")
     String date;
     @SerializedName("prixHT")
@@ -24,8 +30,11 @@ public class Commande {
     @SerializedName("client")
     Client client;
 
-    public Commande(String id, String date, float prixHT, float prixTTC, String statut, Produit[] produits, Adresse adresseFacturation, Adresse adresseLivraison, Client client) {
+    public Commande(String id, String nom, String prenom, String telephone, String date, float prixHT, float prixTTC, String statut, Produit[] produits, Adresse adresseFacturation, Adresse adresseLivraison, Client client) {
         this._id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
         this.date = date;
         this.prixHT = prixHT;
         this.prixTTC = prixTTC;
@@ -42,6 +51,29 @@ public class Commande {
 
     public void setId(String id) {
         this._id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getDate() {

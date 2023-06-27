@@ -14,6 +14,8 @@ public class AccountPageFragment extends Fragment {
     RedirectionInterface redirectionInterface;
     Button account;
     Button address;
+    Button payment;
+    Button order;
 
     public AccountPageFragment(RedirectionInterface listener){
         this.redirectionInterface = listener;
@@ -30,6 +32,8 @@ public class AccountPageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         account = view.findViewById(R.id.button_access1);
         address = view.findViewById(R.id.button_access2);
+        payment = view.findViewById(R.id.button_access3);
+        order = view.findViewById(R.id.button_access4);
         AuthentificationClass authentification = new AuthentificationClass(this.getContext());
         String token = authentification.getAuthToken();
         String _id = authentification.getAuthId();
@@ -47,6 +51,22 @@ public class AccountPageFragment extends Fragment {
             public void onClick(View v) {
 
                 redirectionInterface.onAddressClickButton(_id, token);
+            }
+        });
+
+        payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                redirectionInterface.onPaymentClickButton(_id, token);
+            }
+        });
+
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                redirectionInterface.onHistoryOrderClickButton(_id, token);
             }
         });
     }

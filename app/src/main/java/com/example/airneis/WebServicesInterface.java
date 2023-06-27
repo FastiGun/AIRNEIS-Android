@@ -10,12 +10,14 @@ import com.example.airneis.modeles.Produit;
 import java.util.StringTokenizer;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface WebServicesInterface {
@@ -40,8 +42,8 @@ public interface WebServicesInterface {
     @GET("produits/{id}")
     Call<Produit>getProduct(@Path("id") String _id);
 
-    @GET("adresses/{id}")
-    Call<Adresse>getAddress(@Path("id") String _id, @Header("Authorization") String token);
+    @GET("adresses/{idAddress}")
+    Call<Adresse>getAddress(@Path("idAddress") String _id, @Header("Authorization") String token);
 
     @GET("client")
     Call<Client[]>getClientList();
@@ -56,15 +58,18 @@ public interface WebServicesInterface {
     @GET("client/{clientId}/adresses")
     Call<Adresse[]>getAddressClient(@Path("clientId") String _id, @Header("Authorization") String token);
 
-    @POST("client/{clientId}/adresses")
+    @PUT("adresses/{idAddress}")
     @FormUrlEncoded
-    Call<Adresse>postAddressClient(@Path("clientId") String _id, @Header("Authorization") String token, @Field("nom") String nameAddress, @Field("rue")String street, @Field("ville")String city,
+    Call<Adresse>postAddressClient(@Path("idAddress") String _id, @Header("Authorization") String token, @Field("nom") String nameAddress, @Field("rue")String street, @Field("ville")String city,
                                    @Field("cp") String zipCode,@Field("pays")String country, @Field("region")String region, @Field("complement") String complement);
 
     @GET("client/{clientId}/paiements")
-    Call<Paiement>getPaiementClient(@Path("clientId") String _id, @Header("Authorization") String token);
+    Call<Paiement[]>getPaymentClient(@Path("clientId") String _id, @Header("Authorization") String token);
 
     @GET("clients/{clientId}/paniers")
     Call<Panier>getPanierClient(@Path("clientId") String _id, @Header("Authorization") String token);
+
+    @DELETE("paiements/{idPaiement}")
+    Call<Paiement>deletePaiement(@Path("idPaiement") String _id, @Header("Authorization") String token);
 
 }
