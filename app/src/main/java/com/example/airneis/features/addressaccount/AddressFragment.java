@@ -1,16 +1,20 @@
-package com.example.airneis;
+package com.example.airneis.features.addressaccount;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.airneis.AuthentificationClass;
+import com.example.airneis.R;
+import com.example.airneis.RedirectionInterface;
 import com.example.airneis.modeles.Adresse;
 
 public class AddressFragment extends Fragment {
@@ -24,6 +28,7 @@ public class AddressFragment extends Fragment {
     TextView regionAddress;
     Button buttonSave;
     Adresse dataSource;
+    ImageView deleteAddress;
 
 
     public AddressFragment(Adresse dataSource, RedirectionInterface listener) {
@@ -48,6 +53,7 @@ public class AddressFragment extends Fragment {
         countryAddress = view.findViewById(R.id.editText_countryAddress);
         regionAddress = view.findViewById(R.id.editText_regionAddress);
         buttonSave = view.findViewById(R.id.button_saveAddress);
+        deleteAddress = view.findViewById(R.id.imageView_deleteAddress);
         nameAddress.setText(dataSource.getNom());
         streetAddress.setText(dataSource.getRue());
         cityAddress.setText(dataSource.getVille());
@@ -64,6 +70,13 @@ public class AddressFragment extends Fragment {
             public void onClick(View v) {
                 redirectionInterface.saveAddress(_id, token, nameAddress.getText().toString(), streetAddress.getText().toString(), cityAddress.getText().toString(),
                         zipCodeAddress.getText().toString(),countryAddress.getText().toString(), regionAddress.getText().toString(), complementAddress.getText().toString());
+            }
+        });
+
+        deleteAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectionInterface.deleteAddress(_id, token);
             }
         });
     }

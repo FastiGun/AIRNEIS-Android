@@ -1,4 +1,4 @@
-package com.example.airneis;
+package com.example.airneis.features.products;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.airneis.R;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Produit;
 

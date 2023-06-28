@@ -13,9 +13,22 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.airneis.features.addressaccount.AddressFragment;
+import com.example.airneis.features.addressaccount.ListAddressListFragment;
+import com.example.airneis.features.addressaccount.ListAddressListListener;
+import com.example.airneis.features.categories.ListCategoryFragment;
+import com.example.airneis.features.categories.ListCategoryListListener;
+import com.example.airneis.features.historyorder.ListHistoryOrderListFragment;
+import com.example.airneis.features.historyorder.ListHistoryOrderListListener;
+import com.example.airneis.features.paymentaccount.ListPaymentListFragment;
+import com.example.airneis.features.paymentaccount.ListPaymentListListener;
+import com.example.airneis.features.products.ListProductFragment;
+import com.example.airneis.features.products.ListProductListListener;
+import com.example.airneis.features.products.ProductFragment;
 import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
+import com.example.airneis.modeles.Commande;
 import com.example.airneis.modeles.Paiement;
 import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
@@ -28,7 +41,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, ListAddressListListener, ListPaymentListListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, ListAddressListListener, ListPaymentListListener, ListHistoryOrderListListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -40,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ListCategoryFragment listCategoryFragment;
     ListAddressListFragment listAddressListFragment;
     ListPaymentListFragment listPaymentListFragment;
+    ListHistoryOrderListFragment listHistoryOrderListFragment;
     ProductFragment productFragment;
     AddressFragment addressPageFragment;
 
@@ -267,18 +281,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .build();
 
         WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
-        Call<Paiement[]> callListPayment = webServicesInterface.getPaymentClient(_id,token);
+        Call<Commande[]> callListOrders = webServicesInterface.getOrdersList(_id,token);
 
-        callListPayment.enqueue(new Callback<Paiement[]>() {
+        callListOrders.enqueue(new Callback<Commande[]>() {
             @Override
-            public void onResponse(Call<Paiement[]> call, Response<Paiement[]> response) {
-                listPaymentListFragment = new ListPaymentListFragment(response.body(),(ListPaymentListListener) MainActivity.this);
-                loadFragment(listPaymentListFragment);
+            public void onResponse(Call<Commande[]> call, Response<Commande[]> response) {
+                listHistoryOrderListFragment = new ListHistoryOrderListFragment(response.body(),(ListHistoryOrderListListener) MainActivity.this);
+                loadFragment(listHistoryOrderListFragment);
             }
 
             @Override
-            public void onFailure(Call<Paiement[]> call, Throwable t) {
-                Log.e("404", "Error when retrieving Payment list");
+            public void onFailure(Call<Commande[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving Order list");
                 Log.e("404", t.getMessage());
             }
         });
@@ -463,6 +477,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Adresse> call, Throwable t) {
                 Log.e("404", "Error when registration");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void deleteAddress(String token, String _id) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Adresse> callAddress = webServicesInterface.deleteAddress(token, _id);
+
+        callAddress.enqueue(new Callback<Adresse>() {
+            @Override
+            public void onResponse(Call<Adresse> call, Response<Adresse> response) {
+                redirectToFragment("home");
+            }
+
+            @Override
+            public void onFailure(Call<Adresse> call, Throwable t) {
+                Log.e("404", "Error when deleteAddress");
                 Log.e("404", t.getMessage());
             }
         });

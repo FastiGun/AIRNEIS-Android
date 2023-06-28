@@ -10,4 +10,5 @@ public interface RedirectionInterface {
     void onHistoryOrderClickButton(String _id, String token);
     void saveAccount(String token, String id, String lastName, String name, String numberPhone);
     void saveAddress(String token, String id, String name, String street, String city, String zipCode, String country, String region, String complement);
+    void deleteAddress(String token, String id);
 }

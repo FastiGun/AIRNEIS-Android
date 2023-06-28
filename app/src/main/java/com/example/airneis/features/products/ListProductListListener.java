@@ -1,4 +1,4 @@
-package com.example.airneis;
+package com.example.airneis.features.products;
 
 import java.io.IOException;
 

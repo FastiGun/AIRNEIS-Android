@@ -1,4 +1,4 @@
-package com.example.airneis;
+package com.example.airneis.features.products;
 
 import android.annotation.SuppressLint;
 import android.net.Uri;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.airneis.R;
 import com.example.airneis.modeles.Produit;
-import com.squareup.picasso.Picasso;
 
 public class ListProductListAdapteur extends RecyclerView.Adapter<ListProductListCellHolder> {
 

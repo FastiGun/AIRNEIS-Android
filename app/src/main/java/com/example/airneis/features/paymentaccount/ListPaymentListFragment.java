@@ -1,4 +1,4 @@
-package com.example.airneis;
+package com.example.airneis.features.paymentaccount;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,37 +11,41 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.airneis.modeles.Adresse;
+import com.example.airneis.AuthentificationClass;
+import com.example.airneis.R;
+import com.example.airneis.modeles.Paiement;
 
-public class ListAddressListFragment extends Fragment {
+public class ListPaymentListFragment extends Fragment {
 
-    Adresse[] dataSource;
+    Paiement[] dataSource;
     RecyclerView recyclerView;
-    RecyclerView.Adapter listAddressListAdapteur;
+    RecyclerView.Adapter listPaymentListAdapteur;
     RecyclerView.LayoutManager layoutManager;
-    ListAddressListListener listAddressListListener;
+    ListPaymentListListener listPaymentListListener;
 
-    public ListAddressListFragment(Adresse[] dataSource, ListAddressListListener listener){
+    public ListPaymentListFragment(Paiement[] dataSource, ListPaymentListListener listener){
         this.dataSource = dataSource;
-        this.listAddressListListener = listener;
+        this.listPaymentListListener = listener;
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_address_list_account, null);
+        return inflater.inflate(R.layout.fragment_payment_list_account, null);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = view.findViewById(R.id.addressAccount_recyclerView);
+        recyclerView = view.findViewById(R.id.paymentAccount_recyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
         AuthentificationClass authentification = new AuthentificationClass(this.getContext());
         String token = authentification.getAuthToken();
-        listAddressListAdapteur = new ListAddressListAdapteur(dataSource, listAddressListListener, token);
-        recyclerView.setAdapter(listAddressListAdapteur);
+        listPaymentListAdapteur = new ListPaymentListAdapteur(dataSource, listPaymentListListener, token);
+        recyclerView.setAdapter(listPaymentListAdapteur);
     }
 }
+
+

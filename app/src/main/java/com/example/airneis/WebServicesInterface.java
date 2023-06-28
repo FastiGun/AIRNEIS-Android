@@ -3,6 +3,7 @@ package com.example.airneis;
 import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
+import com.example.airneis.modeles.Commande;
 import com.example.airneis.modeles.Paiement;
 import com.example.airneis.modeles.Panier;
 import com.example.airneis.modeles.Produit;
@@ -71,5 +72,14 @@ public interface WebServicesInterface {
 
     @DELETE("paiements/{idPaiement}")
     Call<Paiement>deletePaiement(@Path("idPaiement") String _id, @Header("Authorization") String token);
+
+    @DELETE("adresses/{idAdresses}")
+    Call<Adresse>deleteAddress(@Path("idAdresses") String _id, @Header("Authorization") String token);
+
+    @GET("orders/{idClient}")
+    Call<Commande[]>getOrdersList(@Path("idClient") String _id, @Header("Authorization") String token);
+
+    @GET("orders/details/{idCommande}")
+    Call<Commande>getOrder(@Path("idCommande") String _id, @Header("Authorization") String token);
 
 }

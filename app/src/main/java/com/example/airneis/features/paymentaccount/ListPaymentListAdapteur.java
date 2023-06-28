@@ -1,4 +1,4 @@
-package com.example.airneis;
+package com.example.airneis.features.paymentaccount;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.airneis.R;
 import com.example.airneis.modeles.Paiement;
 
 public class ListPaymentListAdapteur extends RecyclerView.Adapter<ListPaymentListCellHolder> {

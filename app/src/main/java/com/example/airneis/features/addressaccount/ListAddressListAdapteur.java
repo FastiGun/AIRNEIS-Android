@@ -1,7 +1,6 @@
-package com.example.airneis;
+package com.example.airneis.features.addressaccount;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.airneis.R;
 import com.example.airneis.modeles.Adresse;
 
 public class ListAddressListAdapteur extends RecyclerView.Adapter<ListAddressListCellHolder>{
