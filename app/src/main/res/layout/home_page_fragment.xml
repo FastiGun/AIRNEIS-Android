@@ -126,7 +126,7 @@
                     app:srcCompat="@drawable/ic_launcher_background" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/centerProductImageView"
                     android:layout_width="300dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="50dp"
@@ -136,13 +136,13 @@
                     app:srcCompat="@drawable/ic_launcher_background" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/bottomProductImageView"
                     android:layout_width="300dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="50dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/centerProductImageView"
                     app:srcCompat="@drawable/ic_launcher_background" />
 
                 <Button
@@ -167,6 +167,26 @@
                     app:layout_constraintEnd_toEndOf="@+id/topProductImageView"
                     app:layout_constraintStart_toStartOf="@+id/topProductImageView"
                     app:layout_constraintTop_toTopOf="@+id/topProductImageView" />
+
+                <TextView
+                    android:id="@+id/centerProductNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    app:layout_constraintBottom_toBottomOf="@+id/centerProductImageView"
+                    app:layout_constraintEnd_toEndOf="@+id/centerProductImageView"
+                    app:layout_constraintStart_toStartOf="@+id/centerProductImageView"
+                    app:layout_constraintTop_toTopOf="@+id/centerProductImageView" />
+
+                <TextView
+                    android:id="@+id/bottomProductNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Product Name"
+                    app:layout_constraintBottom_toBottomOf="@+id/bottomProductImageView"
+                    app:layout_constraintEnd_toEndOf="@+id/bottomProductImageView"
+                    app:layout_constraintStart_toStartOf="@+id/bottomProductImageView"
+                    app:layout_constraintTop_toTopOf="@+id/bottomProductImageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

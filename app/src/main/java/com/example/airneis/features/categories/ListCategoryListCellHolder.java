@@ -11,11 +11,13 @@ import com.example.airneis.R;
 
 public class ListCategoryListCellHolder extends RecyclerView.ViewHolder {
     TextView textView_categoryName;
+    ImageView imageView_category;
 
     public ListCategoryListCellHolder(@NonNull View itemView) {
         super(itemView);
 
         textView_categoryName = itemView.findViewById(R.id.textView_categoryName);
+        imageView_category = itemView.findViewById(R.id.imageView_category);
 
     }
 }

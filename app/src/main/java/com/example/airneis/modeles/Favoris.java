@@ -16,23 +16,23 @@ public class Favoris {
     Produit produit2;
     @SerializedName("produit3")
     Produit produit3;
-    @SerializedName("caroussel1")
-    String caroussel1;
-    @SerializedName("caroussel2")
-    String caroussel2;
-    @SerializedName("caroussel3")
-    String caroussel3;
+    @SerializedName("photo1")
+    String picture1;
+    @SerializedName("photo2")
+    String picture2;
+    @SerializedName("photo3")
+    String picture3;
 
-    public Favoris(Categorie categorie1, Categorie categorie2, Categorie categorie3, Produit produit1, Produit produit2, Produit produit3, String caroussel1, String caroussel2, String caroussel3) {
+    public Favoris(Categorie categorie1, Categorie categorie2, Categorie categorie3, Produit produit1, Produit produit2, Produit produit3, String picture1, String picture2, String picture3) {
         this.categorie1 = categorie1;
         this.categorie2 = categorie2;
         this.categorie3 = categorie3;
         this.produit1 = produit1;
         this.produit2 = produit2;
         this.produit3 = produit3;
-        this.caroussel1 = caroussel1;
-        this.caroussel2 = caroussel2;
-        this.caroussel3 = caroussel3;
+        this.picture1 = picture1;
+        this.picture2 = picture2;
+        this.picture3 = picture3;
     }
 
     public Categorie getCategorie1() {
@@ -59,28 +59,25 @@ public class Favoris {
         return produit3;
     }
 
-    public String getCaroussel1() {
-        return caroussel1;
+    public String getPicture1() {
+        return picture1;
     }
 
-    public String getCaroussel2() {
-        return caroussel2;
+    public String getPicture2() {
+        return picture2;
     }
 
-    public String getCaroussel3() {
-        return caroussel3;
+    public String getPicture3() {
+        return picture3;
     }
 
-    public void setCaroussel1(String caroussel1) {
-        this.caroussel1 = caroussel1;
+    public void setPicture1(String picture1) {
+        this.picture1 = picture1;
     }
 
-    public void setCaroussel2(String caroussel2) {
-        this.caroussel2 = caroussel2;
-    }
+    public void setPicture2(String picture2) {this.picture2 = picture2;}
 
-    public void setCaroussel3(String caroussel3) {
-        this.caroussel3 = caroussel3;
+    public void setPicture3(String picture3) {this.picture3 = picture3;
     }
 
     public void setCategorie1(Categorie categorie1) {

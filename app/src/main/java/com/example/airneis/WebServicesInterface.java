@@ -4,6 +4,7 @@ import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
 import com.example.airneis.modeles.Commande;
+import com.example.airneis.modeles.Favoris;
 import com.example.airneis.modeles.Message;
 import com.example.airneis.modeles.Paiement;
 import com.example.airneis.modeles.Panier;
@@ -86,5 +87,8 @@ public interface WebServicesInterface {
     @POST("contact")
     @FormUrlEncoded
     Call<Message>postMessage(@Header("Authorization") String token, @Field("email") String email, @Field("sujet") String object, @Field("contenu") String content);
+
+    @GET("favoris")
+    Call<Favoris>getTop();
 
 }

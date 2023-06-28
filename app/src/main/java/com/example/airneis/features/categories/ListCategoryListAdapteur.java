@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.airneis.R;
 import com.example.airneis.modeles.Categorie;
+import com.squareup.picasso.Picasso;
 
 
 public class ListCategoryListAdapteur extends RecyclerView.Adapter<ListCategoryListCellHolder>{
@@ -17,6 +18,7 @@ public class ListCategoryListAdapteur extends RecyclerView.Adapter<ListCategoryL
     Categorie[] dataSource;
 
     ListCategoryListListener listCategoryListListener;
+
 
     public ListCategoryListAdapteur(Categorie[] dataSource, ListCategoryListListener listener){
         this.dataSource = dataSource;
@@ -34,6 +36,8 @@ public class ListCategoryListAdapteur extends RecyclerView.Adapter<ListCategoryL
     @Override
     public void onBindViewHolder(@NonNull ListCategoryListCellHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.textView_categoryName.setText(dataSource[position].getNom());
+        String url = dataSource[position].getImage();
+        Picasso.get().load(url).into(holder.imageView_category);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

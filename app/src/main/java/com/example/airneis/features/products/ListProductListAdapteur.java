@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.airneis.R;
 import com.example.airneis.modeles.Produit;
+import com.squareup.picasso.Picasso;
 
 public class ListProductListAdapteur extends RecyclerView.Adapter<ListProductListCellHolder> {
 
@@ -32,8 +33,8 @@ public class ListProductListAdapteur extends RecyclerView.Adapter<ListProductLis
 
     @Override
     public void onBindViewHolder(@NonNull ListProductListCellHolder holder, @SuppressLint("RecyclerView") int position) {
-        Uri url = Uri.parse(dataSource[position].getImage1());
-        holder.productPhotoImageView.setImageURI(url);
+        String url = dataSource[position].getImage1();
+        Picasso.get().load(url).into(holder.productPhotoImageView);
         holder.productNameTextView.setText(dataSource[position].getNom());
         holder.priceTagTextView.setText(String.valueOf(dataSource[position].getPrix()));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
