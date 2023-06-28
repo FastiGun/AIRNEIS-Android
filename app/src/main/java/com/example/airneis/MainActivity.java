@@ -29,6 +29,7 @@ import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
 import com.example.airneis.modeles.Commande;
+import com.example.airneis.modeles.Message;
 import com.example.airneis.modeles.Paiement;
 import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationDrawer;
     Fragment homePageFragment;
     Fragment accountFragment;
-    Fragment addressFragment;
+    Fragment cguFragment;
+    Fragment legalNoticesFragment;
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
     ListAddressListFragment listAddressListFragment;
@@ -83,8 +85,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentsList.put("home", homePageFragment);
         accountFragment = new AccountFragment((RedirectionInterface) this);
         fragmentsList.put("account", accountFragment);
-        //addressFragment = new AddressFragment((RedirectionInterface) this);
-        //fragmentsList.put("address", addressFragment);
+        cguFragment = new FragmentCGU((RedirectionInterface) this);
+        fragmentsList.put("CGU", cguFragment);
+        legalNoticesFragment = new FragmentLegalNotices((RedirectionInterface) this);
+        fragmentsList.put("legalNotices", legalNoticesFragment);
         loadFragment(homePageFragment);
     }
 
@@ -135,13 +139,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         } else if (item.getItemId() == R.id.action_cgu) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
+            redirectToFragment("CGU");
             return true;
         } else if (item.getItemId() == R.id.action_legalNotices) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
+            redirectToFragment("legalNotices");
             return true;
         } else if (item.getItemId() == R.id.action_contact) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
-            fragment = new ContactFragment();
+            fragment = new ContactFragment((RedirectionInterface) this);
             loadFragment(fragment);
             return true;
         } else if (item.getItemId() == R.id.action_socialNetwork) {
@@ -506,4 +512,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    @Override
+    public void saveMessage(String token, String email, String object, String content) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Message> callMessage = webServicesInterface.postMessage(token, email, object, content);
+
+        callMessage.enqueue(new Callback<Message>() {
+            @Override
+            public void onResponse(Call<Message> call, Response<Message> response) {
+                redirectToFragment("home");
+            }
+
+            @Override
+            public void onFailure(Call<Message> call, Throwable t) {
+                Log.e("404", "Error when send message");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
 }

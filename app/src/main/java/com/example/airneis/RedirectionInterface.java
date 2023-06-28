@@ -11,4 +11,5 @@ public interface RedirectionInterface {
     void saveAccount(String token, String id, String lastName, String name, String numberPhone);
     void saveAddress(String token, String id, String name, String street, String city, String zipCode, String country, String region, String complement);
     void deleteAddress(String token, String id);
+    void saveMessage(String token, String email, String object, String content);
 }
