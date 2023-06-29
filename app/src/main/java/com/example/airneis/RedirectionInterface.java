@@ -12,4 +12,6 @@ public interface RedirectionInterface {
     void saveAddress(String token, String id, String name, String street, String city, String zipCode, String country, String region, String complement);
     void deleteAddress(String token, String id);
     void saveMessage(String token, String email, String object, String content);
+    void onCategoryClick(String categorie);
+    void onProductClick(String id);
 }

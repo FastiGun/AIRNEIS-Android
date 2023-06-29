@@ -19,14 +19,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/carrousel_productPage"
+            <ImageView
+                android:id="@+id/imageView_productPage"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1300dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/textView_productName"
@@ -65,7 +66,9 @@
                     android:id="@+id/textView_productDescription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="5dp"
                     android:text="@string/productPage_productDescription"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -100,34 +103,26 @@
                     android:id="@+id/imageView_productSimilar1"
                     android:layout_width="371dp"
                     android:layout_height="215dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
                     android:contentDescription="@string/contentDescription_productPage_photoView1"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_productSimilar"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_product1"
                     app:srcCompat="@drawable/ic_launcher_background" />
 
-                <ImageView
-                    android:id="@+id/imageView_productSimilar2"
-                    android:layout_width="371dp"
-                    android:layout_height="215dp"
-                    android:layout_marginTop="30dp"
-                    android:contentDescription="@string/contentDescription_productPage_photoView2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView_productSimilar1"
-                    app:srcCompat="@drawable/ic_launcher_background" />
+                <TextView
+                    android:id="@+id/textView_product1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="TextView"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/textView_productSimilar"
+                    app:layout_constraintStart_toStartOf="@+id/textView_productSimilar"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_productSimilar" />
 
-                <ImageView
-                    android:id="@+id/imageView_productSimilar3"
-                    android:layout_width="371dp"
-                    android:layout_height="215dp"
-                    android:layout_marginTop="30dp"
-                    android:contentDescription="@string/contentDescription_productPage_photoView3"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView_productSimilar2"
-                    app:srcCompat="@drawable/ic_launcher_background" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

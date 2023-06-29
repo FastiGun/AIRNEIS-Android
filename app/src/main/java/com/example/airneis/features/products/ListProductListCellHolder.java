@@ -15,6 +15,7 @@ public class ListProductListCellHolder extends RecyclerView.ViewHolder {
     TextView productNameTextView;
     TextView priceTagTextView;
 
+
     public ListProductListCellHolder(@NonNull View itemView) {
         super(itemView);
         productPhotoImageView = itemView.findViewById(R.id.productPhotoImageView);

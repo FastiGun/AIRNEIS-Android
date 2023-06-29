@@ -2,20 +2,21 @@ package com.example.airneis.modeles;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Favoris {
+import java.util.ArrayList;
 
+public class Favoris {
     @SerializedName("categorie1")
-    Categorie categorie1;
+    String categorie1;
     @SerializedName("categorie2")
-    Categorie categorie2;
+    String categorie2;
     @SerializedName("categorie3")
-    Categorie categorie3;
+    String categorie3;
     @SerializedName("produit1")
-    Produit produit1;
+    String produit1;
     @SerializedName("produit2")
-    Produit produit2;
+    String produit2;
     @SerializedName("produit3")
-    Produit produit3;
+    String produit3;
     @SerializedName("photo1")
     String picture1;
     @SerializedName("photo2")
@@ -23,7 +24,7 @@ public class Favoris {
     @SerializedName("photo3")
     String picture3;
 
-    public Favoris(Categorie categorie1, Categorie categorie2, Categorie categorie3, Produit produit1, Produit produit2, Produit produit3, String picture1, String picture2, String picture3) {
+    public Favoris(String categorie1, String categorie2, String categorie3, String produit1, String produit2, String produit3, String picture1, String picture2, String picture3) {
         this.categorie1 = categorie1;
         this.categorie2 = categorie2;
         this.categorie3 = categorie3;
@@ -35,27 +36,34 @@ public class Favoris {
         this.picture3 = picture3;
     }
 
-    public Categorie getCategorie1() {
+    public String[] getCategories() {
+        return new String[]{categorie1, categorie2, categorie3};
+    }
+
+    public String[] getProducts() {
+        return new String[]{produit1, produit2, produit3};
+    }
+    public String getCategorie1() {
         return categorie1;
     }
 
-    public Categorie getCategorie2() {
+    public String getCategorie2() {
         return categorie2;
     }
 
-    public Categorie getCategorie3() {
+    public String getCategorie3() {
         return categorie3;
     }
 
-    public Produit getProduit1() {
+    public String getProduit1() {
         return produit1;
     }
 
-    public Produit getProduit2() {
+    public String getProduit2() {
         return produit2;
     }
 
-    public Produit getProduit3() {
+    public String getProduit3() {
         return produit3;
     }
 
@@ -80,27 +88,27 @@ public class Favoris {
     public void setPicture3(String picture3) {this.picture3 = picture3;
     }
 
-    public void setCategorie1(Categorie categorie1) {
+    public void setCategorie1(String categorie1) {
         this.categorie1 = categorie1;
     }
 
-    public void setCategorie2(Categorie categorie2) {
+    public void setCategorie2(String categorie2) {
         this.categorie2 = categorie2;
     }
 
-    public void setCategorie3(Categorie categorie3) {
+    public void setCategorie3(String categorie3) {
         this.categorie3 = categorie3;
     }
 
-    public void setProduit1(Produit produit1) {
+    public void setProduit1(String produit1) {
         this.produit1 = produit1;
     }
 
-    public void setProduit2(Produit produit2) {
+    public void setProduit2(String produit2) {
         this.produit2 = produit2;
     }
 
-    public void setProduit3(Produit produit3) {
+    public void setProduit3(String produit3) {
         this.produit3 = produit3;
     }
 }

@@ -31,6 +31,9 @@ public interface WebServicesInterface {
     @GET("categories")
     Call<Categorie[]> getListCategory();
 
+    @GET("categorie/{idCategory}")
+    Call<Categorie> getCategory(@Path("idCategory") String _id);
+
     @POST("connexion")
     @FormUrlEncoded
     Call<Client> postConnexion(@Field("mail") String mail, @Field("motDePasse") String motDePasse);
