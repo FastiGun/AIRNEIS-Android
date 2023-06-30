@@ -11,6 +11,7 @@
     <string name="nav_drawer_action_mentionsLegales">Legal notices</string>
     <string name="nav_drawer_action_contact">Contact</string>
     <string name="nav_drawer_action_socialNetworks">Social networks</string>
+    <string name="nav_drawer_action_home">Home</string>
 
     <!-- Inscription Page -->
     <string name="title_registration">Registration</string>
@@ -19,10 +20,10 @@
     <string name="registration_name_title">Name *</string>
     <string name="content_description_registration_lastName_title">Last Name</string>
     <string name="content_description_registration_name_title">Name </string>
-    <string name="registration_lastName">John</string>
-    <string name="registration_name">DOE</string>
+    <string name="registration_lastName" translatable="false">John</string>
+    <string name="registration_name" translatable="false">DOE</string>
     <string name="registration_email_title">Email *</string>
-    <string name="registration_email_name">john@smith.com</string>
+    <string name="registration_email_name" translatable="false">john@smith.com</string>
     <string name="content_description_registration_email_title">Email</string>
     <string name="registration_password_title">Password *</string>
     <string name="content_description_registration_password_title">Password</string>
@@ -46,13 +47,15 @@
     <string name="login_redirection">No account ?</string>
     <string name="login_redirection2">Register</string>
     <string name="content_description_login_redirection2">Link to redirect on the connection page</string>
+    <string name="login_passwordForgotten">Password forgotten ? </string>
+    <string name="content_description_passwordForgotten">Link to send a ask for reset password</string>
     <string name="login_loginButton">Log in</string>
 
     <!-- Product Page -->
     <string name="productPage_productName">Product name</string>
-    <string name="productPage_productPrice">399£</string>
+    <string name="productPage_productPrice" translatable="false">399£</string>
     <string name="productPage_productStock">In stock</string>
-    <string name="productPage_productDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna, vel pharetra purus ante vel turpis. Aenean in justo dictum, hendrerit eros eget, dictum metus. Nunc ac velit lacinia, feugiat odio at, feugiat tortor. Donec et massa non felis iaculis elementum quis a sem. Maecenas et viverra quam, lacinia lobortis ligula. Proin in pulvinar neque, sit amet sodales odio. Nulla nibh mi, mollis quis ex non, ultricies cursus nunc. Nulla facilisi. Maecenas sit amet commodo elit. Suspendisse eu tempus tortor. Duis vestibulum auctor risus vitae laoreet. Integer hendrerit nulla turpis. Nunc laoreet aliquet sodales.</string>
+    <string name="productPage_productDescription" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna, vel pharetra purus ante vel turpis. Aenean in justo dictum, hendrerit eros eget, dictum metus. Nunc ac velit lacinia, feugiat odio at, feugiat tortor. Donec et massa non felis iaculis elementum quis a sem. Maecenas et viverra quam, lacinia lobortis ligula. Proin in pulvinar neque, sit amet sodales odio. Nulla nibh mi, mollis quis ex non, ultricies cursus nunc. Nulla facilisi. Maecenas sit amet commodo elit. Suspendisse eu tempus tortor. Duis vestibulum auctor risus vitae laoreet. Integer hendrerit nulla turpis. Nunc laoreet aliquet sodales.</string>
     <string name="productPage_addButton">Add to cart</string>
     <string name="contentDescription_productPage_addButton">Button to add to cart</string>
     <string name="productPage_productSimilar">Similar product</string>
@@ -62,18 +65,19 @@
 
     <!-- Category_List Page -->
     <string name="listCategory_title">Categories</string>
+    <string name="listCategory_titleListProduct">Product of the category</string>
 
     <!-- Basket Page -->
-    <string name="basketPage_title">Cart</string>
-    <string name="basketPage_total">TOTAL</string>
-    <string name="basketPage_tva">TVA</string>
-    <string name="basketPage_priceTotal">4 800€</string>
-    <string name="basketPage_priceTva">800€</string>
+    <string name="basketPage_title">Basket</string>
+    <string name="basketPage_total" translatable="false">TOTAL</string>
+    <string name="basketPage_tva" translatable="false">TVA</string>
+    <string name="basketPage_priceTotal" translatable="false">4 800€</string>
+    <string name="basketPage_priceTva" translatable="false">800€</string>
     <string name="basketPage_button">Place the order</string>
     <string name="basketCell_productName">Product name</string>
-    <string name="basketCell_productDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna</string>
-    <string name="basketCell_productPrice">123€</string>
-    <string name="basketCell_productQuantity">1</string>
+    <string name="basketCell_productDescription" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna</string>
+    <string name="basketCell_productPrice" translatable="false">123€</string>
+    <string name="basketCell_productQuantity" translatable="false">1</string>
 
     <!-- Delivery Page -->
     <string name="deliveryPage_title">Delivery</string>
@@ -81,26 +85,26 @@
     <string name="deliveryPage_lastName"> Last name*</string>
     <string name="deliveryPage_name"> Name*</string>
     <string name="deliveryPage_address1"> Address 1*</string>
-    <string name="deliveryPage_address1_example"> 13 rue de la lune</string>
+    <string name="deliveryPage_address1_example" translatable="false"> 13 rue de la lune</string>
     <string name="deliveryPage_address2"> Address 2</string>
     <string name="deliveryPage_address2_example">Optional Address</string>
     <string name="deliveryPage_city">City*</string>
-    <string name="deliveryPage_city_example">Lille</string>
+    <string name="deliveryPage_city_example" translatable="false">Lille</string>
     <string name="deliveryPage_zipCode">Zip code*</string>
-    <string name="deliveryPage_zipCode_example">59000</string>
+    <string name="deliveryPage_zipCode_example" translatable="false">59000</string>
     <string name="deliveryPage_button">Go to payment</string>
 
     <!-- Payment Page -->
     <string name="paymentPage_title">Payment</string>
     <string name="paymentPage_paymentMethod">Select a payment method</string>
     <string name="paymentPage_cardNumber">Card number*</string>
-    <string name="paymentPage_cardNumber_example">4292 9540 8493 921</string>
+    <string name="paymentPage_cardNumber_example" translatable="false">4292 9540 8493 921</string>
     <string name="paymentPage_nameCardPayment">Full Name*</string>
-    <string name="paymentPage_nameCardPayment_example">John Smith</string>
+    <string name="paymentPage_nameCardPayment_example" translatable="false">John Smith</string>
     <string name="paymentPage_expirationDate">Expiration date*</string>
-    <string name="paymentPage_expirationDate_example">09/25</string>
+    <string name="paymentPage_expirationDate_example" translatable="false">09/25</string>
     <string name="paymentPage_CVV">CVV*</string>
-    <string name="paymentPage_CVV_example">123</string>
+    <string name="paymentPage_CVV_example" translatable="false">123</string>
     <string name="paymentPage_button">Pay</string>
     <string name="paymentPage_informationDelete">To delete a payment method, please click on the one you want to delete</string>
     <string name="contentDescription_informationDelete">To delete a payment method, please click on the one you want to delete</string>
@@ -115,7 +119,7 @@
     <string name="contactPage_title">Contact</string>
     <string name="contactPage_email">Enter your email address</string>
     <string name="contactPage_object">Object of contact</string>
-    <string name="contactPage_mail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna, vel pharetra purus ante vel turpis. Aenean in justo dictum, hendrerit eros eget, dictum metus. Nunc ac velit lacinia, feugiat odio at, feugiat tortor. Donec et massa non felis iaculis elementum quis a sem. Maecenas et viverra quam, lacinia lobortis ligula. Proin in pulvinar neque, sit amet sodales odio. Nulla nibh mi, mollis quis ex non, ultricies cursus nunc.</string>
+    <string name="contactPage_mail" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla molestie, est nec vehicula fringilla, ligula mauris posuere magna, vel pharetra purus ante vel turpis. Aenean in justo dictum, hendrerit eros eget, dictum metus. Nunc ac velit lacinia, feugiat odio at, feugiat tortor. Donec et massa non felis iaculis elementum quis a sem. Maecenas et viverra quam, lacinia lobortis ligula. Proin in pulvinar neque, sit amet sodales odio. Nulla nibh mi, mollis quis ex non, ultricies cursus nunc.</string>
     <string name="contactPage_send">Send mail</string>
 
     <!-- Account Page -->
@@ -140,20 +144,20 @@
     <string name="addressAccount_name">Name</string>
     <string name="addressAccount_nameEx">Home</string>
     <string name="addressAccount_street">Street</string>
-    <string name="addressAccount_streetEx">23 bis Winston Churchill</string>
+    <string name="addressAccount_streetEx" translatable="false">23 bis Winston Churchill</string>
     <string name="addressAccount_city">City</string>
-    <string name="addressAccount_cityEx">London</string>
+    <string name="addressAccount_cityEx" translatable="false">London</string>
     <string name="addressAccount_zipCode">ZipCode</string>
-    <string name="addressAccount_zipCodeEx">76565</string>
+    <string name="addressAccount_zipCodeEx" translatable="false">76565</string>
     <string name="addressAccount_complement">Complement</string>
     <string name="addressAccount_complementEx">Complement of address</string>
     <string name="addressAccount_country">Country</string>
-    <string name="addressAccount_countryEx">USA</string>
+    <string name="addressAccount_countryEx" translatable="false">USA</string>
     <string name="addressAccount_region">Region</string>
-    <string name="addressAccount_regionEx">texas</string>
+    <string name="addressAccount_regionEx" translatable="false">texas</string>
 
     <!-- Order Page -->
-    <string name="orderAccount_date">Wednesday, 21 June 2023 at 15:34:31</string>
-    <string name="orderAccount_priceTTC">55.55</string>
+    <string name="orderAccount_date" translatable="false">Wednesday, 21 June 2023 at 15:34:31</string>
+    <string name="orderAccount_priceTTC" translatable="false">55.55</string>
     <string name="orderAccount_status">Pending</string>
 </resources>

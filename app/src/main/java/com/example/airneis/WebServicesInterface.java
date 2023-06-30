@@ -93,11 +93,18 @@ public interface WebServicesInterface {
     @GET("orders/details/{idCommande}")
     Call<Commande>getOrder(@Path("idCommande") String _id, @Header("Authorization") String token);
 
+
     @POST("contact")
     @FormUrlEncoded
     Call<Message>postMessage(@Header("Authorization") String token, @Field("email") String email, @Field("sujet") String object, @Field("contenu") String content);
 
     @GET("favoris")
     Call<Favoris>getTop();
+
+    @POST("reset-password")
+    @FormUrlEncoded
+    Call<Client>postResetPassword(@Field("email") String email);
+
+
 
 }

@@ -33,11 +33,13 @@ public class ListHistoryOrderListAdapteur extends RecyclerView.Adapter<ListHisto
 
     @Override
     public void onBindViewHolder(@NonNull ListHistoryOrderListCellHolder holder, @SuppressLint("RecyclerView") int position) {
-
+        holder.dateOrder.setText(dataSource[position].getDate());
+        holder.priceOrder.setText(String.valueOf(dataSource[position].getPrixTTC()));
+        holder.statusOrder.setText(dataSource[position].getStatut());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //listAddressListListener.onAddressClick(dataSource[position].getId(), token);
+                listHistoryOrderListListener.onHistoryClick(dataSource[position].getId(), token);
             }
         });
     }

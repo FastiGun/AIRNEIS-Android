@@ -28,9 +28,9 @@ public class Commande {
     @SerializedName("adresseLivraison")
     Adresse adresseLivraison;
     @SerializedName("client")
-    Client client;
+    String client;
 
-    public Commande(String id, String nom, String prenom, String telephone, String date, float prixHT, float prixTTC, String statut, Produit[] produits, Adresse adresseFacturation, Adresse adresseLivraison, Client client) {
+    public Commande(String id, String nom, String prenom, String telephone, String date, float prixHT, float prixTTC, String statut, Produit[] produits, Adresse adresseFacturation, Adresse adresseLivraison, String client) {
         this._id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -132,11 +132,11 @@ public class Commande {
         this.adresseLivraison = adresseLivraison;
     }
 
-    public Client getClient() {
+    public String getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(String client) {
         this.client = client;
     }
 }

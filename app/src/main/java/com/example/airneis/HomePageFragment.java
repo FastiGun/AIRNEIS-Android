@@ -46,6 +46,8 @@ public class HomePageFragment extends Fragment {
 
 
 
+
+
     int currentImage = 0;
     Button categoryButton;
     RedirectionInterface redirectionListListener;

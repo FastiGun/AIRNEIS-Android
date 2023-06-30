@@ -45,6 +45,7 @@ public class ProductFragment extends Fragment {
     String idCategory;
 
     private final Produit dataSource;
+    RedirectionInterface redirectionListListener;
 
     RedirectionInterface redirectionInterface;
 
@@ -54,9 +55,9 @@ public class ProductFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_product, null);
     }
 
-    public ProductFragment(Produit dataSource, RedirectionInterface redirectionInterface){
+    public ProductFragment(Produit dataSource, RedirectionInterface listener){
         this.dataSource = dataSource;
-        this.redirectionInterface = redirectionInterface;
+        this.redirectionListListener = listener;
     }
 
     @Override
@@ -80,7 +81,7 @@ public class ProductFragment extends Fragment {
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionInterface.addProductToCart(dataSource.getId());
+                redirectionListListener.addProductToCart(dataSource.getId());
             }
         });
 
@@ -110,6 +111,13 @@ public class ProductFragment extends Fragment {
                 textView_product1.setText(productSimilar.getNom());
                 String url2 = productSimilar.getImage1();
                 Picasso.get().load(url2).into(imageView_productSimilar1);
+
+                imageView_productSimilar1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        redirectionListListener.onProductClick(idProduct);
+                    }
+                });
 
             }
 
