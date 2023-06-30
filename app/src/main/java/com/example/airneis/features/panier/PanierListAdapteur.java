@@ -1,4 +1,4 @@
-package com.example.airneis;
+package com.example.airneis.features.panier;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.airneis.R;
 import com.example.airneis.modeles.Panier;
 
 public class PanierListAdapteur extends RecyclerView.Adapter<PanierListCellHolder> {

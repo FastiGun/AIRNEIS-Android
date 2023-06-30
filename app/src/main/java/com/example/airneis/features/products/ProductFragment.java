@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.airneis.MainActivity;
 import com.example.airneis.R;
+import com.example.airneis.RedirectionInterface;
 import com.example.airneis.WebServicesInterface;
 import com.example.airneis.features.categories.ListCategoryFragment;
 import com.example.airneis.features.categories.ListCategoryListListener;
@@ -45,14 +46,17 @@ public class ProductFragment extends Fragment {
 
     private final Produit dataSource;
 
+    RedirectionInterface redirectionInterface;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_product, null);
     }
 
-    public ProductFragment(Produit dataSource){
+    public ProductFragment(Produit dataSource, RedirectionInterface redirectionInterface){
         this.dataSource = dataSource;
+        this.redirectionInterface = redirectionInterface;
     }
 
     @Override
@@ -65,12 +69,20 @@ public class ProductFragment extends Fragment {
         imageView_productPage = view.findViewById(R.id.imageView_productPage);
         imageView_productSimilar1 = view.findViewById(R.id.imageView_productSimilar1);
         textView_product1 = view.findViewById(R.id.textView_product1);
+        addToCart = view.findViewById(R.id.button_addToCart);
         productName.setText(dataSource.getNom());
         productPrice.setText(Float.toString(dataSource.getPrix()));
         productStock.setText(Integer.toString(dataSource.getStock()));
         productDescription.setText(dataSource.getDescription());
         String url = dataSource.getImage1();
         Picasso.get().load(url).into(imageView_productPage);
+
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectionInterface.addProductToCart(dataSource.getId());
+            }
+        });
 
         idProduct = dataSource.getId();
         idCategory = dataSource.getCategorie();

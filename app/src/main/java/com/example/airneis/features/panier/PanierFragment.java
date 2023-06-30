@@ -1,4 +1,4 @@
-package com.example.airneis;
+package com.example.airneis.features.panier;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.airneis.R;
 import com.example.airneis.modeles.Panier;
 
 import java.text.DecimalFormat;

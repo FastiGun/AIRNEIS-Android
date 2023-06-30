@@ -12,8 +12,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.airneis.features.addressaccount.AddressFragment;
 import com.example.airneis.features.addressaccount.ListAddressListFragment;
@@ -22,6 +20,8 @@ import com.example.airneis.features.categories.ListCategoryFragment;
 import com.example.airneis.features.categories.ListCategoryListListener;
 import com.example.airneis.features.historyorder.ListHistoryOrderListFragment;
 import com.example.airneis.features.historyorder.ListHistoryOrderListListener;
+import com.example.airneis.features.panier.PanierFragment;
+import com.example.airneis.features.panier.PanierListListener;
 import com.example.airneis.features.paymentaccount.ListPaymentListFragment;
 import com.example.airneis.features.paymentaccount.ListPaymentListListener;
 import com.example.airneis.features.products.ListProductFragment;
