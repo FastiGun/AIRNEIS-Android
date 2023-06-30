@@ -6,24 +6,30 @@ public class Paiement {
 
     @SerializedName("_id")
     String _id;
-    @SerializedName("libelle")
+    @SerializedName("client")
+    String idClient;
+    @SerializedName("libelle_carte")
     String libelle;
-    @SerializedName("nom")
+    @SerializedName("nom_carte")
     String nom;
-    @SerializedName("date")
+    @SerializedName("date_expiration")
     String date;
-    @SerializedName("num")
-    int num;
+    @SerializedName("num_carte")
+    String num;
     @SerializedName("cvv")
     String cvv;
+    @SerializedName("__v")
+    String __v;
 
-    public Paiement(String id, String libelle, String nom, int num, String date, String cvv) {
+    public Paiement(String id, String idClient, String libelle, String nom, String num, String date, String cvv, String __v) {
         this._id = id;
+        this.idClient = idClient;
         this.libelle = libelle;
         this.nom = nom;
         this.num = num;
         this.date = date;
         this.cvv = cvv;
+        this.__v = __v;
     }
 
     public String getId() {
@@ -32,6 +38,14 @@ public class Paiement {
 
     public void setId(String id) {
         this._id = id;
+    }
+
+    public String getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(String idClient) {
+        this.idClient = idClient;
     }
 
     public String getLibelle() {
@@ -50,11 +64,11 @@ public class Paiement {
         this.nom = nom;
     }
 
-    public int getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setNum(String num) {
         this.num = num;
     }
 
@@ -72,5 +86,12 @@ public class Paiement {
 
     public void setCvv(String cvv) {
         this.cvv = cvv;
+    }
+
+    public String get__v() {
+        return __v;
+    }
+    public void set__v(String __v) {
+        this.__v = __v;
     }
 }

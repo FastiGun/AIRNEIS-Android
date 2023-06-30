@@ -102,6 +102,8 @@
     <string name="paymentPage_CVV">CVV*</string>
     <string name="paymentPage_CVV_example">123</string>
     <string name="paymentPage_button">Pay</string>
+    <string name="paymentPage_informationDelete">To delete a payment method, please click on the one you want to delete</string>
+    <string name="contentDescription_informationDelete">To delete a payment method, please click on the one you want to delete</string>
 
     <!-- Order Confirmed Page -->
     <string name="orderConfirmedPage_title">Order Confirmed</string>
@@ -149,4 +151,9 @@
     <string name="addressAccount_countryEx">USA</string>
     <string name="addressAccount_region">Region</string>
     <string name="addressAccount_regionEx">texas</string>
+
+    <!-- Order Page -->
+    <string name="orderAccount_date">Wednesday, 21 June 2023 at 15:34:31</string>
+    <string name="orderAccount_priceTTC">55.55</string>
+    <string name="orderAccount_status">Pending</string>
 </resources>

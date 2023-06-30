@@ -1,12 +1,9 @@
-package com.example.airneis;
+package com.example.airneis.features.categories;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.airneis.R;
 import com.example.airneis.modeles.Categorie;
 
 public class ListCategoryFragment extends Fragment{

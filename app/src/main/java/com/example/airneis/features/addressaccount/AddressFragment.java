@@ -1,25 +1,21 @@
-package com.example.airneis;
+package com.example.airneis.features.addressaccount;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.airneis.AuthentificationClass;
+import com.example.airneis.R;
+import com.example.airneis.RedirectionInterface;
 import com.example.airneis.modeles.Adresse;
-import com.example.airneis.modeles.Client;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddressFragment extends Fragment {
     RedirectionInterface redirectionInterface;
@@ -31,8 +27,12 @@ public class AddressFragment extends Fragment {
     TextView countryAddress;
     TextView regionAddress;
     Button buttonSave;
+    Adresse dataSource;
+    ImageView deleteAddress;
 
-    public AddressFragment(RedirectionInterface listener){
+
+    public AddressFragment(Adresse dataSource, RedirectionInterface listener) {
+        this.dataSource = dataSource;
         this.redirectionInterface = listener;
     }
 
@@ -53,11 +53,18 @@ public class AddressFragment extends Fragment {
         countryAddress = view.findViewById(R.id.editText_countryAddress);
         regionAddress = view.findViewById(R.id.editText_regionAddress);
         buttonSave = view.findViewById(R.id.button_saveAddress);
+        deleteAddress = view.findViewById(R.id.imageView_deleteAddress);
+        nameAddress.setText(dataSource.getNom());
+        streetAddress.setText(dataSource.getRue());
+        cityAddress.setText(dataSource.getVille());
+        zipCodeAddress.setText(dataSource.getCp());
+        complementAddress.setText(dataSource.getComplement());
+        countryAddress.setText(dataSource.getVille());
+        regionAddress.setText(dataSource.getRegion());
         AuthentificationClass authentification = new AuthentificationClass(this.getContext());
         String token = authentification.getAuthToken();
-        String _id = authentification.getAuthId();
+        String _id = dataSource.getId();
 
-        getAddress(_id, token);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,35 +72,11 @@ public class AddressFragment extends Fragment {
                         zipCodeAddress.getText().toString(),countryAddress.getText().toString(), regionAddress.getText().toString(), complementAddress.getText().toString());
             }
         });
-    }
 
-
-    public void getAddress(String _id, String token) {
-        Retrofit retrofit = new Retrofit.Builder()
-
-                .baseUrl("https://airneis-junia.vercel.app/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
-        Call<Adresse> callAddress = webServicesInterface.getAddressClient(_id, token);
-
-        callAddress.enqueue(new Callback<Adresse>() {
+        deleteAddress.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(Call<Adresse> call, Response<Adresse> response) {
-                nameAddress.setText(response.body().getNom());
-                streetAddress.setText(response.body().getRue());
-                cityAddress.setText(response.body().getVille());
-                zipCodeAddress.setText(response.body().getCp());
-                complementAddress.setText(response.body().getComplement());
-
-            }
-
-
-            @Override
-            public void onFailure(Call<Adresse> call, Throwable t) {
-                Log.e("404", "Error when get information");
-                Log.e("404", t.getMessage());
+            public void onClick(View v) {
+                redirectionInterface.deleteAddress(_id, token);
             }
         });
     }

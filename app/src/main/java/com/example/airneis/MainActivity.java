@@ -12,13 +12,29 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.airneis.features.addressaccount.AddressFragment;
+import com.example.airneis.features.addressaccount.ListAddressListFragment;
+import com.example.airneis.features.addressaccount.ListAddressListListener;
+import com.example.airneis.features.categories.ListCategoryFragment;
+import com.example.airneis.features.categories.ListCategoryListListener;
+import com.example.airneis.features.historyorder.ListHistoryOrderListFragment;
+import com.example.airneis.features.historyorder.ListHistoryOrderListListener;
+import com.example.airneis.features.paymentaccount.ListPaymentListFragment;
+import com.example.airneis.features.paymentaccount.ListPaymentListListener;
+import com.example.airneis.features.products.ListProductFragment;
+import com.example.airneis.features.products.ListProductListListener;
+import com.example.airneis.features.products.ProductFragment;
 import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
 import com.example.airneis.modeles.Panier;
+import com.example.airneis.modeles.Commande;
+import com.example.airneis.modeles.Message;
+import com.example.airneis.modeles.Paiement;
 import com.example.airneis.modeles.Produit;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.HashMap;
@@ -29,21 +45,27 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, PanierListListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, ListAddressListListener, ListPaymentListListener, ListHistoryOrderListListener, PanierListListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationDrawer;
-
     Fragment homePageFragment;
     Fragment accountFragment;
-    Fragment addressFragment;
+    Fragment cguFragment;
+    Fragment legalNoticesFragment;
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
 
     PanierFragment panierFragment;
 
+    ListAddressListFragment listAddressListFragment;
+    ListPaymentListFragment listPaymentListFragment;
+    ListHistoryOrderListFragment listHistoryOrderListFragment;
     ProductFragment productFragment;
+    AddressFragment addressPageFragment;
+
+
     LoginFragment loginFragment;
     AuthentificationClass authentification;
     Menu nav_menu;
@@ -69,8 +91,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentsList.put("home", homePageFragment);
         accountFragment = new AccountFragment((RedirectionInterface) this);
         fragmentsList.put("account", accountFragment);
-        addressFragment = new AddressFragment((RedirectionInterface) this);
-        fragmentsList.put("address", addressFragment);
+        cguFragment = new FragmentCGU((RedirectionInterface) this);
+        fragmentsList.put("CGU", cguFragment);
+        legalNoticesFragment = new FragmentLegalNotices((RedirectionInterface) this);
+        fragmentsList.put("legalNotices", legalNoticesFragment);
         loadFragment(homePageFragment);
     }
 
@@ -121,13 +145,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         } else if (item.getItemId() == R.id.action_cgu) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
+            redirectToFragment("CGU");
             return true;
         } else if (item.getItemId() == R.id.action_legalNotices) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
+            redirectToFragment("legalNotices");
             return true;
         } else if (item.getItemId() == R.id.action_contact) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
-            fragment = new ContactFragment();
+            fragment = new ContactFragment((RedirectionInterface) this);
             loadFragment(fragment);
             return true;
         } else if (item.getItemId() == R.id.action_socialNetwork) {
@@ -250,6 +276,81 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public void onAddressClickButton(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Adresse[]> callListAddress = webServicesInterface.getAddressClient(_id,token);
+
+        callListAddress.enqueue(new Callback<Adresse[]>() {
+            @Override
+            public void onResponse(Call<Adresse[]> call, Response<Adresse[]> response) {
+                listAddressListFragment = new ListAddressListFragment(response.body(), (ListAddressListListener) MainActivity.this);
+                loadFragment(listAddressListFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Adresse[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving Address list");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onPaymentClickButton(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Paiement[]> callListPayment = webServicesInterface.getPaymentClient(_id,token);
+
+        callListPayment.enqueue(new Callback<Paiement[]>() {
+            @Override
+            public void onResponse(Call<Paiement[]> call, Response<Paiement[]> response) {
+                listPaymentListFragment = new ListPaymentListFragment(response.body(),(ListPaymentListListener) MainActivity.this);
+                loadFragment(listPaymentListFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Paiement[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving Payment list");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onHistoryOrderClickButton(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Commande[]> callListOrders = webServicesInterface.getOrdersList(_id,token);
+
+        callListOrders.enqueue(new Callback<Commande[]>() {
+            @Override
+            public void onResponse(Call<Commande[]> call, Response<Commande[]> response) {
+                listHistoryOrderListFragment = new ListHistoryOrderListFragment(response.body(),(ListHistoryOrderListListener) MainActivity.this);
+                loadFragment(listHistoryOrderListFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Commande[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving Order list");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
     public void onProductClick(String id) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://airneis-junia.vercel.app/api/")
@@ -269,6 +370,54 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Produit> call, Throwable t) {
                 Log.e("404", "Error when retrieving product");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onAddressClick(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Adresse> callAddress = webServicesInterface.getAddress(_id, token);
+
+        callAddress.enqueue(new Callback<Adresse>() {
+            @Override
+            public void onResponse(Call<Adresse> call, Response<Adresse> response) {
+                addressPageFragment = new AddressFragment(response.body(), MainActivity.this);
+                loadFragment(addressPageFragment);
+
+            }
+            @Override
+            public void onFailure(Call<Adresse> call, Throwable t) {
+                Log.e("404", "Error when retrieving client address");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void onPaymentClick(String _id, String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Paiement> callPayment = webServicesInterface.deletePaiement(_id, token);
+
+        callPayment.enqueue(new Callback<Paiement>() {
+            @Override
+            public void onResponse(Call<Paiement> call, Response<Paiement> response) {
+                redirectToFragment("home");
+            }
+            @Override
+            public void onFailure(Call<Paiement> call, Throwable t) {
+                Log.e("404", "Error when delete payment");
                 Log.e("404", t.getMessage());
             }
         });
@@ -438,6 +587,54 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Produit> call, Throwable t) {
                 Log.e("404", "Error when adding to cart");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void deleteAddress(String token, String _id) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Adresse> callAddress = webServicesInterface.deleteAddress(token, _id);
+
+        callAddress.enqueue(new Callback<Adresse>() {
+            @Override
+            public void onResponse(Call<Adresse> call, Response<Adresse> response) {
+                redirectToFragment("home");
+            }
+
+            @Override
+            public void onFailure(Call<Adresse> call, Throwable t) {
+                Log.e("404", "Error when deleteAddress");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void saveMessage(String token, String email, String object, String content) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Message> callMessage = webServicesInterface.postMessage(token, email, object, content);
+
+        callMessage.enqueue(new Callback<Message>() {
+            @Override
+            public void onResponse(Call<Message> call, Response<Message> response) {
+                redirectToFragment("home");
+            }
+
+            @Override
+            public void onFailure(Call<Message> call, Throwable t) {
+                Log.e("404", "Error when send message");
                 Log.e("404", t.getMessage());
             }
         });

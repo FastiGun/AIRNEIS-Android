@@ -73,34 +73,34 @@
                     android:id="@+id/topCategoryNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="Category Name"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/topCategoryImageView"
+                    app:layout_constraintBottom_toTopOf="@+id/topCategoryImageView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/topCategoryImageView" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/centerCategoryNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="Category Name"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/centerCategoryImageView"
+                    app:layout_constraintBottom_toTopOf="@+id/centerCategoryImageView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/centerCategoryImageView" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/bottomCategoryNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="Category Name"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/bottomCategoryImageView"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomCategoryImageView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/bottomCategoryImageView" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/highlanderTextView"
@@ -126,7 +126,7 @@
                     app:srcCompat="@drawable/ic_launcher_background" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/centerProductImageView"
                     android:layout_width="300dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="50dp"
@@ -136,13 +136,14 @@
                     app:srcCompat="@drawable/ic_launcher_background" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/bottomProductImageView"
                     android:layout_width="300dp"
                     android:layout_height="150dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="48dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/centerProductImageView"
                     app:srcCompat="@drawable/ic_launcher_background" />
 
                 <Button
@@ -162,11 +163,31 @@
                     android:id="@+id/topProductNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="Product Name"
-                    app:layout_constraintBottom_toBottomOf="@+id/topProductImageView"
+                    app:layout_constraintBottom_toTopOf="@+id/topProductImageView"
                     app:layout_constraintEnd_toEndOf="@+id/topProductImageView"
-                    app:layout_constraintStart_toStartOf="@+id/topProductImageView"
-                    app:layout_constraintTop_toTopOf="@+id/topProductImageView" />
+                    app:layout_constraintStart_toStartOf="@+id/topProductImageView" />
+
+                <TextView
+                    android:id="@+id/centerProductNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Product Name"
+                    app:layout_constraintBottom_toTopOf="@+id/centerProductImageView"
+                    app:layout_constraintEnd_toEndOf="@+id/centerProductImageView"
+                    app:layout_constraintStart_toStartOf="@+id/centerProductImageView" />
+
+                <TextView
+                    android:id="@+id/bottomProductNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Product Name"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomProductImageView"
+                    app:layout_constraintEnd_toEndOf="@+id/bottomProductImageView"
+                    app:layout_constraintStart_toStartOf="@+id/bottomProductImageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
