@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.airneis.MainActivity;
 import com.example.airneis.R;
+import com.example.airneis.RedirectionInterface;
 import com.example.airneis.WebServicesInterface;
 import com.example.airneis.features.categories.ListCategoryFragment;
 import com.example.airneis.features.categories.ListCategoryListListener;
@@ -44,6 +45,7 @@ public class ProductFragment extends Fragment {
     String idCategory;
 
     private final Produit dataSource;
+    RedirectionInterface redirectionListListener;
 
     @Nullable
     @Override
@@ -51,8 +53,9 @@ public class ProductFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_product, null);
     }
 
-    public ProductFragment(Produit dataSource){
+    public ProductFragment(Produit dataSource, RedirectionInterface listener){
         this.dataSource = dataSource;
+        this.redirectionListListener = listener;
     }
 
     @Override
@@ -98,6 +101,13 @@ public class ProductFragment extends Fragment {
                 textView_product1.setText(productSimilar.getNom());
                 String url2 = productSimilar.getImage1();
                 Picasso.get().load(url2).into(imageView_productSimilar1);
+
+                imageView_productSimilar1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        redirectionListListener.onProductClick(idProduct);
+                    }
+                });
 
             }
 

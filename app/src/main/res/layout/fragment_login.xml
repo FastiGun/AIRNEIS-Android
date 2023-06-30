@@ -74,7 +74,7 @@
 
     <TextView
         android:id="@+id/text_loginRedirection2"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:contentDescription="@string/content_description_login_redirection2"
@@ -97,4 +97,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/text_loginRedirection2"
         app:layout_constraintStart_toStartOf="@+id/text_loginRedirection" />
+
+    <TextView
+        android:id="@+id/textView_passwordForgotten"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/login_passwordForgotten"
+        android:textColor="@color/blue_app"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/text_loginRedirection2"
+        app:layout_constraintStart_toStartOf="@+id/text_loginRedirection"
+        app:layout_constraintTop_toBottomOf="@+id/text_loginRedirection" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,6 +18,7 @@ public class LoginFragment extends Fragment {
     TextView editText_loginPassword;
     Button button_login;
     RedirectionInterface redirectionInterface;
+    TextView password_forgotten;
 
     public LoginFragment(RedirectionInterface listener){
         this.redirectionInterface = listener;
@@ -36,6 +37,7 @@ public class LoginFragment extends Fragment {
         button_login = view.findViewById(R.id.button_login);
         editText_loginPassword = view.findViewById(R.id.editText_loginPassword);
         editText_loginEmail = view.findViewById(R.id.editText_loginEmail);
+        password_forgotten = view.findViewById(R.id.textView_passwordForgotten);
 
         text_loginRedirection2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +46,16 @@ public class LoginFragment extends Fragment {
                 redirectionInterface.redirectToFragment("inscription");
             }
         });
+
+        if (password_forgotten != null) {
+            password_forgotten.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    redirectionInterface.passwordForgotten(editText_loginEmail.getText().toString());
+                }
+            });
+        }
 
         button_login.setOnClickListener(new View.OnClickListener() {
             @Override

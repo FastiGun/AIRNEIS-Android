@@ -3,6 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/nav_drawer_action_home" />
+    <item
         android:id="@+id/action_connect"
         android:icon="@drawable/baseline_how_to_reg_24"
         android:title="@string/nav_drawer_action_signin" />

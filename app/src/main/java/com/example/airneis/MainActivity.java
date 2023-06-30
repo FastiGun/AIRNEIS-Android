@@ -1,6 +1,7 @@
 package com.example.airneis;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -105,8 +106,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -133,6 +135,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.drawerLayout.closeDrawer(GravityCompat.START);
             authentification.clearAuthToken();
             authentification.clearAuthId();
+            nav_menu.findItem(R.id.action_connect).setEnabled(true);
+            nav_menu.findItem(R.id.action_signup).setEnabled(true);
+            nav_menu.findItem(R.id.action_disconnect).setEnabled(false);
+            nav_menu.findItem(R.id.action_account).setEnabled(false);
             redirectToFragment("home");
             return true;
         } else if (item.getItemId() == R.id.action_account) {
@@ -156,9 +162,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (item.getItemId() == R.id.action_socialNetwork) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             return true;
+        } else if (item.getItemId() == R.id.action_home) {
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            redirectToFragment("home");
+            return true;
         }
         return false;
     }
+
 
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
@@ -320,7 +331,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         callProduct.enqueue(new Callback<Produit>() {
             @Override
             public void onResponse(Call<Produit> call, Response<Produit> response) {
-                productFragment = new ProductFragment(response.body());
+                productFragment = new ProductFragment(response.body(),MainActivity.this );
                 loadFragment(productFragment);
             }
 
@@ -399,9 +410,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     authentification.saveAuthToken(response.body().getToken());
                     authentification.saveAuthId(response.body().getId());
                     nav_menu.findItem(R.id.action_disconnect).setVisible(true);
+                    nav_menu.findItem(R.id.action_disconnect).setEnabled(true);
                     nav_menu.findItem(R.id.action_account).setVisible(true);
-                    nav_menu.findItem(R.id.action_signup).setVisible(false);
-                    nav_menu.findItem(R.id.action_connect).setVisible(false);
+                    nav_menu.findItem(R.id.action_account).setEnabled(true);
+                    nav_menu.findItem(R.id.action_signup).setEnabled(false);
+                    nav_menu.findItem(R.id.action_connect).setEnabled(false);
                     redirectToFragment("home");
                 }
             }
@@ -409,6 +422,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Client> call, Throwable t) {
                 Log.e("404", "Error when login");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void passwordForgotten(String mail) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Client> callResetPassword = webServicesInterface.postResetPassword(mail);
+
+        callResetPassword.enqueue(new Callback<Client>() {
+            @Override
+            public void onResponse(Call<Client> call, Response<Client> response) {
+                    redirectToFragment("home");
+                }
+
+            @Override
+            public void onFailure(Call<Client> call, Throwable t) {
+                Log.e("404", "Error when send request for reset password");
+                redirectToFragment("home");
                 Log.e("404", t.getMessage());
             }
         });
@@ -538,4 +576,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
+    @Override
+    public void onHistoryClick(String token, String id) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Commande> callOrder = webServicesInterface.getOrder(token, id);
+
+        callOrder.enqueue(new Callback<Commande>() {
+            @Override
+            public void onResponse(Call<Commande> call, Response<Commande> response) {
+                redirectToFragment("home");
+            }
+
+            @Override
+            public void onFailure(Call<Commande> call, Throwable t) {
+                Log.e("404", "Error when get order information");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
 }
