@@ -40,6 +40,7 @@ import com.example.airneis.modeles.Paiement;
 import com.example.airneis.modeles.Produit;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import retrofit2.Call;
@@ -704,4 +705,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    @Override
+    public void switchToFacturation(ArrayList<String> deliveryAddress) {
+        loadFragment(new FacturationAddressFragment((RedirectionInterface) this, deliveryAddress));
+    }
+
+    @Override
+    public void switchToDelivery() {
+        loadFragment(new DeliveryAddressFragment((RedirectionInterface) this));
+    }
+
+    @Override
+    public void switchToPayment(ArrayList<String> deliveryAddress, ArrayList<String> facturationAddress) {
+
+    }
 }

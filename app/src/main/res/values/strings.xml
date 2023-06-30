@@ -81,6 +81,7 @@
 
     <!-- Delivery Page -->
     <string name="deliveryPage_title">Delivery</string>
+    <string name="facturationPage_title">Facturation</string>
     <string name="deliveryPage_addressName"> Address Name</string>
     <string name="deliveryPage_lastName"> Last name*</string>
     <string name="deliveryPage_name"> Name*</string>
@@ -92,7 +93,9 @@
     <string name="deliveryPage_city_example" translatable="false">Lille</string>
     <string name="deliveryPage_zipCode">Zip code*</string>
     <string name="deliveryPage_zipCode_example" translatable="false">59000</string>
-    <string name="deliveryPage_button">Go to payment</string>
+    <string name="facturationPage_button">Go to payment</string>
+    <string name="deliveryPage_button">Go to facturation</string>
+
 
     <!-- Payment Page -->
     <string name="paymentPage_title">Payment</string>

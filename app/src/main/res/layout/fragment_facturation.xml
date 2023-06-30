@@ -23,17 +23,17 @@
                 android:layout_height="1000dp">
 
                 <TextView
-                    android:id="@+id/deliveryTitle_textView"
+                    android:id="@+id/facturationTitle_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/deliveryPage_title"
+                    android:text="@string/facturationPage_title"
                     android:textSize="34sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/addressName_editTextText"
+                    android:id="@+id/addressFacturationName_editTextText"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="20dp"
@@ -41,173 +41,173 @@
                     android:ems="10"
                     android:inputType="text"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/deliveryTitle_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/facturationTitle_textView" />
 
                 <TextView
-                    android:id="@+id/lastNameDeliveryPage_textView"
+                    android:id="@+id/lastNameFacturationPage_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/deliveryPage_lastName"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/addressName_editTextText"
-                    app:layout_constraintTop_toBottomOf="@+id/addressName_editTextText" />
+                    app:layout_constraintStart_toStartOf="@+id/addressFacturationName_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/addressFacturationName_editTextText" />
 
                 <EditText
-                    android:id="@+id/lastNameDeliveryPage_editTextText"
+                    android:id="@+id/lastNameFacturationPage_editTextText"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@+id/lastNameDeliveryPage_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/lastNameDeliveryPage_textView" />
+                    app:layout_constraintStart_toStartOf="@+id/lastNameFacturationPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/lastNameFacturationPage_textView" />
 
                 <TextView
-                    android:id="@+id/nameDeliveryPage_textView"
+                    android:id="@+id/nameFacturationPage_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/deliveryPage_name"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/lastNameDeliveryPage_editTextText"
-                    app:layout_constraintTop_toBottomOf="@+id/lastNameDeliveryPage_editTextText" />
+                    app:layout_constraintStart_toStartOf="@+id/lastNameFacturationPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/lastNameFacturationPage_editTextText" />
 
                 <EditText
-                    android:id="@+id/nameDeliveryPage_editTextText"
+                    android:id="@+id/nameFacturationPage_editTextText"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@+id/nameDeliveryPage_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/nameDeliveryPage_textView" />
+                    app:layout_constraintStart_toStartOf="@+id/nameFacturationPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/nameFacturationPage_textView" />
 
                 <TextView
-                    android:id="@+id/address1DeliveryPage_textView"
+                    android:id="@+id/address1FacturationPage_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/deliveryPage_address1"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/nameDeliveryPage_editTextText"
-                    app:layout_constraintTop_toBottomOf="@+id/nameDeliveryPage_editTextText" />
+                    app:layout_constraintStart_toStartOf="@+id/nameFacturationPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/nameFacturationPage_editTextText" />
 
                 <EditText
-                    android:id="@+id/address1DeliveryPage_editTextText"
+                    android:id="@+id/address1FacturationPage_editTextText"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@+id/address1DeliveryPage_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/address1DeliveryPage_textView" />
+                    app:layout_constraintStart_toStartOf="@+id/address1FacturationPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/address1FacturationPage_textView" />
 
                 <TextView
-                    android:id="@+id/address2DeliveryPage_textView"
+                    android:id="@+id/address2FacturationPage_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/deliveryPage_address2"
-                    app:layout_constraintStart_toStartOf="@+id/address1DeliveryPage_editTextText"
-                    app:layout_constraintTop_toBottomOf="@+id/address1DeliveryPage_editTextText" />
+                    app:layout_constraintStart_toStartOf="@+id/address1FacturationPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/address1FacturationPage_editTextText" />
 
                 <EditText
-                    android:id="@+id/address2DeliveryPage_editTextText"
+                    android:id="@+id/address2FacturationPage_editTextText"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@+id/address2DeliveryPage_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/address2DeliveryPage_textView" />
+                    app:layout_constraintStart_toStartOf="@+id/address2FacturationPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/address2FacturationPage_textView" />
 
                 <TextView
-                    android:id="@+id/cityDeliveryPage_textView"
+                    android:id="@+id/cityFacturationPage_textView"
                     android:layout_width="33dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="20dp"
                     android:text="@string/deliveryPage_city"
-                    app:layout_constraintStart_toStartOf="@+id/address2DeliveryPage_editTextText"
-                    app:layout_constraintTop_toBottomOf="@+id/address2DeliveryPage_editTextText" />
+                    app:layout_constraintStart_toStartOf="@+id/address2FacturationPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/address2FacturationPage_editTextText" />
 
                 <EditText
-                    android:id="@+id/cityDeliveryPage_editTextText"
+                    android:id="@+id/cityFacturationPage_editTextText"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@+id/cityDeliveryPage_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/cityDeliveryPage_textView" />
+                    app:layout_constraintStart_toStartOf="@+id/cityFacturationPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/cityFacturationPage_textView" />
 
                 <TextView
-                    android:id="@+id/zipCodeDeliveryPage_textView"
+                    android:id="@+id/zipCodeFacturationPage_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="@string/deliveryPage_zipCode"
-                    app:layout_constraintTop_toBottomOf="@+id/cityDeliveryPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/cityFacturationPage_editTextText"
                     tools:layout_editor_absoluteX="20dp" />
 
                 <EditText
-                    android:id="@+id/zipCodeDeliveryPage_editTextText"
+                    android:id="@+id/zipCodeFacturationPage_editTextText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@+id/zipCodeDeliveryPage_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/zipCodeDeliveryPage_textView" />
+                    app:layout_constraintStart_toStartOf="@+id/zipCodeFacturationPage_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/zipCodeFacturationPage_textView" />
 
                 <TextView
-                    android:id="@+id/paysDeliveryAddress_Label"
+                    android:id="@+id/paysFacturationAddress_Label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="TextView"
-                    app:layout_constraintStart_toStartOf="@+id/zipCodeDeliveryPage_editTextText"
-                    app:layout_constraintTop_toBottomOf="@+id/zipCodeDeliveryPage_editTextText" />
+                    app:layout_constraintStart_toStartOf="@+id/zipCodeFacturationPage_editTextText"
+                    app:layout_constraintTop_toBottomOf="@+id/zipCodeFacturationPage_editTextText" />
 
                 <EditText
-                    android:id="@+id/paysDeliveryAddressEditText"
+                    android:id="@+id/paysFacturationAddressEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@+id/paysDeliveryAddress_Label"
-                    app:layout_constraintTop_toBottomOf="@+id/paysDeliveryAddress_Label" />
+                    app:layout_constraintStart_toStartOf="@+id/paysFacturationAddress_Label"
+                    app:layout_constraintTop_toBottomOf="@+id/paysFacturationAddress_Label" />
 
                 <TextView
-                    android:id="@+id/regionDeliveryAddressLabel"
+                    android:id="@+id/regionFacturationAddressLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="TextView"
-                    app:layout_constraintStart_toStartOf="@+id/paysDeliveryAddressEditText"
-                    app:layout_constraintTop_toBottomOf="@+id/paysDeliveryAddressEditText" />
+                    app:layout_constraintStart_toStartOf="@+id/paysFacturationAddressEditText"
+                    app:layout_constraintTop_toBottomOf="@+id/paysFacturationAddressEditText" />
 
                 <EditText
-                    android:id="@+id/regionDeliveryAddressEditText"
+                    android:id="@+id/regionFacturationAddressEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@+id/regionDeliveryAddressLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/regionDeliveryAddressLabel" />
+                    app:layout_constraintStart_toStartOf="@+id/regionFacturationAddressLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/regionFacturationAddressLabel" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/GoToFacturation"
+        android:id="@+id/GoToPayment"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/blue_app"
-        android:text="@string/deliveryPage_button"
+        android:text="@string/facturationPage_button"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

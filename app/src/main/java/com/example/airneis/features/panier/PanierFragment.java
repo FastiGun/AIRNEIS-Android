@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,8 @@ public class PanierFragment extends Fragment {
 
     TextView priceTvaBasketPage;
 
+    Button basketPage_button;
+
     PanierListListener panierListListener;
 
 
@@ -58,6 +61,7 @@ public class PanierFragment extends Fragment {
         recyclerView.setAdapter(panierListAdapteur);
         priceTvaBasketPage = view.findViewById(R.id.priceTvaBasketPage);
         priceTotalBasketPage_textView = view.findViewById(R.id.priceTotalBasketPage_textView);
+        basketPage_button = view.findViewById(R.id.basketPage_button);
 
         float price = 0;
         for(Panier product: dataSource){
@@ -66,5 +70,12 @@ public class PanierFragment extends Fragment {
 
         priceTotalBasketPage_textView.setText(String.valueOf(price)+'€');
         priceTvaBasketPage.setText(String.valueOf(df.format(price*0.2))+"€");
+
+        basketPage_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                panierListListener.switchToDelivery();
+            }
+        });
     }
 }

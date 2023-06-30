@@ -1,5 +1,7 @@
 package com.example.airneis;
 
+import java.util.ArrayList;
+
 public interface RedirectionInterface {
     void redirectToFragment(String fragmentName) throws RuntimeException;
     void connexion(String mail, String mdp);
@@ -16,4 +18,7 @@ public interface RedirectionInterface {
     void onCategoryClick(String categorie);
     void onProductClick(String id);
     void addProductToCart(String _id);
+
+    void switchToFacturation(ArrayList<String> deliveryAddress);
+    void switchToPayment(ArrayList<String> deliveryAddress, ArrayList<String> facturationAddress);
 }
