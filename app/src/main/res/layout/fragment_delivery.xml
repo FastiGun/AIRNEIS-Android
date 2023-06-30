@@ -40,7 +40,6 @@
                     android:layout_marginTop="20dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="@string/deliveryPage_addressName"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/deliveryTitle_textView" />
 
@@ -61,7 +60,6 @@
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="John"
                     app:layout_constraintStart_toStartOf="@+id/lastNameDeliveryPage_textView"
                     app:layout_constraintTop_toBottomOf="@+id/lastNameDeliveryPage_textView" />
 
@@ -82,7 +80,6 @@
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="DOE"
                     app:layout_constraintStart_toStartOf="@+id/nameDeliveryPage_textView"
                     app:layout_constraintTop_toBottomOf="@+id/nameDeliveryPage_textView" />
 
@@ -103,7 +100,6 @@
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="@string/deliveryPage_address1_example"
                     app:layout_constraintStart_toStartOf="@+id/address1DeliveryPage_textView"
                     app:layout_constraintTop_toBottomOf="@+id/address1DeliveryPage_textView" />
 
@@ -123,7 +119,6 @@
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="@string/deliveryPage_address2_example"
                     app:layout_constraintStart_toStartOf="@+id/address2DeliveryPage_textView"
                     app:layout_constraintTop_toBottomOf="@+id/address2DeliveryPage_textView" />
 
@@ -143,7 +138,6 @@
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="@string/deliveryPage_city_example"
                     app:layout_constraintStart_toStartOf="@+id/cityDeliveryPage_textView"
                     app:layout_constraintTop_toBottomOf="@+id/cityDeliveryPage_textView" />
 
@@ -163,7 +157,6 @@
                     android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="@string/deliveryPage_zipCode_example"
                     app:layout_constraintStart_toStartOf="@+id/zipCodeDeliveryPage_textView"
                     app:layout_constraintTop_toBottomOf="@+id/zipCodeDeliveryPage_textView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
