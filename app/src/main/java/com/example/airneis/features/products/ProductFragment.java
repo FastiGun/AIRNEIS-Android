@@ -81,7 +81,7 @@ public class ProductFragment extends Fragment {
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                redirectionInterface.addProductToCart(dataSource.getId());
+                redirectionListListener.addProductToCart(dataSource.getId());
             }
         });
 
