@@ -16,7 +16,9 @@ import android.view.MenuItem;
 import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
+import com.example.airneis.modeles.Panier;
 import com.example.airneis.modeles.Produit;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.HashMap;
@@ -27,16 +29,19 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, PanierListListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationDrawer;
+
     Fragment homePageFragment;
     Fragment accountFragment;
     Fragment addressFragment;
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
+
+    PanierFragment panierFragment;
 
     ProductFragment productFragment;
     LoginFragment loginFragment;
@@ -128,6 +133,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (item.getItemId() == R.id.action_socialNetwork) {
             this.drawerLayout.closeDrawer(GravityCompat.START);
             return true;
+        } else if (item.getItemId() == R.id.action_cart) {
+            String token = authentification.getAuthToken();
+            String _id = authentification.getAuthId();
+            System.out.println(_id);
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            if (token == null) {
+                fragment = new LoginFragment((RedirectionInterface) this);
+                loadFragment(fragment);
+                return true;
+            } else {
+                loadCart(_id, token);
+            }
+            return true;
         }
         return false;
     }
@@ -138,6 +156,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         return false;
+    }
+
+    public void loadCart(String _id, String token) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Panier[]> callGetPanierClient = webServicesInterface.getPanierClient(_id, token);
+
+        callGetPanierClient.enqueue(new Callback<Panier[]>() {
+            @Override
+            public void onResponse(Call<Panier[]> call, Response<Panier[]> response) {
+                panierFragment = new PanierFragment(response.body(),(PanierListListener) MainActivity.this);
+                loadFragment(panierFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Panier[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving cart");
+                Log.e("404", t.getMessage());
+                System.out.println(t.getMessage());
+            }
+        });
+
     }
 
     public void redirectToFragment(String fragmentName) throws RuntimeException {
@@ -217,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         callProduct.enqueue(new Callback<Produit>() {
             @Override
             public void onResponse(Call<Produit> call, Response<Produit> response) {
-                productFragment = new ProductFragment(response.body());
+                productFragment = new ProductFragment(response.body(), (RedirectionInterface) MainActivity.this);
                 loadFragment(productFragment);
             }
 
@@ -334,6 +379,65 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Adresse> call, Throwable t) {
                 Log.e("404", "Error when registration");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void deleteCart(String _id) {
+        String token = authentification.getAuthToken();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Panier> callDeleteCart = webServicesInterface.deleteCart(_id, token);
+
+        callDeleteCart.enqueue(new Callback<Panier>() {
+            @Override
+            public void onResponse(Call<Panier> call, Response<Panier> response) {
+                String token = authentification.getAuthToken();
+                String _id = authentification.getAuthId();
+                loadCart(_id, token);
+            }
+
+            @Override
+            public void onFailure(Call<Panier> call, Throwable t) {
+                Log.e("404", "Error when deleting");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void addProductToCart(String _id) {
+        String token = authentification.getAuthToken();
+        String idClient = authentification.getAuthId();
+
+        System.out.println(token);
+        System.out.println(idClient);
+        System.out.println(_id);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Produit> callAddProductToCart = webServicesInterface.addProductToCart(idClient, _id, token);
+
+        callAddProductToCart.enqueue(new Callback<Produit>() {
+            @Override
+            public void onResponse(Call<Produit> call, Response<Produit> response) {
+                redirectToFragment("home");
+            }
+
+            @Override
+            public void onFailure(Call<Produit> call, Throwable t) {
+                Log.e("404", "Error when adding to cart");
                 Log.e("404", t.getMessage());
             }
         });

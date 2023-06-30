@@ -10,6 +10,8 @@ import com.example.airneis.modeles.Produit;
 import java.util.StringTokenizer;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -61,6 +63,12 @@ public interface WebServicesInterface {
     Call<Paiement>getPaiementClient(@Path("clientId") String _id, @Header("Authorization") String token);
 
     @GET("clients/{clientId}/paniers")
-    Call<Panier>getPanierClient(@Path("clientId") String _id, @Header("Authorization") String token);
+    Call<Panier[]>getPanierClient(@Path("clientId") String _id, @Header("Authorization") String token);
 
+    @DELETE("/api/panier/{idPanier}")
+    Call<Panier>deleteCart(@Path("idPanier") String _id, @Header("Authorization") String token);
+
+    @POST("api/add-produit-panier/{client}/{article}")
+    Call<Produit>addProductToCart(@Path("client") String _id, @Path("article") String article, @Header("Authorization") String token);
 }
+

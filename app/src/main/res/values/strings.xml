@@ -64,7 +64,7 @@
     <string name="listCategory_title">Categories</string>
 
     <!-- Basket Page -->
-    <string name="basketPage_title">Basket</string>
+    <string name="basketPage_title">Cart</string>
     <string name="basketPage_total">TOTAL</string>
     <string name="basketPage_tva">TVA</string>
     <string name="basketPage_priceTotal">4 800€</string>

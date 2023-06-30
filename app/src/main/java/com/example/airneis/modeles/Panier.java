@@ -2,24 +2,23 @@ package com.example.airneis.modeles;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class Panier {
 
     @SerializedName("_id")
     String _id;
-    @SerializedName("produits")
-    Produit[] produits;
-    @SerializedName("prixHT")
-    float prixHT;
-    @SerializedName("prixTTC")
-    float prixTTC;
+    @SerializedName("article")
+    Produit article;
+    @SerializedName("quantite")
+    int quantite;
+    @SerializedName("client")
+    String client;
 
-    public Panier(String id, Produit[] produits, float prixHT, float prixTTC) {
+
+    public Panier(String id, Produit article, int quantite, String client) {
         this._id = id;
-        this.produits = produits;
-        this.prixHT = prixHT;
-        this.prixTTC = prixTTC;
+        this.article = article;
+        this.quantite = quantite;
+        this.client = client;
     }
 
     public String getId() {
@@ -30,27 +29,27 @@ public class Panier {
         this._id = id;
     }
 
-    public Produit[] getProduits() {
-        return produits;
+    public Produit getProduit() {
+        return article;
     }
 
-    public void setProduits(Produit[] produits) {
-        this.produits = produits;
+    public void setProduit(Produit article) {
+        this.article = article;
     }
 
-    public float getPrixHT() {
-        return prixHT;
+    public int getQuantite() {
+        return quantite;
     }
 
-    public void setPrixHT(float prixHT) {
-        this.prixHT = prixHT;
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
     }
 
-    public float getPrixTTC() {
-        return prixTTC;
+    public String getClient() {
+        return client;
     }
 
-    public void setPrixTTC(float prixTTC) {
-        this.prixTTC = prixTTC;
+    public void setPrixTTC(String client) {
+        this.client = client;
     }
 }

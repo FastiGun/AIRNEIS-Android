@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.airneis.modeles.Categorie;
+import com.example.airneis.modeles.Panier;
 import com.example.airneis.modeles.Produit;
 
 import org.w3c.dom.Text;
@@ -22,9 +23,12 @@ public class ProductFragment extends Fragment {
     TextView productPrice;
     TextView productStock;
     TextView productDescription;
+
     Button addToCart;
 
     private final Produit dataSource;
+
+    RedirectionInterface redirectionInterface;
 
     @Nullable
     @Override
@@ -32,8 +36,9 @@ public class ProductFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_product, null);
     }
 
-    public ProductFragment(Produit dataSource){
+    public ProductFragment(Produit dataSource, RedirectionInterface redirectionInterface){
         this.dataSource = dataSource;
+        this.redirectionInterface = redirectionInterface;
     }
 
     @Override
@@ -43,9 +48,18 @@ public class ProductFragment extends Fragment {
         productPrice = view.findViewById(R.id.textView_productPrice);
         productStock = view.findViewById(R.id.textView_productStock);
         productDescription = view.findViewById(R.id.textView_productDescription);
+        addToCart = view.findViewById(R.id.button_addToCart);
         productName.setText(dataSource.getNom());
         productPrice.setText(Float.toString(dataSource.getPrix()));
         productStock.setText(Integer.toString(dataSource.getStock()));
         productDescription.setText(dataSource.getDescription());
+
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectionInterface.addProductToCart(dataSource.getId());
+            }
+        });
+
     }
 }
