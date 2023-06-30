@@ -1,4 +1,4 @@
-# README Application mobile - AIRNEIS-Android
+# Application mobile - AIRNEIS
 
 Ceci est le README générale de l'application mobile
 
