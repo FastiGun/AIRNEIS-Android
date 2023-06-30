@@ -23,6 +23,8 @@ import com.example.airneis.features.categories.ListCategoryFragment;
 import com.example.airneis.features.categories.ListCategoryListListener;
 import com.example.airneis.features.historyorder.ListHistoryOrderListFragment;
 import com.example.airneis.features.historyorder.ListHistoryOrderListListener;
+import com.example.airneis.features.panier.PanierFragment;
+import com.example.airneis.features.panier.PanierListListener;
 import com.example.airneis.features.paymentaccount.ListPaymentListFragment;
 import com.example.airneis.features.paymentaccount.ListPaymentListListener;
 import com.example.airneis.features.products.ListProductFragment;
@@ -31,6 +33,7 @@ import com.example.airneis.features.products.ProductFragment;
 import com.example.airneis.modeles.Adresse;
 import com.example.airneis.modeles.Categorie;
 import com.example.airneis.modeles.Client;
+import com.example.airneis.modeles.Panier;
 import com.example.airneis.modeles.Commande;
 import com.example.airneis.modeles.Message;
 import com.example.airneis.modeles.Paiement;
@@ -45,7 +48,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, ListAddressListListener, ListPaymentListListener, ListHistoryOrderListListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, RedirectionInterface, ListProductListListener, ListCategoryListListener, ListAddressListListener, ListPaymentListListener, ListHistoryOrderListListener, PanierListListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -56,6 +59,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Fragment legalNoticesFragment;
     ListProductFragment listProductFragment;
     ListCategoryFragment listCategoryFragment;
+
+    PanierFragment panierFragment;
+
     ListAddressListFragment listAddressListFragment;
     ListPaymentListFragment listPaymentListFragment;
     ListHistoryOrderListFragment listHistoryOrderListFragment;
@@ -106,9 +112,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -166,6 +171,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.drawerLayout.closeDrawer(GravityCompat.START);
             redirectToFragment("home");
             return true;
+        } else if (item.getItemId() == R.id.action_cart) {
+            String token = authentification.getAuthToken();
+            String _id = authentification.getAuthId();
+            System.out.println(_id);
+            this.drawerLayout.closeDrawer(GravityCompat.START);
+            if (token == null) {
+                fragment = new LoginFragment((RedirectionInterface) this);
+                loadFragment(fragment);
+                return true;
+            } else {
+                loadCart(_id, token);
+            }
+            return true;
         }
         return false;
     }
@@ -177,6 +195,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         return false;
+    }
+
+    public void loadCart(String _id, String token) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Panier[]> callGetPanierClient = webServicesInterface.getPanierClient(_id, token);
+
+        callGetPanierClient.enqueue(new Callback<Panier[]>() {
+            @Override
+            public void onResponse(Call<Panier[]> call, Response<Panier[]> response) {
+                panierFragment = new PanierFragment(response.body(),(PanierListListener) MainActivity.this);
+                loadFragment(panierFragment);
+            }
+
+            @Override
+            public void onFailure(Call<Panier[]> call, Throwable t) {
+                Log.e("404", "Error when retrieving cart");
+                Log.e("404", t.getMessage());
+                System.out.println(t.getMessage());
+            }
+        });
+
     }
 
     public void redirectToFragment(String fragmentName) throws RuntimeException {
@@ -504,7 +549,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-
     @Override
     public void saveAddress(String token, String _id, String nameAddress, String street, String city, String zipCode, String country, String region, String complement) {
         Retrofit retrofit = new Retrofit.Builder()
@@ -524,6 +568,65 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onFailure(Call<Adresse> call, Throwable t) {
                 Log.e("404", "Error when registration");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void deleteCart(String _id) {
+        String token = authentification.getAuthToken();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Panier> callDeleteCart = webServicesInterface.deleteCart(_id, token);
+
+        callDeleteCart.enqueue(new Callback<Panier>() {
+            @Override
+            public void onResponse(Call<Panier> call, Response<Panier> response) {
+                String token = authentification.getAuthToken();
+                String _id = authentification.getAuthId();
+                loadCart(_id, token);
+            }
+
+            @Override
+            public void onFailure(Call<Panier> call, Throwable t) {
+                Log.e("404", "Error when deleting");
+                Log.e("404", t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void addProductToCart(String _id) {
+        String token = authentification.getAuthToken();
+        String idClient = authentification.getAuthId();
+
+        System.out.println(token);
+        System.out.println(idClient);
+        System.out.println(_id);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://airneis-junia.vercel.app/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        WebServicesInterface webServicesInterface = retrofit.create(WebServicesInterface.class);
+        Call<Produit> callAddProductToCart = webServicesInterface.addProductToCart(idClient, _id, token);
+
+        callAddProductToCart.enqueue(new Callback<Produit>() {
+            @Override
+            public void onResponse(Call<Produit> call, Response<Produit> response) {
+                redirectToFragment("home");
+            }
+
+            @Override
+            public void onFailure(Call<Produit> call, Throwable t) {
+                Log.e("404", "Error when adding to cart");
                 Log.e("404", t.getMessage());
             }
         });

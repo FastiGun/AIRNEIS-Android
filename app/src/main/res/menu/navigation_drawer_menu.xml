@@ -15,6 +15,10 @@
         android:icon="@drawable/baseline_supervisor_account_24"
         android:title="@string/nav_drawer_action_signup" />
     <item
+        android:id="@+id/action_cart"
+        android:icon="@drawable/baseline_shopping_cart_24"
+        android:title="Cart" />
+    <item
         android:id="@+id/action_disconnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

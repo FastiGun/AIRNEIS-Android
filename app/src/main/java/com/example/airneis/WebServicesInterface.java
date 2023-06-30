@@ -73,7 +73,13 @@ public interface WebServicesInterface {
     Call<Paiement[]>getPaymentClient(@Path("clientId") String _id, @Header("Authorization") String token);
 
     @GET("clients/{clientId}/paniers")
-    Call<Panier>getPanierClient(@Path("clientId") String _id, @Header("Authorization") String token);
+    Call<Panier[]>getPanierClient(@Path("clientId") String _id, @Header("Authorization") String token);
+
+    @DELETE("/api/panier/{idPanier}")
+    Call<Panier>deleteCart(@Path("idPanier") String _id, @Header("Authorization") String token);
+
+    @POST("api/add-produit-panier/{client}/{article}")
+    Call<Produit>addProductToCart(@Path("client") String _id, @Path("article") String article, @Header("Authorization") String token);
 
     @DELETE("paiements/{idPaiement}")
     Call<Paiement>deletePaiement(@Path("idPaiement") String _id, @Header("Authorization") String token);

@@ -15,4 +15,5 @@ public interface RedirectionInterface {
     void saveMessage(String token, String email, String object, String content);
     void onCategoryClick(String categorie);
     void onProductClick(String id);
+    void addProductToCart(String _id);
 }
